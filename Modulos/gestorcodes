@@ -98,11 +98,10 @@ function onapp1 () {
    }
    IP=$(wget -qO- ipv4.icanhazip.com) >/dev/null 2>&1
    echo -e "\n\033[1;32m  ONLINE APP ATIVO !\033[0m"
+   echo ""
    echo -e "\033[1;31m \033[1;33mURL de Usuários Online para usar no App\033[0m"
    echo ""
    echo -e " \033[1;32mhttp://$IP:81/server/online"
-   sleep 10
-   gestorcodes
 }
 function onapp2 () {
    clear
@@ -120,8 +119,6 @@ function onapp2 () {
    fun_bar 'fun_stponlineapp' 'sleep 3'
    rm -rf /var/www/html/server >/dev/null 2>&1
    echo -e "\n\033[1;31m ONLINE APP PARADO !\033[0m"
-   sleep 3
-   gestorcodes
 }
 function onapp_ssh () {
 [[ $(ps x | grep "onlineapp"|grep -v grep |wc -l) = '0' ]] && onapp1 || onapp2
@@ -218,6 +215,7 @@ case "$x" in
    8 | 08)
    clear
    onapp_ssh
+   echo -ne "\n\033[1;31mENTER \033[1;33mpara retornar ao \033[1;32mMENU!\033[0m"; read
    ;;
    0 | 00)
    menu
