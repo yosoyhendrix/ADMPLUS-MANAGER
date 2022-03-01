@@ -1,13 +1,10 @@
 #!/bin/bash
 #====================================================
-#	CANAL TELEGRAM:	https://t.me/AAAAAEXQOSyIpN2JZ0ehUQ
+#	SCRIPT: CONEXAO ADMPLUS MANAGER PRO
+#	DATA ATUALIZACAO:	01-03-2022 
+#	CONTATO TELEGRAM:	iLLuminati Dev Team
+#	GRUPO TELEGRAM:	https://t.me/AAAAAEXQOSyIpN2JZ0ehUQ
 #====================================================
-cor1='\033[41;1;37m'
-cor2='\033[44;1;37m'
-scor='\033[0m'
-GREEN='\033[1;32m'
-YELLOW='\033[1;33m'
-SCOLOR='\033[0m'
 [[ $(awk -F" " '{print $2}' /usr/lib/licence) == "@CRAZY_VPN" ]] && {
 	ram1=$(free -h | grep -i mem | awk {'print $2'})
 	ram2=$(free -h | grep -i mem | awk {'print $4'})
@@ -1822,6 +1819,12 @@ exit 0' >$RCLOCAL
 	}
 
     	fun_chisel() {
+		cor1='\033[41;1;37m'
+		cor2='\033[44;1;37m'
+		scor='\033[0m'
+		GREEN='\033[1;32m'
+		YELLOW='\033[1;33m'
+		SCOLOR='\033[0m'
 		clear
 		echo -e "\E[44;1;37m            GERENCIAR CHISEL             \E[0m"
 		echo ""
@@ -1970,6 +1973,12 @@ exit 0' >$RCLOCAL
     }
 
         fun_v2rayins() {
+		cor1='\033[41;1;37m'
+		cor2='\033[44;1;37m'
+		scor='\033[0m'
+		GREEN='\033[1;32m'
+		YELLOW='\033[1;33m'
+		SCOLOR='\033[0m'
 			clear
 	        v2rayinst(){
 	            source <(curl -sL https://raw.githubusercontent.com/leitura/SSHPLUS/master/Modulos/v2ray)
@@ -2051,13 +2060,11 @@ exit 0' >$RCLOCAL
 			} || {
 				sts8="\033[1;31m○ "
 			}
-
-
 			[[ "$(netstat -tlpn | grep 'docker' | wc -l)" != '0' ]] && {
 				echo -e "\033[1;32mSERVICO: \033[1;33mCHISEL: \033[1;32mPORTA: \033[1;37m$(netstat -nplt | grep 'docker' | awk {'print $4'} | cut -d: -f2 | xargs)"
-				sts8="\033[1;32m◉ "
+				sts9="\033[1;32m◉ "
 			} || {
-				sts8="\033[1;31m○ "
+				sts9="\033[1;31m○ "
 			}
 			[[ "$(netstat -tunlp | grep 'trojan-go' | wc -l)" != '0' ]] && {
 				trojansts="\033[1;32m◉ "
@@ -2082,7 +2089,7 @@ exit 0' >$RCLOCAL
 [\033[1;36m09\033[1;31m] \033[1;37m• \033[1;33mCHISEL $sts9\033[1;31m
 [\033[1;36m10\033[1;31m] \033[1;37m• \033[1;33mV2RAY $xv2ray\033[1;31m
 [\033[1;36m11\033[1;31m] \033[1;37m• \033[1;33mTROJAN-GO $trojansts\033[1;31m
-[\033[1;36m09\033[1;31m] \033[1;37m• \033[1;33mVOLTAR \033[1;32m<\033[1;33m<\033[1;31m< \033[1;31m
+[\033[1;36m12\033[1;31m] \033[1;37m• \033[1;33mVOLTAR \033[1;32m<\033[1;33m<\033[1;31m< \033[1;31m
 [\033[1;36m00\033[1;31m] \033[1;37m• \033[1;33mSAIR \033[1;32m<\033[1;33m<\033[1;31m< \033[0m"
 			echo ""
 			echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
