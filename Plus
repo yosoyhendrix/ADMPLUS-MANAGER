@@ -78,7 +78,7 @@ for _prog in ${_pacotes[@]}; do
 done
 pip install speedtest-cli
 apt-get install python-pip build-essential python-dev -y
-## apt install glances -y
+apt install glances -y
 pip install Glances
 pip install PySensors
 }
