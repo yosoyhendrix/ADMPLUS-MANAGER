@@ -84,8 +84,7 @@ clear
 echo ""
 echo -e "   \033[1;32mREMOVER TODOS OS USUARIOS REGISTRADOS\033[0m"
 echo ""
-echo -ne "\n\033[1;31mENTER \033[1;33mpara continuar ao \033[1;32mPARA SAIR CLICK CTRL + C\033[0m" 
-read -p ""
+read -p "$(echo -e "\033[1;31mENTER \033[1;33mpara continuar ao para sair \033[1;32mCLICK CTRL + C\033[0m")"
 service dropbear stop &>/dev/null
 service sshd stop &>/dev/null
 service ssh stop &>/dev/null
@@ -155,7 +154,7 @@ echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━�
 echo ""
 echo -e "[\033[1;36m01\033[1;31m] \033[1;37m• \033[1;33mMONITOR DO SISTEMA \033[1;31m   
 [\033[1;36m02\033[1;31m] \033[1;37m• \033[1;33mTRAFEGO \033[1;31m                  
-[\033[1;36m02\033[1;31m] \033[1;37m• \033[1;33mINFO SISTEMA \033[1;31m
+[\033[1;36m03\033[1;31m] \033[1;37m• \033[1;33mINFO SISTEMA \033[1;31m
 [\033[1;36m04\033[1;31m] \033[1;37m• \033[1;33mALTERAR SENHA ROOT \033[1;31m
 [\033[1;36m05\033[1;31m] \033[1;37m• \033[1;33mREINICIAR SISTEMA \033[1;31m
 [\033[1;36m06\033[1;31m] \033[1;37m• \033[1;33mREINICIAR SERVICOS \033[1;31m
