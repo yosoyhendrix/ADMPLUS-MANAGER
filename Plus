@@ -113,7 +113,7 @@ fun_bar "$_Ink/list $_lnk $_Ink $_1nk $key"
 cd $HOME
 echo -e "\033[0;34m═════════════════════════════════════════════════\033[0m"
 echo -e "\033[1;32mINSTALACAO CONCLUIDA \033[0m"
-echo -e "\033[1;31m\033[1;33mCOMANDO PRINCIPAL: \033[1;32mmenu / ADM\033[0m"
+echo -e "\033[1;31m\033[1;33mCOMANDO PRINCIPAL: \033[1;32mmenu / adm\033[0m"
 echo -e "\033[1;33mINFORMACOES \033[1;31m(\033[1;36mTELEGRAM\033[1;31m): \033[1;37m@AAAAAEXQOSyIpN2JZ0ehUQ\033[0m"
 echo -e "\033[0;34m═════════════════════════════════════════════════\033[0m"
 rm $HOME/Plus* && cat /dev/null > ~/.bash_history && history -c
