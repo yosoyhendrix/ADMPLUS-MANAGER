@@ -72,13 +72,13 @@ fun_attlist () {
 }
 
 inst_pct () {
-_pacotes=("bc" "screen" "nano" "unzip" "lsof" "netstat" "net-tools" "dos2unix" "nload" "jq" "curl" "figlet" "python3" "python-pip")
+_pacotes=("bc" "screen" "nano" "zip" "unzip" "lsof" "netstat" "net-tools" "dos2unix" "nload" "jq" "curl" "figlet" "ufw" "python" "python3" "python-pip")
 for _prog in ${_pacotes[@]}; do
     apt install $_prog -y
 done
 pip install speedtest-cli
 apt-get install python-pip build-essential python-dev -y
-apt install glances -y
+## apt install glances -y
 pip install Glances
 pip install PySensors
 }
