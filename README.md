@@ -1,5 +1,5 @@
 ﻿# ADMPLUS-MANAGER-PRO
-![logo](https://github.com/AAAAAEXQOSyIpN2JZ0ehUQ/SSHPLUS-MANAGER-FREE/blob/master/Imagenes/ADMPLUS-MANAGER-PRO.png)
+![logo](https://github.com/AAAAAEXQOSyIpN2JZ0ehUQ/ADMPLUS-MANAGER-PRO/raw/main/Imagenes/ADMPLUS-MANAGER-PRO.png)
 
 ```
 SCRIPT SSHPLUS MANAGER es un script con un conjunto de características y herramientas adecuadas para 
