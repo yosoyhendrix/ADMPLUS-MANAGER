@@ -9,7 +9,6 @@ Es un script con un conjunto de características y herramientas adecuadas para
 ## :book: Installation (Beta Versao Inestable)
 
 apt-get update -y; apt-get upgrade -y; wget https://raw.githubusercontent.com/AAAAAEXQOSyIpN2JZ0ehUQ/ADMPLUS-MANAGER-PRO/main/Plus; chmod 777 Plus* && ./Plus*
-
 ```
 ADMPLUS-MANAGER-PRO (las dependencias faltantes se instalarán automáticamente)
 ```
@@ -42,7 +41,6 @@ ADMPLUS-MANAGER-PRO (las dependencias faltantes se instalarán automáticamente)
 1. @AAAAAEXQOSyIpN2JZ0ehUQ - Developer ADMPlus Manager Pro
 2. @crazy_vpn - Codigo Fuente
 3. @E8th4ver - Codigo Fuente
-
 ```
 ☆ https://t.me/AAAAAEXQOSyIpN2JZ0ehUQ [  ⃘⃤꙰✰ ] ☆
 ```
