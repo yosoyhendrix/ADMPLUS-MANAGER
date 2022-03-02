@@ -39,10 +39,9 @@ ADMPLUS-MANAGER-PRO (las dependencias faltantes se instalarán automáticamente)
 * Se recomienda usar una distro nueva o formatiada
 
 ## :octocat: Credits
-1. @AAAAAEXQOSyIpN2JZ0ehUQ - Update Contributor
-
-1. @crazy_vpn - Codigo Fuente
-2. @E8th4ver - Codigo Fuente
+1. @AAAAAEXQOSyIpN2JZ0ehUQ - Developer ADMPlus Manager Pro
+2. @crazy_vpn - Codigo Fuente
+3. @E8th4ver - Codigo Fuente
 
 ```
 ☆ https://t.me/AAAAAEXQOSyIpN2JZ0ehUQ [  ⃘⃤꙰✰ ] ☆
