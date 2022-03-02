@@ -14,12 +14,12 @@ ADMPLUS-MANAGER-PRO (las dependencias faltantes se instalarán automáticamente)
 ```
 
 ## :scroll: Changelog
-**VERSION: 1.1**
+**VERSION: 1.2**
 
-* WEBSOCKET ADICIONADO
-* V2RAY ADICIONADO
-* CHISEL ADICIONADO
-* DNS-SLOW ADICIONADO
+* Websocket adicionado
+* v2ray adicionado
+* Chisel adicionado
+* DNS-Slow adicionado
 
 ## :book: How it works
 * SSH coneccion.
