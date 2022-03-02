@@ -39,9 +39,10 @@ ADMPLUS-MANAGER-PRO (las dependencias faltantes se instalarán automáticamente)
 * Se recomienda usar una distro nueva o formatiada
 
 ## :octocat: Credits
-1. @crazy_vpn - Developer SSHPlus Manager
-1. @E8th4ver - Developer New-Ultimate
-3. @AAAAAEXQOSyIpN2JZ0ehUQ - Update Contributor
+1. @AAAAAEXQOSyIpN2JZ0ehUQ - Update Contributor
+
+1. @crazy_vpn - Codigo Fuente
+2. @E8th4ver - Codigo Fuente
 
 ```
 ☆ https://t.me/AAAAAEXQOSyIpN2JZ0ehUQ [  ⃘⃤꙰✰ ] ☆
