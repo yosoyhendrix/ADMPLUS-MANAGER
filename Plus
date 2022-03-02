@@ -72,7 +72,7 @@ fun_attlist () {
 }
 
 inst_pct () {
-_pacotes=("bc" "screen" "nano" "zip" "unzip" "lsof" "netstat" "net-tools" "dos2unix" "nload" "jq" "curl" "figlet" "ufw" "python" "python3" "python-pip")
+_pacotes=("gawk" "mlocate" "bc" "screen" "nano" "zip" "unzip" "lsof" "netstat" "net-tools" "dos2unix" "nload" "jq" "curl" "figlet" "ufw" "python" "python3" "python-pip")
 for _prog in ${_pacotes[@]}; do
     apt install $_prog -y
 done
