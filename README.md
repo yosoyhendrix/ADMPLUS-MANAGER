@@ -1,44 +1,47 @@
-﻿# ADMPLUS-MANAGER-PRO
-![logo](https://github.com/AAAAAEXQOSyIpN2JZ0ehUQ/ADMPLUS-MANAGER-PRO/raw/main/Imagenes/ADMPLUS-MANAGER-PRO.png)
+﻿![logo](https://github.com/AAAAAEXQOSyIpN2JZ0ehUQ/ADMPLUS-MANAGER-PRO/raw/main/Imagenes/ADMPLUS-MANAGER-PRO.png)
 
-```
-SCRIPT SSHPLUS MANAGER es un script con un conjunto de características y herramientas adecuadas para 
-                 ofrecer extrema facilidad de manejo en servidores Linux con un enfoque en el uso de 
-                 VPN, tiene una interfaz agradable aportando información detallada sobre la máquina
-                 y los usuarios ...
-```
+# ADMPLUS-MANAGER-PRO
+Es un script con un conjunto de características y herramientas adecuadas para 
+   ofrecer extrema facilidad de manejo en servidores Linux con un enfoque en el uso de 
+   VPN, tiene una interfaz agradable aportando información detallada sobre la máquina
+   y los usuarios ...
 
-**Manager Script**
-
-## :heavy_exclamation_mark: Requerimientos
-
-* Un sistema operativo basado en Linux (Ubuntu o Debian)
-* Ubuntu 18.04 Server x86_64 / Ubuntu 20.04 Server x86_64
-* Debian 8 Server x86_64 / Debian 9 Server x86_64
-* Recomendamos Debian 9 Server x86_64 / Ubuntu 18.04 Server x86_64
-* Se recomienda usar una distro nueva o formatiada
-
-## :book: Installation (Beta Versao)
+## :book: Installation (Beta Versao Inestable)
 
 apt-get update -y; apt-get upgrade -y; wget https://raw.githubusercontent.com/AAAAAEXQOSyIpN2JZ0ehUQ/ADMPLUS-MANAGER-PRO/main/Plus; chmod 777 Plus* && ./Plus*
 
 ```
 ADMPLUS-MANAGER-PRO (las dependencias faltantes se instalarán automáticamente)
 ```
--------------------------------------------------------------------------------
 
 ## :scroll: Changelog
+**VERSION: 1.1**
 
-**VERSION: 1.0**
+* WEBSOCKET ADICIONADO
+* V2RAY ADICIONADO
+* CHISEL ADICIONADO
+* DNS-SLOW ADICIONADO
 
-https://raw.githubusercontent.com/AAAAAEXQOSyIpN2JZ0ehUQ/ADMPLUS-MANAGER-PRO/master/Install/versao
+## :book: How it works
+* SSH coneccion.
+* Conecciones Dropbear, SSLTunnel4, OpenVPN, etc.
+* Elimina y crea usuarios.
+* Monitor de coneccion online.
+* Detalles de tu sistema y usuarios.
+* Herramientas de escaneo y busqueda.
+* Optimiza y limpia el sistema y mas.
+
+## :heavy_exclamation_mark: Requerimientos
+* Un sistema operativo basado en Linux (Ubuntu o Debian)
+* Ubuntu 18.04 Server x86_64 / Ubuntu 20.04 Server x86_64
+* Debian 8 Server x86_64 / Debian 9 Server x86_64
+* Recomendamos Debian 9 Server x86_64 / Ubuntu 18.04 Server x86_64
+* Se recomienda usar una distro nueva o formatiada
 
 ## :octocat: Credits
-
-1. @crazy_vpn - Developer of SSHPlus Manager
-1. @E8th4ver - Developer of New-Ultimate
-2. @OMentalista - Adicionando ferramentas 
-2. illuminati Dev Team - Update Contributor
+1. @crazy_vpn - Developer SSHPlus Manager
+1. @E8th4ver - Developer New-Ultimate
+3. @AAAAAEXQOSyIpN2JZ0ehUQ - Update Contributor
 
 ```
 ☆ https://t.me/AAAAAEXQOSyIpN2JZ0ehUQ [  ⃘⃤꙰✰ ] ☆
