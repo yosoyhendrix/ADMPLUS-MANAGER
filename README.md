@@ -31,7 +31,7 @@ ADMPLUS-MANAGER-PRO (las dependencias faltantes se instalarán automáticamente)
 
 **VERSION: 1.0**
 
-https://raw.githubusercontent.com/AAAAAEXQOSyIpN2JZ0ehUQ/ADMPLUS-MANAGER-PRO/master/versao
+https://raw.githubusercontent.com/AAAAAEXQOSyIpN2JZ0ehUQ/ADMPLUS-MANAGER-PRO/master/Install/versao
 
 ## :octocat: Credits
 
