@@ -50,11 +50,11 @@ chmod +x $_Ink/list > /dev/null 2>&1
 function verif_db () {
 [[ -f "$HOME/usuarios.db" ]] && {
     echo -e "\033[0;34m═════════════════════════════════════════════════\033[0m"
-	echo -e "\033[1;31mATENCAO! \033[0m"
-    echo -e "\033[1;33mUma base de Dados de Usuários \033[1;32m(usuarios.db) \033[1;33mFoi" 
-    echo -e "Encontrada! Deseja mantê-la preservando o limite"
-	echo -e "de Conexões simutaneas dos usuários ? Ou Deseja"
-    echo -e "criar uma nova base de dados ?\033[0m"
+	echo -e "\033[1;31m¡ATENCIÓN! \033[0m"
+    echo -e "\033[1;33mUna base de datos de usuarios \033[1;32m(usuarios.db) \033[1;33mFoi" 
+    echo -e "ENCONTRADA!, Deseas Mantenerla para conservar sus limites"
+	echo -e "de conexiones simultaneas de usuarios ? O quieres"
+    echo -e "crear una nueva Base de Datos ?\033[0m"
 	echo -e "\n\033[1;37m[\033[1;31m1\033[1;37m] \033[1;33mManter Base de Dados Atual\033[0m"
 	echo -e "\033[1;37m[\033[1;31m2\033[1;37m] \033[1;33mCriar uma Nova Base de Dados\033[0m"
 	echo -e "\033[0;34m═════════════════════════════════════════════════\033[0m"
