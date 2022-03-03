@@ -7,7 +7,7 @@ clear
 	echo -e "\033[1;31mEXECULTE COMO USUARIO ROOT, \033[1;32m(\033[1;33msudo -i\033[1;32m)\033[0m"
 	exit
 }
-echo -e "\033[1;32mPERMISSAO DE AUTENTICACAO ROOT \033[0m"
+echo -e "\n\033[1;32mPERMISSAO DE AUTENTICACAO ROOT... \033[0m"
 [[ $(grep -c "prohibit-password" /etc/ssh/sshd_config) != '0' ]] && {
 	sed -i "s/prohibit-password/yes/g" /etc/ssh/sshd_config
 } > /dev/null
