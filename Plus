@@ -51,7 +51,7 @@ function verif_db () {
 [[ -f "$HOME/usuarios.db" ]] && {
     echo -e "\033[0;34m═════════════════════════════════════════════════\033[0m"
 	echo -e "\033[1;31m¡ATENCIÓN! \033[0m"
-    echo -e "\033[1;33mUna base de datos de usuarios \033[1;32m(usuarios.db) \033[1;33mFui" 
+    echo -e "\033[1;33mUna base de datos de usuarios \033[1;32m(usuarios.db) \033[1;33mFue" 
     echo -e "ENCONTRADA!, Deseas Mantenerla para conservar sus limites"
 	echo -e "de conexiones simultaneas de usuarios ? O quieres"
     echo -e "crear una nueva Base de Datos ?\033[0m"
