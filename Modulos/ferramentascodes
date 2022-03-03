@@ -82,7 +82,7 @@ rm -rf $HOME/speed
 TCPspeed () {
 if [[ `grep -c "^#ADM" /etc/sysctl.conf` -eq 0 ]]; then
 #INSTALA
-echo -e "\033[1;32mTCP Speed Nao Ativado, Deseja Ativar Agora ? \033[0m"
+echo -e "\033[1;32mTCP SPEED NO HABILITADO, DESEA HABILITAR AHORA ? \033[0m"
 echo ""
 while [[ ${resposta} != @(s|S|n|N|y|Y) ]]; do
 read -p " [S/N]: " -e -i s resposta
@@ -98,11 +98,13 @@ net.ipv4.tcp_wmem = 4096 16384 16777216
 net.ipv4.tcp_low_latency = 1
 net.ipv4.tcp_slow_start_after_idle = 0" >> /etc/sysctl.conf
 sysctl -p /etc/sysctl.conf > /dev/null 2>&1
-echo -e "\033[1;32mTCP Ativo Com Sucesso ! \033[0m"
-} || echo -e "\033[1;32mCancelado ! \033[0m"
+echo -e "\033[1;32mTCP ACTIVADO CON ÉXITO ! \033[0m"
+return
+} || echo -e "\033[1;31mCANCELADO ! \033[0m"
+ return
  else
 #REMOVE
-echo -e "\033[1;32mTCP Speed ja Ativado, Deseja Parar Agora ? \033[0m"
+echo -e "\033[1;32mTCP SPEED YA EST� HABILITADO, DESEA DESAHABILITAR AHORA ? \033[0m"
 echo ""
 while [[ ${resposta} != @(s|S|n|N|y|Y) ]]; do
 read -p " [S/N]: " -e -i s resposta
@@ -118,9 +120,11 @@ net.ipv4.tcp_wmem = 4096 16384 16777216
 net.ipv4.tcp_low_latency = 1
 net.ipv4.tcp_slow_start_after_idle = 0" /etc/sysctl.conf > /tmp/syscl && mv -f /tmp/syscl /etc/sysctl.conf
 sysctl -p /etc/sysctl.conf > /dev/null 2>&1
-echo -e "\033[1;32mTCP Parado Com Sucesso ! \033[0m"
-} || echo -e "\033[1;32mCancelado ! \033[0m"
+echo -e "\033[1;31mTCP DETENIDO CON ÉXITO  ! \033[0m"
+return
+} || echo -e "\033[1;31mCANCELADO ! \033[0m"
 fi
+return
 }
 
 while true $x != "ok"
