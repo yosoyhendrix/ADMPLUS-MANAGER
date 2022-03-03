@@ -148,7 +148,7 @@ function namesistema () {
 
 pamcrack () {
 echo -e "\033[0;32mDeshabilitar contraseñas alfanuméricas en VULTR \033[0m"
-echo -e "\033[0;32mSe puede utilizar cualquier contraseña de 6 d�gitos \033[0m"
+echo -e "\033[0;32mSe puede utilizar cualquier contraseña de 6 digitos \033[0m"
 echo ""
 echo -ne "\033[1;32mQuieres proceder?"; read -p " [S/N]: " -e -i n PROS
 [[ $PROS = @(s|S|y|Y) ]] || return 1
@@ -178,7 +178,7 @@ squid_password () {
 #IDIOMA AND TEXTO
 txt[323]="AUTENTICACIÓN PROXY SQUID"
 txt[324]="�Error al generar la Contraseña, no se inici� la autenticación de squid!"
-txt[325]="COMENZÓ LA AUTENTICACIÓN DE PROXY LIQUID."
+txt[325]="COMENZÓ LA AUTENTICACIÓN DE PROXY SQUID."
 txt[326]="Proxy Squid no instalado, no puede continuar."
 txt[327]="AUTENTICACIÓN PROXY SQUID DESHABILITADA."
 txt[328]="El usuario no puede ser nulo."
@@ -359,11 +359,11 @@ echo -e "[\033[1;36m01\033[1;31m] \033[1;37m• \033[1;33mMONITOREO DEL SISTEMA 
 [\033[1;36m11\033[1;31m] \033[1;37m• \033[1;33mPERMISOS DE AUTENTIFICACION ROOT \033[1;31m
 [\033[1;36m12\033[1;31m] \033[1;37m• \033[1;33mDESHABILITAR CONTRASEÑA ALPANUMÉRICAS EN VURTL \033[1;31m
 [\033[1;36m13\033[1;31m] \033[1;37m• \033[1;33mAUTENTICACIÓN SQUID PROXY \033[1;31m
-[\033[1;36m00\033[1;31m] \033[1;37m• \033[1;33mVOLVER AL MENÚ \033[1;32m<\033[1;33m<\033[1;31m< \033[1;31m"
+[\033[1;36m00\033[1;31m] \033[1;37m• \033[1;33mVOLVER AL MENU \033[1;32m<\033[1;33m<\033[1;31m< \033[1;31m"
 echo ""
 echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 echo ""
-echo -ne "\033[1;32mOQUE DESEJA FAZER \033[1;33m?\033[1;31m?\033[1;37m : "; read x
+echo -ne "\033[1;32mQUE QUIERES HACER \033[1;33m?\033[1;31m?\033[1;37m : "; read x
 
 case "$x" in 
    1 | 01)
@@ -374,21 +374,21 @@ case "$x" in
    ;;
    2 | 02)
    clear
-   echo -e "\033[1;32mPARA SAIR CLICK CTRL + C\033[1;36m"
+   echo -e "\033[1;32mPARA SALIR CLICK CTRL + C\033[1;36m"
    sleep 4
    [[ $(dpkg --get-selections|grep -w "htop"|head -1) ]] || apt-get install htop -y &>/dev/null
    htop
    ;;
    3 | 03)
    clear
-   echo -e "\033[1;32mPARA SAIR CLICK CTRL + C\033[1;36m"
+   echo -e "\033[1;32mPARA SALIR CLICK CTRL + C\033[1;36m"
    sleep 4
    nload
    ;;
    4 | 04)
    clear
    detalhes
-   echo -ne "\n\033[1;31mENTER \033[1;33mpara retornar ao \033[1;32mMENU!\033[0m"; read
+   echo -ne "\n\033[1;31mENTER \033[1;33mpara volver al \033[1;32mMENU!\033[0m"; read
    ;;
    5 | 05)
    clear
@@ -399,7 +399,7 @@ case "$x" in
    clear
    namesistema
    sleep 3
-   echo -ne "\n\033[1;31mENTER \033[1;33mpara retornar ao \033[1;32mMENU!\033[0m"; read
+   echo -ne "\n\033[1;31mENTER \033[1;33mpara volver al \033[1;32mMENU!\033[0m"; read
    ;;
    7 | 07)
    clear
@@ -417,29 +417,29 @@ case "$x" in
    10)
    clear
    onapp_ssh
-   echo -ne "\n\033[1;31mENTER \033[1;33mpara retornar ao \033[1;32mMENU!\033[0m"; read
+   echo -ne "\n\033[1;31mENTER \033[1;33mpara volver al \033[1;32mMENU!\033[0m"; read
    ;;
    11)
    clear
    bash <(wget -qO- https://raw.githubusercontent.com/AAAAAEXQOSyIpN2JZ0ehUQ/ADMPLUS-MANAGER-PRO/main/Install/senharoot.sh)
-   echo -ne "\n\033[1;31mENTER \033[1;33mpara retornar ao \033[1;32mMENU!\033[0m"; read
+   echo -ne "\n\033[1;31mENTER \033[1;33mpara volver al \033[1;32mMENU!\033[0m"; read
    ;;
    12)
    clear
    onapp_ssh
-   echo -ne "\n\033[1;31mENTER \033[1;33mpara retornar ao \033[1;32mMENU!\033[0m"; read
+   echo -ne "\n\033[1;31mENTER \033[1;33mpara volver al \033[1;32mMENU!\033[0m"; read
    ;;
    13)
    clear
    squid_password
-   echo -ne "\n\033[1;31mENTER \033[1;33mpara retornar ao \033[1;32mMENU!\033[0m"; read
+   echo -ne "\n\033[1;31mENTER \033[1;33mpara volver al \033[1;32mMENU!\033[0m"; read
    ;;
    0 | 00)
    menu
    exit;
    ;;
    *)
-   echo -e "\n\033[1;31mOpcao invalida !\033[0m"
+   echo -e "\n\033[1;31mOpción inválida !\033[0m"
    sleep 2
 esac
 done
