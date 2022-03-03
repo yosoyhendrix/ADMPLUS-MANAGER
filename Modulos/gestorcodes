@@ -62,7 +62,7 @@ fun_tst () {
 speedtest --share > speed
 }
 echo ""
-echo -e "   \033[1;32mTESTANDO A VELOCIDADE DO SERVIDOR !\033[0m"
+echo -e "   \033[1;32mPRUEBA DE LA VELOCIDAD DEL SERVIDOR !\033[0m"
 echo ""
 aguarde 'fun_tst'
 echo ""
@@ -82,7 +82,7 @@ rm -rf $HOME/speed
 #onlineapp
 function onapp1 () {
    clear
-   echo -e "\n\033[1;32mINICIANDO O ONLINE APP... \033[0m"
+   echo -e "\n\033[1;32mINICIANDO ONLINE APP... \033[0m"
    echo ""
    apt install apache2 -y > /dev/null 2>&1
    sed -i "s/Listen 80/Listen 81/g" /etc/apache2/ports.conf >/dev/null 2>&1
@@ -97,15 +97,15 @@ function onapp1 () {
 	   echo -e "ps x | grep 'onlineapp' | grep -v 'grep' && echo 'ON' || screen -dmS onlineapp onlineapp" >> /etc/autostart
    }
    IP=$(wget -qO- ipv4.icanhazip.com) >/dev/null 2>&1
-   echo -e "\n\033[1;32m  ONLINE APP ATIVO !\033[0m"
+   echo -e "\n\033[1;32m  ONLINE APP ACTIVO !\033[0m"
    echo ""
-   echo -e "\033[1;31m \033[1;33mURL de Usu√°rios Online para usar no App\033[0m"
+   echo -e "\033[1;31m \033[1;33mURL de Usu√°rios Online para usar en App\033[0m"
    echo ""
    echo -e " \033[1;32mhttp://$IP:81/server/online"
 }
 function onapp2 () {
    clear
-   echo -e "\033[1;32mPARANDO O ONLINE APP... \033[0m"
+   echo -e "\033[1;32mPARANDO ONLINE APP... \033[0m"
    echo ""
    fun_stponlineapp () {
       sleep 1
@@ -127,12 +127,12 @@ function onapp_ssh () {
 #namesistema
 function namesistema () {
    clear
-   echo -e "\033[1;33mO NOME SERA ALTERADO INTERNAMENTE DO SISTEMA \033[0m"
+   echo -e "\033[1;33mEL NOMBRE SE CAMBIAR√ INTERNAMENTE EN EL SISTEMA  \033[0m"
    unset name
    while [[ ${name} = "" ]]; do
-   echo -ne "\n\033[1;32mDIGITE NOVO NOME\033[1;37m: "; read name
+   echo -ne "\n\033[1;32mINGRESE NUEVO NOMBRE \033[1;37m: "; read name
    [[ -z "$name" ]] && {
-   echo -e "\n\033[1;31mNOME INVALIDO !\033[0m"
+   echo -e "\n\033[1;31mNOMBRE INV√LIDO !\033[0m"
    return
    }
    done
@@ -140,20 +140,20 @@ function namesistema () {
    if [ $(hostnamectl status | head -1  | awk '{print $3}') = "${name}" ]; then 
    service ssh restart > /dev/null 2>&1
    service sshd restart > /dev/null 2>&1
-   echo -e "\n\033[1;31m[ \033[1;33mOK ! \033[1;31m]\033[1;37m - \033[1;32mNOME ALTERAR0 ! \033[0m" 
+   echo -e "\n\033[1;31m[ \033[1;33mOK ! \033[1;31m]\033[1;37m - \033[1;32mNOMBRE ALTERADO ! \033[0m" 
    else
-   echo -e "\n\033[1;31mNOME INVALIDO !\033[0m"
+   echo -e "\n\033[1;31mNOMBRE INV√LIDO !\033[0m"
    fi
 }
 
 pamcrack () {
-echo -e "\033[0;32mDesativar senhas alfanumericas em VULTR"
-echo -e "\033[0;32mQualquer senha de 6 digitos pode ser usada"
+echo -e "\033[0;32mDeshabilitar contrase√±as alfanum√©ricas en VULTR \033[0m"
+echo -e "\033[0;32mSe puede utilizar cualquier contrase√±a de 6 d√gitos \033[0m"
 echo ""
-echo -ne "\033[1;32mDeseja Prosseguir?"; read -p " [S/N]: " -e -i n PROS
+echo -ne "\033[1;32mQuieres proceder?"; read -p " [S/N]: " -e -i n PROS
 [[ $PROS = @(s|S|y|Y) ]] || return 1
 echo ""
-echo -e "\033[0;32mAplicando o Configuracoes VURLT "
+echo -e "\033[0;32mAplicando Configuraci√≥n VURLT "
 echo ""
 fun_cracklib () {
 # apt-get install libpam-cracklib -y
@@ -165,7 +165,7 @@ service sshd restart
 }
 fun_bar "fun_cracklib"
 echo ""
-echo -e "\033[0;32mPasswd Alphanumeric Disabled Com Sucesso"
+echo -e "\033[0;32mContrase√±a alfanum√©rica deshabilitada con √©xito"
 return
 }
 
@@ -176,14 +176,14 @@ squid_password () {
 [[ -e $_tmp3 ]] && rm $_tmp3
 [[ -e $_tmp4 ]] && rm $_tmp4
 #IDIOMA AND TEXTO
-txt[323]="AUTENTICACI√ìN DE PROXY SQUID"
-txt[324]="Erro ao gerar senha, a autenticacao do squid nao foi iniciada!"
-txt[325]="AUTENTICACAO DO LIQUIDO DE PROXY INICIADO."
-txt[326]="Proxy squid nao instalado, nao pode continuar."
-txt[327]="AUTENTICACAO DO LÕQUIDO DE PROXY DESACTIVADO."
-txt[328]="O usu·rio nao pode ser nulo."
-txt[329]="Voco quer habilitar a autenticacao de proxy do squid?"
-txt[330]="Deseja desativar a autenticacao do proxy do squid?"
+txt[323]="AUTENTICACI√ìN PROXY SQUID"
+txt[324]="°Error al generar la Contrase√±a, no se iniciÛ la autenticaci√≥n de squid!"
+txt[325]="COMENZ√ì LA AUTENTICACI√ìN DE PROXY LIQUID."
+txt[326]="Proxy Squid no instalado, no puede continuar."
+txt[327]="AUTENTICACI√ìN PROXY SQUID DESHABILITADA."
+txt[328]="El usuario no puede ser nulo."
+txt[329]="øDesea habilitar la autenticaci√≥n de proxy squid?"
+txt[330]="øDesea deshabilitar la autenticaci√≥n de proxy de squid?" 
 txt[331]="SU IP:"
 #FUNCAO AGUARDE
 fun_bar () {
