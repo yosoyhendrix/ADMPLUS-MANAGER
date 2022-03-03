@@ -84,9 +84,7 @@ if [[ `grep -c "^#ADM" /etc/sysctl.conf` -eq 0 ]]; then
 #INSTALA
 echo -e "\033[1;32mTCP SPEED NO HABILITADO, DESEA HABILITAR AHORA ? \033[0m"
 echo ""
-while [[ ${resposta} != @(s|S|n|N|y|Y) ]]; do
-echo -ne "\033[1;32mQuieres proceder?"; read -p " [S/N]: " -e -i s resposta
-done
+read -p "$(echo -ne "\033[1;32mDESEA APLICAR ? \033[1;33m[s/n]:\033[1;37m") " -e -i s resposta
 [[ "$resposta" = @(s|S|y|Y) ]] && {
 echo "#ADM" >> /etc/sysctl.conf
 echo "net.ipv4.tcp_window_scaling = 1
@@ -98,16 +96,12 @@ net.ipv4.tcp_low_latency = 1
 net.ipv4.tcp_slow_start_after_idle = 0" >> /etc/sysctl.conf
 sysctl -p /etc/sysctl.conf > /dev/null 2>&1
 echo -e "\n\033[1;32mTCP ACTIVADO CON ÉXITO ! \033[0m"
-return
 } || echo -e "\n\033[1;31mCANCELADO ! \033[0m"
- return
  else
 #REMOVE
-echo -e "\033[1;32mTCP SPEED YA EST� HABILITADO, DESEA DESAHABILITAR AHORA ? \033[0m"
+echo -e "\033[1;32mTCP SPEED YA ESTA HABILITADO, DESEA DESAHABILITAR AHORA ? \033[0m"
 echo ""
-while [[ ${resposta} != @(s|S|n|N|y|Y) ]]; do
-echo -ne "\033[1;32mQuieres proceder?"; read -p " [S/N]: " -e -i s resposta
-done
+read -p "$(echo -ne "\033[1;32mDESEA APLICAR ? \033[1;33m[s/n]:\033[1;37m") " -e -i s resposta
 [[ "$resposta" = @(s|S|y|Y) ]] && {
 grep -v "^#ADM
 net.ipv4.tcp_window_scaling = 1
@@ -119,10 +113,8 @@ net.ipv4.tcp_low_latency = 1
 net.ipv4.tcp_slow_start_after_idle = 0" /etc/sysctl.conf > /tmp/syscl && mv -f /tmp/syscl /etc/sysctl.conf
 sysctl -p /etc/sysctl.conf > /dev/null 2>&1
 echo -e "\n\033[1;31mTCP DETENIDO CON ÉXITO  ! \033[0m"
-return
 } || echo -e "\n\033[1;31mCANCELADO ! \033[0m"
 fi
-return
 }
 
 while true $x != "ok"
