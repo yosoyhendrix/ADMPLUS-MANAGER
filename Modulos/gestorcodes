@@ -428,10 +428,12 @@ case "$x" in
    clear
    onapp_ssh
    echo -ne "\n\033[1;31mENTER \033[1;33mpara retornar ao \033[1;32mMENU!\033[0m"; read
+   ;;
    13)
    clear
    squid_password
    echo -ne "\n\033[1;31mENTER \033[1;33mpara retornar ao \033[1;32mMENU!\033[0m"; read
+   ;;
    0 | 00)
    menu
    exit;
