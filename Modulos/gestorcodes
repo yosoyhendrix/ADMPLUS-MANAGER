@@ -127,7 +127,7 @@ function onapp_ssh () {
 #namesistema
 function namesistema () {
    clear
-   echo -e "\033[1;33mEL NOMBRE SE CAMBIARÃ INTERNAMENTE EN EL SISTEMA  \033[0m"
+   echo -e "\033[1;33mEL NOMBRE SE CAMBIARA INTERNAMENTE EN EL SISTEMA  \033[0m"
    unset name
    while [[ ${name} = "" ]]; do
    echo -ne "\n\033[1;32mINGRESE NUEVO NOMBRE \033[1;37m: "; read name
@@ -426,7 +426,7 @@ case "$x" in
    ;;
    12)
    clear
-   onapp_ssh
+   pamcrack
    echo -ne "\n\033[1;31mENTER \033[1;33mpara volver al \033[1;32mMENU!\033[0m"; read
    ;;
    13)

@@ -1,6 +1,8 @@
 #!/bin/bash
 # By crazy_vpn
 # Pequeno script para permissao de autenticacao root
+# Aplicar permissoes de usuario root aos sistemas
+# Oracle, Aws, Azure, Google, Amazon e etc
 clear
 [[ "$(whoami)" != "root" ]] && {
 	clear
