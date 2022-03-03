@@ -34,9 +34,10 @@ iptables -A INPUT -p tcp --dport 443 -j ACCEPT
 iptables -A INPUT -p tcp --dport 8799 -j ACCEPT
 iptables -A INPUT -p tcp --dport 8080 -j ACCEPT
 iptables -A INPUT -p tcp --dport 1194 -j ACCEPT
+sleep 3
 echo -e "\n\033[1;31m[ \033[1;33mOK ! \033[1;31m]\033[1;37m - \033[1;32mPERMISSAO APLICADO ! \033[0m"
 echo ""
-clear && echo -ne "\033[1;32mDEFINA A SENHA ROOT\033[1;37m: "; read senha
+echo -ne "\033[1;32mDEFINA A SENHA ROOT\033[1;37m: "; read senha
 [[ -z "$senha" ]] && {
 echo -e "\n\033[1;31mSENHA INVALIDA !\033[0m"
 exit 0
