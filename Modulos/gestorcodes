@@ -130,7 +130,7 @@ function namesistema () {
    echo -e "\033[1;33mEL NOMBRE SE CAMBIARA INTERNAMENTE EN EL SISTEMA  \033[0m"
    unset name
    while [[ ${name} = "" ]]; do
-   echo -ne "\n\033[1;32mINGRESE NUEVO NOMBRE \033[1;37m: "; read name
+   echo -ne "\n\033[1;32mINGRESE NUEVO NOMBRE\033[1;37m: "; read name
    [[ -z "$name" ]] && {
    echo -e "\n\033[1;31mNOMBRE INV�LIDO !\033[0m"
    return
@@ -140,15 +140,15 @@ function namesistema () {
    if [ $(hostnamectl status | head -1  | awk '{print $3}') = "${name}" ]; then 
    service ssh restart > /dev/null 2>&1
    service sshd restart > /dev/null 2>&1
-   echo -e "\n\033[1;31m[ \033[1;33mOK ! \033[1;31m]\033[1;37m - \033[1;32mNOMBRE ALTERADO ! \033[0m" 
+   echo -e "\n\033[1;31m[ \033[1;33mOK ! \033[1;31m]\033[1;37m - \033[1;32mNOMBRE CAMBIADO ! \033[0m" 
    else
    echo -e "\n\033[1;31mNOMBRE INV�LIDO !\033[0m"
    fi
 }
 
 pamcrack () {
-echo -e "\033[0;32mDESHABILITAR CONTRASEÑA ALFANUMÉRICAS EN VULTR  \033[0m"
-echo -e "\033[0;32mSE PUEDE UTILIZAR CUALQUIER CONTRASEÑA DE 6 DIGITOS \033[0m"
+echo -e "\033[1;32mDESHABILITAR CONTRASEÑA ALFANUMÉRICAS EN VULTR  \033[0m"
+echo -e "\033[1;32mSE PUEDE UTILIZAR CUALQUIER CONTRASEÑA DE 6 DIGITOS \033[0m"
 echo ""
 read -p "$(echo -ne "\033[1;32mQUÉ QUIERES HACER ? \033[1;33m[s/n]:\033[1;37m") " -e -i s PROS
 [[ $PROS = @(s|S|y|Y) ]] || return 1
