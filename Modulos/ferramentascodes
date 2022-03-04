@@ -215,8 +215,8 @@ echo -e "[\033[1;36m01\033[1;31m] \033[1;37m• \033[1;33mSPEEDTEST \033[1;31m
 [\033[1;36m06\033[1;31m] \033[1;37m• \033[1;33mBOT TELEGRAM $stsbot\033[1;31m
 [\033[1;36m07\033[1;31m] \033[1;37m• \033[1;33mBAD VPN $stsu\033[1;31m
 [\033[1;36m08\033[1;31m] \033[1;37m• \033[1;33mTCPSPEED $tcp\033[1;31m
-[\033[1;36m09\033[1;31m] \033[1;37m• \033[1;33mMEMORIA VIRTUAL \033[1;31m 
-[\033[1;36m10\033[1;31m] \033[1;37m• \033[1;33mONLINE APP $stson \033[1;31m
+[\033[1;36m09\033[1;31m] \033[1;37m• \033[1;33mONLINE APP $stson \033[1;31m
+[\033[1;36m10\033[1;31m] \033[1;37m• \033[1;33mMEMORIA VIRTUAL \033[1;31m 
 [\033[1;36m00\033[1;31m] \033[1;37m• \033[1;33mVOLVER AL MENU \033[1;32m<\033[1;33m<\033[1;31m< \033[1;31m"
 echo ""
 echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
@@ -264,12 +264,12 @@ case "$x" in
    ;;
    9 | 09)
    clear
-   swapmemory
+   onapp_ssh
+   echo -ne "\n\033[1;31mENTER \033[1;33mpara volver al \033[1;32mMENU!\033[0m"; read
    ;;
    10)
    clear
-   onapp_ssh
-   echo -ne "\n\033[1;31mENTER \033[1;33mpara volver al \033[1;32mMENU!\033[0m"; read
+   swapmemory
    ;;
    0 | 00)
    menu
