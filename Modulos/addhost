@@ -7,7 +7,7 @@ fi
 tput setaf 7 ; tput setab 4 ; tput bold ; printf '%35s%s%-10s\n' "Agregar host a Squid Proxy" ; tput sgr0
 if [ ! -f "$payload" ]
 then
-	tput setaf 7 ; tput setab 4 ; tput bold ; echo "" ; echo "Archivo $payload no encontrado" ; tput sgr0
+	tput setaf 7 ; tput setab 4 ; tput bold ; echo "" ; echo "Archivo $payload no fue encontrado" ; tput sgr0
 	exit 1
 else
 	tput setaf 2 ; tput bold ; echo ""; echo "Dominios actuales en el archivo $payload:" ; tput sgr0
