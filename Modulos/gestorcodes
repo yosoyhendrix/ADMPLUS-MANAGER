@@ -433,6 +433,11 @@ case "$x" in
    squid_password
    echo -ne "\n\033[1;31mENTER \033[1;33mpara volver al \033[1;32mMENU!\033[0m"; read
    ;;
+   12)
+   clear
+   systen_info
+   echo -ne "\n\033[1;31mENTER \033[1;33mpara volver al \033[1;32mMENU!\033[0m"; read
+   ;;
    0 | 00)
    menu
    exit;
