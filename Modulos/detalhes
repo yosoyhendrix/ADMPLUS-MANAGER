@@ -61,7 +61,7 @@ echo -e "\033[1;31mTotal: \033[1;37m$ram1"
 echo -e "\033[1;31mEn Uso: \033[1;37m$ram3"
 echo -e "\033[1;31mLibre: \033[1;37m$ram2"
 echo -e "\033[1;31mUtilizado: \033[37m$usoram"
-echo -e "\033[1;31mSwap: \033[37m$swapramMB"
+echo -e "\033[1;31mSwap: \033[37m$(($swapram / 1024))MB"
 echo ""
 else
 echo -e "\033[1;32mMEMORIA RAM\033[0m"
