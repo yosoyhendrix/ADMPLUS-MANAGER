@@ -182,29 +182,29 @@ cpus=$(cat /proc/cpuinfo | grep processor | wc -l)
 # NUEVO MENU DE SISTEMA DE INFORMACION
 # SISTEMA OPERACIONAL
 echo -e "\033[1;32mSISTEMA OPERACIONAL \033[0m"
-echo -e "\033[1;31mNombre de la máquina: ${null}$(hostname)"
-[[ "$system" ]] && echo -e "\033[1;31mSistema: ${null}$system" || echo -e "\033[1;33mSistema: ${null}???"
-echo -e "\033[1;31mDirección IP: ${null}$(ip addr | grep inet | grep -v inet6 | grep -v "host lo" | awk '{print $2}' | awk -F "/" '{print $1}')"
-echo -e "\033[1;31mKernel Release: ${null}$(uname -r)"
-[[ "$based" ]] && echo -e "\033[1;31mBasado en: ${null}$based" || echo -e "\033[1;33mBasado en: ${null}???"
+echo -e "\033[1;31mNombre de la máquina: \033[1;37m$(hostname)"
+[[ "$system" ]] && echo -e "\033[1;31mSistema: \033[1;37m$system" || echo -e "\033[1;33mSistema: \033[1;37m???"
+echo -e "\033[1;31mDirección IP: \033[1;37m$(ip addr | grep inet | grep -v inet6 | grep -v "host lo" | awk '{print $2}' | awk -F "/" '{print $1}')"
+echo -e "\033[1;31mKernel Release: \033[1;37m$(uname -r)"
+[[ "$based" ]] && echo -e "\033[1;31mBasado en: \033[1;37m$based" || echo -e "\033[1;33mBasado en: \033[1;37m???"
 # PROCESSADOR
 echo ""
 echo -e "\033[1;32mPROCESADOR \033[0m"
-[[ "$processor" ]] && echo -e "\033[1;31mProcesador: ${null}$processor x$cpus" || echo -e "\033[1;33mProcesador: ${null}???"
-[[ "$clock" ]] && echo -e "\033[1;31mFrequecia de Operación: ${null}$clock MHz" || echo -e "\033[1;33mFrequecia de Operación: ${null}???"
-echo -e "\033[1;31mArquitetura: ${null}$(uname -m)"
-echo -e "\033[1;31mUtilizado:: ${null}$(ps aux  | awk 'BEGIN { sum = 0 }  { sum += sprintf("%f",$3) }; END { printf " " "%.2f" "%%", sum}')"
+[[ "$processor" ]] && echo -e "\033[1;31mProcesador: \033[1;37m$processor x$cpus" || echo -e "\033[1;33mProcesador: \033[1;37m???"
+[[ "$clock" ]] && echo -e "\033[1;31mFrequecia de Operación: \033[1;37m$clock MHz" || echo -e "\033[1;33mFrequecia de Operación: v???"
+echo -e "\033[1;31mArquitetura: \033[1;37m$(uname -m)"
+echo -e "\033[1;31mUtilizado:: \033[1;37m$(ps aux  | awk 'BEGIN { sum = 0 }  { sum += sprintf("%f",$3) }; END { printf " " "%.2f" "%%", sum}')"
 # MEMORIA RAM
 echo ""
 echo -e "\033[1;32mMEMORIA RAM \033[0m"
-echo -e "\033[1;31mTotal: ${null}$(($totalram / 1024))"
-echo -e "\033[1;31mEn Uso: ${null}$(($usedram / 1024))"
-echo -e "\033[1;31mLibre: ${null}$(($freeram / 1024))"
-echo -e "\033[1;31mSwap: ${null}$(($swapram / 1024))MB"
+echo -e "\033[1;31mTotal: \033[1;37m$(($totalram / 1024))"
+echo -e "\033[1;31mEn Uso: \033[1;37m$(($usedram / 1024))"
+echo -e "\033[1;31mLibre: \033[1;37m$(($freeram / 1024))"
+echo -e "\033[1;31mSwap: \033[1;37m$(($swapram / 1024))MB"
 # TEMPO ONLINE
 echo ""
 echo -e "\033[1;32mTIEMPO ONLINE \033[0m"
-echo -e "\033[1;31mTiempo Online: ${null}$(uptime)"
+echo -e "\033[1;31mTiempo Online: \033[1;37m$(uptime)"
 }
 
 limpar_caches () {
