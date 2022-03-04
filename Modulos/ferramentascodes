@@ -184,7 +184,7 @@ cpus=$(cat /proc/cpuinfo | grep processor | wc -l)
 echo -e "\033[1;32mSISTEMA OPERACIONAL \033[0m"
 echo -e "\033[1;33mNombre de la máquina: ${null}$(hostname)"
 [[ "$system" ]] && echo -e "\033[1;33mSistema: ${null}$system" || echo -e "\033[1;33mSistema: ${null}???"
-echo -e "\033[1;33mDirecci�n de la máquina: ${null}$(ip addr | grep inet | grep -v inet6 | grep -v "host lo" | awk '{print $2}' | awk -F "/" '{print $1}')"
+echo -e "\033[1;33mDirección de la máquina: ${null}$(ip addr | grep inet | grep -v inet6 | grep -v "host lo" | awk '{print $2}' | awk -F "/" '{print $1}')"
 echo -e "\033[1;33mVersion del Kernel: ${null}$(uname -r)"
 [[ "$based" ]] && echo -e "\033[1;33mBasado en: ${null}$based" || echo -e "\033[1;33mBasado en: ${null}???"
 # PROCESSADOR
