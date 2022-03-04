@@ -79,6 +79,52 @@ echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━�
 rm -rf $HOME/speed
 }
 
+systen_info () {
+clear
+echo -e "\E[44;1;37m               INFORMACIÓN DE VPS                 \E[0m"
+echo ""
+null="\033[1;31m"
+if [ ! /proc/cpuinfo ]; then echo -e "\033[1;31mSistema No Soportado" && echo ""; return 1; fi
+if [ ! /etc/issue.net ]; then echo -e "\033[1;31mSistema No Soportado" && echo ""; return 1; fi
+if [ ! /proc/meminfo ]; then echo -e "\033[1;31mSistema No Soportado" && echo ""; return 1; fi
+totalram=$(free | grep Mem | awk '{print $2}')
+usedram=$(free | grep Mem | awk '{print $3}')
+freeram=$(free | grep Mem | awk '{print $4}')
+swapram=$(cat /proc/meminfo | grep SwapTotal | awk '{print $2}')
+system=$(cat /etc/issue.net)
+clock=$(lscpu | grep "CPU MHz" | awk '{print $3}')
+based=$(cat /etc/*release | grep ID_LIKE | awk -F "=" '{print $2}')
+processor=$(cat /proc/cpuinfo | grep "model name" | uniq | awk -F ":" '{print $2}')
+cpus=$(cat /proc/cpuinfo | grep processor | wc -l)
+# SISTEMA OPERACIONAL
+echo -e "\033[1;32mSISTEMA OPERACIONAL \033[0m"
+echo -e "\033[1;33mNome Da Maquina: ${null}$(hostname)"
+[[ "$system" ]] && echo -e "\033[1;33mSistema: ${null}$system" || echo -e "\033[1;33mSistema: ${null}???"
+echo -e "\033[1;33mEndereco Da Maquina: ${null}$(ip addr | grep inet | grep -v inet6 | grep -v "host lo" | awk '{print $2}' | awk -F "/" '{print $1}')"
+echo -e "\033[1;33mVersao do Kernel: ${null}$(uname -r)"
+[[ "$based" ]] && echo -e "\033[1;33mBaseado: ${null}$based" || echo -e "\033[1;33mBaseado: ${null}???"
+# PROCESSADOR
+echo ""
+echo -e "\033[1;32mPROCESSADOR \033[0m"
+[[ "$processor" ]] && echo -e "\033[1;33mProcessador: ${null}$processor x$cpus" || echo -e "\033[1;33mProcessador: ${null}???"
+[[ "$clock" ]] && echo -e "\033[1;33mFrequecia de Operacao: ${null}$clock MHz" || echo -e "\033[1;33mFrequecia de Operacao: ${null}???"
+echo -e "\033[1;33mArquitetura: ${null}$(uname -m)"
+# MEMORIA RAM
+echo ""
+echo -e "\033[1;32mMEMORIA RAM \033[0m"
+echo -e "\033[1;33mUso do Processador: ${null}$(ps aux  | awk 'BEGIN { sum = 0 }  { sum += sprintf("%f",$3) }; END { printf " " "%.2f" "%%", sum}')"
+echo -e "\033[1;33mMemoria Virtual Total: ${null}$(($totalram / 1024))"
+echo -e "\033[1;33mMemoria Virtual Em Uso: ${null}$(($usedram / 1024))"
+echo -e "\033[1;33mMemoria Virtual Livre: ${null}$(($freeram / 1024))"
+echo -e "\033[1;33mMemoria Virtual Swap: ${null}$(($swapram / 1024))MB"
+# TEMPO ONLINE
+echo ""
+echo -e "\033[1;32mTEMPO ONLINE \033[0m"
+echo -e "\033[1;33mTempo Online: ${null}$(uptime)"
+echo ""
+return 0
+}
+
 #namesistema
 function namesistema () {
    clear
