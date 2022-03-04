@@ -220,7 +220,7 @@ case "$x" in
    ;;
    *)
    echo -e "\n\033[1;31mOpción inválida !\033[0m"
-   sleep 2
+   sleep 1
 esac
 done
 }
