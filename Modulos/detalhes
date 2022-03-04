@@ -2,20 +2,21 @@
 clear
 echo -e "\E[44;1;37m               INFORMACIÓN DE VPS                 \E[0m"
 echo ""
+null="\033[1;37m"
 if [ -f /etc/lsb-release ]
 then
 echo -e "\033[1;31m• \033[1;32mSISTEMA OPERACIONAL\033[1;31m •\033[0m"
 echo ""
-name=$(cat /etc/lsb-release |grep DESCRIPTION |awk -F = {'print $2'})
+sistemaname=$(cat /etc/lsb-release |grep DESCRIPTION |awk -F = {'print $2'})
 codename=$(cat /etc/lsb-release |grep CODENAME |awk -F = {'print $2'})
-echo -e "\033[1;31mNombre: \033[1;37m$name"
+echo -e "\033[1;31mSistema: \033[1;37m$sistemaname"
 echo -e "\033[1;31mCodeName: \033[1;37m$codename"
 echo -e "\033[1;31mKernel: \033[1;37m$(uname -s)"
 echo -e "\033[1;31mKernel Release: \033[1;37m$(uname -r)"
 if [ -f /etc/os-release ]
 then
 devlike=$(cat /etc/os-release |grep LIKE |awk -F = {'print $2'})
-echo -e "\033[1;31mDerivado de OS: \033[1;37m$devlike"
+echo -e "\033[1;31mBasado en: \033[1;37m$devlike"
 echo ""
 fi
 else
@@ -34,7 +35,7 @@ echo ""
 modelo=$(cat /proc/cpuinfo |grep "model name" |uniq |awk -F : {'print $2'})
 cpucores=$(grep -c cpu[0-9] /proc/stat)
 cache=$(cat /proc/cpuinfo |grep "cache size" |uniq |awk -F : {'print $2'})
-echo -e "\033[1;31mModelo:\033[1;37m$modelo"
+echo -e "\033[1;31mProcesador:\033[1;37m$modelo"
 echo -e "\033[1;31mNucleos:\033[1;37m $cpucores"
 echo -e "\033[1;31mMemoria Cache:\033[1;37m$cache"
 echo -e "\033[1;31mArquitectura: \033[1;37m$(uname -p)"
