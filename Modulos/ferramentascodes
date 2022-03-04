@@ -62,7 +62,7 @@ fun_tst () {
 speedtest --share > speed
 }
 echo ""
-echo -e "   \033[1;32mPRUEBA DE LA VELOCIDAD DEL SERVIDOR !\033[0m"
+echo -e "   \033[1;32mPRUEBA DE VELOCIDAD DEL SERVIDOR !\033[0m"
 echo ""
 aguarde 'fun_tst'
 echo ""
@@ -162,9 +162,9 @@ echo -e "\E[44;1;37m              GESTIONAR HERRAMIENTAS              \E[0m"
 echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 echo ""
 echo -e "[\033[1;36m01\033[1;31m] \033[1;37m• \033[1;33mSPEEDTEST \033[1;31m                  
-[\033[1;36m02\033[1;31m] \033[1;37m• \033[1;33mOTIMIZAR \033[1;31m
+[\033[1;36m02\033[1;31m] \033[1;37m• \033[1;33mOCTIMIZAR \033[1;31m
 [\033[1;36m03\033[1;31m] \033[1;37m• \033[1;33mADICIONAR HOST \033[1;31m
-[\033[1;36m04\033[1;31m] \033[1;37m• \033[1;33mREMOVER HOST \033[1;31m
+[\033[1;36m04\033[1;31m] \033[1;37m• \033[1;33mELIMINAR HOST \033[1;31m
 [\033[1;36m05\033[1;31m] \033[1;37m• \033[1;33mFIREWALL $stsf\033[1;31m
 [\033[1;36m06\033[1;31m] \033[1;37m• \033[1;33mBOT TELEGRAM $stsbot\033[1;31m
 [\033[1;36m07\033[1;31m] \033[1;37m• \033[1;33mBAD VPN $stsu\033[1;31m
