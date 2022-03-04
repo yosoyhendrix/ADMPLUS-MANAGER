@@ -53,6 +53,7 @@ ram1=$(free -h | grep -i mem | awk {'print $2'})
 ram2=$(free -h | grep -i mem | awk {'print $4'})
 ram3=$(free -h | grep -i mem | awk {'print $3'})
 usoram=$(free -m | awk 'NR==2{printf "%.2f%%\t\t", $3*100/$2 }')
+swapram=$(cat /proc/meminfo | grep SwapTotal | awk '{print $2}')
 
 echo -e "\033[1;31m• \033[1;32mMEMORIA RAM\033[1;31m •\033[0m"
 echo ""
@@ -60,6 +61,7 @@ echo -e "\033[1;31mTotal: \033[1;37m$ram1"
 echo -e "\033[1;31mEn Uso: \033[1;37m$ram3"
 echo -e "\033[1;31mLibre: \033[1;37m$ram2"
 echo -e "\033[1;31mUtilizado: \033[37m$usoram"
+echo -e "\033[1;31mSwap: \033[37m$swapramMB"
 echo ""
 else
 echo -e "\033[1;32mMEMORIA RAM\033[0m"
