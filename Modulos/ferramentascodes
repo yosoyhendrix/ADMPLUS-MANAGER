@@ -95,8 +95,8 @@ net.ipv4.tcp_wmem = 4096 16384 16777216
 net.ipv4.tcp_low_latency = 1
 net.ipv4.tcp_slow_start_after_idle = 0" >> /etc/sysctl.conf
 sysctl -p /etc/sysctl.conf > /dev/null 2>&1
-echo -e "\n\033[1;32mTCP ACTIVADO CON ÉXITO ! \033[0m"
-} || echo -e "\n\033[1;31mCANCELADO ! \033[0m"
+echo -e "\n\033[1;32m TCP ACTIVADO CON ÉXITO ! \033[0m"
+} || echo -e "\n\033[1;31m CANCELADO ! \033[0m"
  else
 #REMOVE
 echo -e "\033[1;32mTCP SPEED YA ESTA HABILITADO, DESEA DESAHABILITAR AHORA ? \033[0m"
@@ -112,8 +112,8 @@ net.ipv4.tcp_wmem = 4096 16384 16777216
 net.ipv4.tcp_low_latency = 1
 net.ipv4.tcp_slow_start_after_idle = 0" /etc/sysctl.conf > /tmp/syscl && mv -f /tmp/syscl /etc/sysctl.conf
 sysctl -p /etc/sysctl.conf > /dev/null 2>&1
-echo -e "\n\033[1;31mTCP DETENIDO CON ÉXITO  ! \033[0m"
-} || echo -e "\n\033[1;31mCANCELADO ! \033[0m"
+echo -e "\n\033[1;31m TCP DETENIDO CON ÉXITO  ! \033[0m"
+} || echo -e "\n\033[1;31m CANCELADO ! \033[0m"
 fi
 }
 
@@ -143,7 +143,7 @@ function onapp1 () {
 }
 function onapp2 () {
    clear
-   echo -e "\033[1;32mPARANDO ONLINE APP... \033[0m"
+   echo -e "\033[1;32m PARANDO ONLINE APP... \033[0m"
    echo ""
    fun_stponlineapp () {
       sleep 1
@@ -179,31 +179,32 @@ clock=$(lscpu | grep "CPU MHz" | awk '{print $3}')
 based=$(cat /etc/*release | grep ID_LIKE | awk -F "=" '{print $2}')
 processor=$(cat /proc/cpuinfo | grep "model name" | uniq | awk -F ":" '{print $2}')
 cpus=$(cat /proc/cpuinfo | grep processor | wc -l)
+# NUEVO MENU DE SISTEMA DE INFORMACION
 # SISTEMA OPERACIONAL
 echo -e "\033[1;32mSISTEMA OPERACIONAL \033[0m"
-echo -e "\033[1;33mNome Da Maquina: ${null}$(hostname)"
+echo -e "\033[1;33mNombre de la máquina: ${null}$(hostname)"
 [[ "$system" ]] && echo -e "\033[1;33mSistema: ${null}$system" || echo -e "\033[1;33mSistema: ${null}???"
-echo -e "\033[1;33mEndereco Da Maquina: ${null}$(ip addr | grep inet | grep -v inet6 | grep -v "host lo" | awk '{print $2}' | awk -F "/" '{print $1}')"
-echo -e "\033[1;33mVersao do Kernel: ${null}$(uname -r)"
-[[ "$based" ]] && echo -e "\033[1;33mBaseado: ${null}$based" || echo -e "\033[1;33mBaseado: ${null}???"
+echo -e "\033[1;33mDirecci�n de la máquina: ${null}$(ip addr | grep inet | grep -v inet6 | grep -v "host lo" | awk '{print $2}' | awk -F "/" '{print $1}')"
+echo -e "\033[1;33mVersion del Kernel: ${null}$(uname -r)"
+[[ "$based" ]] && echo -e "\033[1;33mBasado en: ${null}$based" || echo -e "\033[1;33mBasado en: ${null}???"
 # PROCESSADOR
 echo ""
-echo -e "\033[1;32mPROCESSADOR \033[0m"
-[[ "$processor" ]] && echo -e "\033[1;33mProcessador: ${null}$processor x$cpus" || echo -e "\033[1;33mProcessador: ${null}???"
-[[ "$clock" ]] && echo -e "\033[1;33mFrequecia de Operacao: ${null}$clock MHz" || echo -e "\033[1;33mFrequecia de Operacao: ${null}???"
+echo -e "\033[1;32mPROCESADOR \033[0m"
+[[ "$processor" ]] && echo -e "\033[1;33mProcesador: ${null}$processor x$cpus" || echo -e "\033[1;33mProcesador: ${null}???"
+[[ "$clock" ]] && echo -e "\033[1;33mFrequecia de Operación: ${null}$clock MHz" || echo -e "\033[1;33mFrequecia de Operación: ${null}???"
 echo -e "\033[1;33mArquitetura: ${null}$(uname -m)"
 # MEMORIA RAM
 echo ""
 echo -e "\033[1;32mMEMORIA RAM \033[0m"
-echo -e "\033[1;33mUso do Processador: ${null}$(ps aux  | awk 'BEGIN { sum = 0 }  { sum += sprintf("%f",$3) }; END { printf " " "%.2f" "%%", sum}')"
+echo -e "\033[1;33mUso del Procesador: ${null}$(ps aux  | awk 'BEGIN { sum = 0 }  { sum += sprintf("%f",$3) }; END { printf " " "%.2f" "%%", sum}')"
 echo -e "\033[1;33mMemoria Virtual Total: ${null}$(($totalram / 1024))"
-echo -e "\033[1;33mMemoria Virtual Em Uso: ${null}$(($usedram / 1024))"
-echo -e "\033[1;33mMemoria Virtual Livre: ${null}$(($freeram / 1024))"
+echo -e "\033[1;33mMemoria Virtual En Uso: ${null}$(($usedram / 1024))"
+echo -e "\033[1;33mMemoria Virtual Libre: ${null}$(($freeram / 1024))"
 echo -e "\033[1;33mMemoria Virtual Swap: ${null}$(($swapram / 1024))MB"
 # TEMPO ONLINE
 echo ""
-echo -e "\033[1;32mTEMPO ONLINE \033[0m"
-echo -e "\033[1;33mTempo Online: ${null}$(uptime)"
+echo -e "\033[1;32mTIEMPO ONLINE \033[0m"
+echo -e "\033[1;33mTiempo Online: ${null}$(uptime)"
 }
 
 limpar_caches () {
@@ -231,7 +232,7 @@ touch /tmp/abc
 sleep 0.5s
 echo -e "\n  \033[1;32mOk PROCESO CONCLUIDO !\033[0m"
 sleep 3
-menu
+ferramentascodes
 }
 
 while true $x != "ok"
