@@ -101,7 +101,7 @@ echo -e "\n\033[1;32m TCP ACTIVADO CON ÉXITO ! \033[0m"
 #REMOVE
 echo -e "\033[1;32mTCP SPEED YA ESTA HABILITADO, DESEA DESAHABILITAR AHORA ? \033[0m"
 echo ""
-read -p "$(echo -ne "\033[1;32mQUÉ QUIERES HACER ? \033[1;33m[s/n]:\033[1;37m") " -e -i s resposta
+read -p "$(echo -ne "\033[1;32mQUÉ QUIERES HACER ? \033[1;33m[s/n]:\033[1;37m") " -e -i n resposta
 [[ "$resposta" = @(s|S|y|Y) ]] && {
 grep -v "^#ADM
 net.ipv4.tcp_window_scaling = 1
@@ -208,7 +208,7 @@ echo -e "\033[1;33mTiempo Online: ${null}$(uptime)"
 }
 
 limpar_caches () {
-echo -e "\033[1;32m INICIANDO LIMPIEZA... \033[0m"
+echo -e "\033[1;32mINICIANDO LIMPIEZA... \033[0m"
 echo ""
 (
 VE="\033[1;33m" && MA="\033[1;31m" && DE="\033[1;32m"
@@ -230,7 +230,7 @@ apt-get clean -y &>/dev/null
 rm /tmp/* &>/dev/null
 touch /tmp/abc
 sleep 0.5s
-echo -e "\n  \033[1;32mOk PROCESO CONCLUIDO !\033[0m"
+echo -e "\n  \033[1;32mPROCESO CONCLUIDO !\033[0m"
 sleep 3
 ferramentascodes
 }

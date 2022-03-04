@@ -44,7 +44,7 @@ fun_udp1 () {
     fun_bar 'fun_udpon'
     echo -e "\n  \033[1;32mBADVPN ACTIVO !\033[0m"
     sleep 3
-    menu
+    ferramentascodes
     } || {
         clear
         echo -e "\033[1;32mINSTALANDO BADVPN !\033[0m\n"
@@ -69,7 +69,7 @@ fun_udp1 () {
        fun_bar 'fun_udpon2'
        echo -e "\n\033[1;32mBADVPN ACTIVO !\033[0m"
        sleep 3
-       menu
+       ferramentascodes
     }
 } 
 
@@ -88,6 +88,6 @@ fun_udp2 () {
     fun_bar 'fun_stopbad'
     echo -e "\n  \033[1;31mBADVPN PARADO !\033[0m"
     sleep 3
-    menu
+    ferramentascodes
 }
 [[ $(ps x | grep "udpvpn"|grep -v grep |wc -l) = '0' ]] &&  fun_udp1 || fun_udp2
