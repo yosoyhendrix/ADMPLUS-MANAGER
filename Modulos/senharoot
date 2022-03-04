@@ -11,8 +11,8 @@ exit 0
 }
 echo "root:$senha" | chpasswd
 sleep 1s
-echo -e "\n\033[1;31mCONTRASEÑA CAMBIADA CON ÉXITO!\033[0m"
-sleep 5s
+echo -e "\n\033[1;32mCONTRASEÑA CAMBIADA CON ÉXITO!\033[0m"
+sleep 3s
 cd
 clear
 
