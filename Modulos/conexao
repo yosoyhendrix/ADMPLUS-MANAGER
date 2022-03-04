@@ -2156,7 +2156,7 @@ exit 0' >$RCLOCAL
 				echo -e "\033[1;31mSalindo...\033[0m"
 				sleep 1
 				clear
-				exit
+				exit;
 				;;
 			*)
 				echo -e "\033[1;31mOpción inválida !\033[0m"
