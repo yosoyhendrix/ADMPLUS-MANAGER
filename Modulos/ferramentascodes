@@ -229,8 +229,9 @@ apt-get clean -y &>/dev/null
 rm /tmp/* &>/dev/null
 touch /tmp/abc
 sleep 0.5s
-echo ""
-echo -e "\033[1;32mOk PROCESO CONCLUIDO"
+echo -e "\n  \033[1;32mOk PROCESO CONCLUIDO !\033[0m"
+sleep 3
+menu
 }
 
 while true $x != "ok"
@@ -288,8 +289,8 @@ echo -e "[\033[1;36m01\033[1;31m] \033[1;37m• \033[1;33mSPEEDTEST \033[1;31m
 [\033[1;36m08\033[1;31m] \033[1;37m• \033[1;33mTCPSPEED $tcp\033[1;31m
 [\033[1;36m09\033[1;31m] \033[1;37m• \033[1;33mONLINE APP $stson \033[1;31m
 [\033[1;36m10\033[1;31m] \033[1;37m• \033[1;33mMEMORIA VIRTUAL \033[1;31m 
-[\033[1;36m04\033[1;31m] \033[1;37m• \033[1;33mINFORMACIÓN DEL SISTEMA \033[1;31m
-[\033[1;36m11\033[1;31m] \033[1;37m• \033[1;33mLIMPIAR CACHE SISTEMA \033[1;31m
+[\033[1;36m11\033[1;31m] \033[1;37m• \033[1;33mINFORMACION DEL SISTEMA \033[1;31m
+[\033[1;36m12\033[1;31m] \033[1;37m• \033[1;33mLIMPIAR CACHE SISTEMA \033[1;31m
 [\033[1;36m00\033[1;31m] \033[1;37m• \033[1;33mVOLVER AL MENU \033[1;32m<\033[1;33m<\033[1;31m< \033[1;31m"
 echo ""
 echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
@@ -352,7 +353,6 @@ case "$x" in
    12)
    clear
    limpar_caches
-   echo -ne "\n\033[1;31mENTER \033[1;33mpara volver al \033[1;32mMENU!\033[0m"; read
    ;;
    0 | 00)
    menu
