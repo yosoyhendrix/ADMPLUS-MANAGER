@@ -162,6 +162,50 @@ function onapp_ssh () {
 [[ $(ps x | grep "onlineapp"|grep -v grep |wc -l) = '0' ]] && onapp1 || onapp2
 }
 
+systen_info () {
+clear
+echo -e "\E[44;1;37m               INFORMACIÓN DE VPS                 \E[0m"
+echo ""
+null="\033[1;31m"
+if [ ! /proc/cpuinfo ]; then echo -e "\033[1;31mSistema No Soportado" && echo ""; return 1; fi
+if [ ! /etc/issue.net ]; then echo -e "\033[1;31mSistema No Soportado" && echo ""; return 1; fi
+if [ ! /proc/meminfo ]; then echo -e "\033[1;31mSistema No Soportado" && echo ""; return 1; fi
+totalram=$(free | grep Mem | awk '{print $2}')
+usedram=$(free | grep Mem | awk '{print $3}')
+freeram=$(free | grep Mem | awk '{print $4}')
+swapram=$(cat /proc/meminfo | grep SwapTotal | awk '{print $2}')
+system=$(cat /etc/issue.net)
+clock=$(lscpu | grep "CPU MHz" | awk '{print $3}')
+based=$(cat /etc/*release | grep ID_LIKE | awk -F "=" '{print $2}')
+processor=$(cat /proc/cpuinfo | grep "model name" | uniq | awk -F ":" '{print $2}')
+cpus=$(cat /proc/cpuinfo | grep processor | wc -l)
+# SISTEMA OPERACIONAL
+echo -e "\033[1;32mSISTEMA OPERACIONAL \033[0m"
+echo -e "\033[1;33mNome Da Maquina: ${null}$(hostname)"
+[[ "$system" ]] && echo -e "\033[1;33mSistema: ${null}$system" || echo -e "\033[1;33mSistema: ${null}???"
+echo -e "\033[1;33mEndereco Da Maquina: ${null}$(ip addr | grep inet | grep -v inet6 | grep -v "host lo" | awk '{print $2}' | awk -F "/" '{print $1}')"
+echo -e "\033[1;33mVersao do Kernel: ${null}$(uname -r)"
+[[ "$based" ]] && echo -e "\033[1;33mBaseado: ${null}$based" || echo -e "\033[1;33mBaseado: ${null}???"
+# PROCESSADOR
+echo ""
+echo -e "\033[1;32mPROCESSADOR \033[0m"
+[[ "$processor" ]] && echo -e "\033[1;33mProcessador: ${null}$processor x$cpus" || echo -e "\033[1;33mProcessador: ${null}???"
+[[ "$clock" ]] && echo -e "\033[1;33mFrequecia de Operacao: ${null}$clock MHz" || echo -e "\033[1;33mFrequecia de Operacao: ${null}???"
+echo -e "\033[1;33mArquitetura: ${null}$(uname -m)"
+# MEMORIA RAM
+echo ""
+echo -e "\033[1;32mMEMORIA RAM \033[0m"
+echo -e "\033[1;33mUso do Processador: ${null}$(ps aux  | awk 'BEGIN { sum = 0 }  { sum += sprintf("%f",$3) }; END { printf " " "%.2f" "%%", sum}')"
+echo -e "\033[1;33mMemoria Virtual Total: ${null}$(($totalram / 1024))"
+echo -e "\033[1;33mMemoria Virtual Em Uso: ${null}$(($usedram / 1024))"
+echo -e "\033[1;33mMemoria Virtual Livre: ${null}$(($freeram / 1024))"
+echo -e "\033[1;33mMemoria Virtual Swap: ${null}$(($swapram / 1024))MB"
+# TEMPO ONLINE
+echo ""
+echo -e "\033[1;32mTEMPO ONLINE \033[0m"
+echo -e "\033[1;33mTempo Online: ${null}$(uptime)"
+}
+
 limpar_caches () {
 echo -e "\033[1;32mINICIANDO LIMPIEZA... \033[0m"
 echo ""
@@ -186,7 +230,7 @@ rm /tmp/* &>/dev/null
 touch /tmp/abc
 sleep 0.5s
 echo ""
-echo -e "\033[1;32mPROCESO CONCLUIDO"
+echo -e "\033[1;32mOk PROCESO CONCLUIDO"
 }
 
 while true $x != "ok"
@@ -244,6 +288,7 @@ echo -e "[\033[1;36m01\033[1;31m] \033[1;37m• \033[1;33mSPEEDTEST \033[1;31m
 [\033[1;36m08\033[1;31m] \033[1;37m• \033[1;33mTCPSPEED $tcp\033[1;31m
 [\033[1;36m09\033[1;31m] \033[1;37m• \033[1;33mONLINE APP $stson \033[1;31m
 [\033[1;36m10\033[1;31m] \033[1;37m• \033[1;33mMEMORIA VIRTUAL \033[1;31m 
+[\033[1;36m04\033[1;31m] \033[1;37m• \033[1;33mINFORMACIÓN DEL SISTEMA \033[1;31m
 [\033[1;36m11\033[1;31m] \033[1;37m• \033[1;33mLIMPIAR CACHE SISTEMA \033[1;31m
 [\033[1;36m00\033[1;31m] \033[1;37m• \033[1;33mVOLVER AL MENU \033[1;32m<\033[1;33m<\033[1;31m< \033[1;31m"
 echo ""
@@ -300,6 +345,11 @@ case "$x" in
    swapmemory
    ;;
    11)
+   clear
+   systen_info
+   echo -ne "\n\033[1;31mENTER \033[1;33mpara volver al \033[1;32mMENU!\033[0m"; read
+   ;;
+   12)
    clear
    limpar_caches
    echo -ne "\n\033[1;31mENTER \033[1;33mpara volver al \033[1;32mMENU!\033[0m"; read
