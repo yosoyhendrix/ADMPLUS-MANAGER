@@ -166,7 +166,6 @@ systen_info () {
 clear
 echo -e "\E[44;1;37m               INFORMACIÓN DE VPS                 \E[0m"
 echo ""
-null="\033[1;37m"
 if [ ! /proc/cpuinfo ]; then echo -e "\033[1;31mSistema No Soportado" && echo ""; return 1; fi
 if [ ! /etc/issue.net ]; then echo -e "\033[1;31mSistema No Soportado" && echo ""; return 1; fi
 if [ ! /proc/meminfo ]; then echo -e "\033[1;31mSistema No Soportado" && echo ""; return 1; fi
