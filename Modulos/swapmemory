@@ -23,10 +23,10 @@ fun_swap() {
 			read gigas
             [[ -z "$gigas" ]] && {
 					echo ""
-					echo -e "\033[1;31mGigas inválido!"
+					echo -e "\033[1;31mGigas no válido!"
 					sleep 2
 					clear
-					menu
+					ferramentascodes
 				}
             echo ""
 			echo -e "\033[1;32mINICIANDO MEMORIA VIRTUAL \033[1;31m$gigas GB\033[1;33m"
@@ -56,7 +56,7 @@ fun_swap() {
 			echo ""
 			echo -e "\033[1;31mRetornando...\033[0m"
 			sleep 1
-			menu
+			ferramentascodes
 		else
 			echo ""
 			echo -e "\033[1;31mOpción inválida !\033[0m"
