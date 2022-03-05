@@ -356,7 +356,6 @@ case "$x" in
    8 | 8)
    clear
    TCPspeed
-   echo -ne "\n\033[1;31mENTER \033[1;33mpara volver al \033[1;32mMENU!\033[0m"; read
    ;;
    9 | 09)
    clear
