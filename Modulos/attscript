@@ -70,7 +70,7 @@ fun_atts () {
 
 } > /dev/null 2>&1
 
-echo -e "                        \033[1;31mBy iLLUMINATI Dev Team\033[1;36m"
+echo -e "                        \033[1;31mBy iLLuminati Dev Team\033[1;36m"
 
 echo -e "   ADMPlus" | figlet
 
