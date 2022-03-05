@@ -105,7 +105,7 @@ pamcrack () {
 echo -e "\033[1;32mDESHABILITAR CONTRASEÑA ALFANUMÉRICAS EN VULTR  \033[0m"
 echo -e "\033[1;32mSE PUEDE UTILIZAR CUALQUIER CONTRASEÑA DE 6 DIGITOS \033[0m"
 echo ""
-read -p "$(echo -ne "\033[1;32mQUÉ QUIERES HACER ? \033[1;33m[s/n]:\033[1;37m") " -e -i n PROS
+read -p "$(echo -ne "\033[1;32mQUÉ QUIERES HACER \033[1;31m? \033[1;33m[s/n]:\033[1;37m ") " -e -i n PROS
 [[ $PROS = @(s|S|y|Y) ]] || return 1
 echo ""
 fun_cracklib () {
@@ -175,7 +175,7 @@ return 0
 if [ -e $pwd ]; then 
 echo -e "\E[44;1;37m           AUTENTIFICACIÓN PROXY SQUID           \E[0m"
 echo -e "\n\033[1;33mDESEA DESHABILITAR LA AUTENTIFICACIÓN DE PROXY DE SQUID?"
-read -p "$(echo -ne "\n\033[1;32mQUÉ QUIERES HACER ? \033[1;33m[s/n]:\033[1;37m") " -e -i s sshsn
+read -p "$(echo -ne "\n\033[1;32mQUÉ QUIERES HACER \033[1;31m? \033[1;33m[s/n]:\033[1;37m ") " -e -i s sshsn
 [[ "$sshsn" = @(s|S|y|Y) ]] && {
 echo ""
 echo -e " \033[1;32mUninstalling DEPENDENCE:"
@@ -203,7 +203,7 @@ echo -e " \033[1;31mAUTENTIFICACIÓN PROXY SQUID DESHABILITADA"
 else
 echo -e "\E[44;1;37m           AUTENTIFICACIÓN PROXY SQUID           \E[0m"
 echo -e "\n\033[1;33mDESEA HABILITAR LA AUTENTIFICACIÓN DE PROXY SQUID?"
-read -p "$(echo -ne "\n\033[1;32mQUÉ QUIERES HACER ? \033[1;33m[s/n]:\033[1;37m") " -e -i n sshsn
+read -p "$(echo -ne "\n\033[1;32mQUÉ QUIERES HACER \033[1;31m? \033[1;33m[s/n]:\033[1;37m ") " -e -i n sshsn
 [[ "$sshsn" = @(s|S|y|Y) ]] && {
 echo ""
 echo -e " \033[1;32mInstalling DEPENDENCE:"

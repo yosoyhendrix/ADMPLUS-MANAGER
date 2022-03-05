@@ -84,7 +84,7 @@ if [[ `grep -c "^#ADM" /etc/sysctl.conf` -eq 0 ]]; then
 #INSTALA
 echo -e "\033[1;32mTCP SPEED NO HABILITADO, DESEA HABILITAR AHORA ? \033[0m"
 echo ""
-read -p "$(echo -ne "\033[1;32mQUÉ QUIERES HACER ? \033[1;33m[s/n]:\033[1;37m") " -e -i s resposta
+read -p "$(echo -ne "\033[1;32mQUÉ QUIERES HACER \033[1;31m? \033[1;33m[s/n]:\033[1;37m ") " -e -i s resposta
 [[ "$resposta" = @(s|S|y|Y) ]] && {
 echo "#ADM" >> /etc/sysctl.conf
 echo "net.ipv4.tcp_window_scaling = 1
@@ -101,7 +101,7 @@ echo -e "\n\033[1;32m TCP ACTIVADO CON ÉXITO ! \033[0m"
 #REMOVE
 echo -e "\033[1;32mTCP SPEED YA ESTA HABILITADO, DESEA DESAHABILITAR AHORA ? \033[0m"
 echo ""
-read -p "$(echo -ne "\033[1;32mQUÉ QUIERES HACER ? \033[1;33m[s/n]:\033[1;37m") " -e -i n resposta
+read -p "$(echo -ne "\033[1;32mQUÉ QUIERES HACER \033[1;31m? \033[1;33m[s/n]:\033[1;37m ") " -e -i n resposta
 [[ "$resposta" = @(s|S|y|Y) ]] && {
 grep -v "^#ADM
 net.ipv4.tcp_window_scaling = 1
