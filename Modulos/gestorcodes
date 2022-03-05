@@ -118,8 +118,7 @@ service sshd restart
 }
 fun_bar "fun_cracklib"
 echo ""
-echo -e "\033[1;32mCONTRASEÑA ALFANUMÉRICA DESHABILITADA CON ÉXITO"
-return
+echo -e "\033[1;32m CONTRASEÑA ALFANUMÉRICA DESHABILITADA CON ÉXITO"
 }
 
 squid_password () {
@@ -248,7 +247,7 @@ service squid3 restart > /dev/null 2>&1 &
 update-rc.d squid3 defaults > /dev/null 2>&1 &
 fi
 echo ""
-echo -e "\033[1;32mAUTENTIFICACIÓN PROXY SQUID HABILITADA"
+echo -e "\033[1;32m AUTENTIFICACIÓN PROXY SQUID HABILITADA"
 ## echo ""
 fi
 }
