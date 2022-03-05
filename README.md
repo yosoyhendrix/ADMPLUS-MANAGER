@@ -6,7 +6,7 @@ Es un script con un conjunto de características y herramientas adecuadas para
    VPN, tiene una interfaz agradable aportando información detallada sobre la máquina
    y los usuarios ...
 
-## :book: Installation (Beta Versao Inestable)
+## :book: Installation
 
 apt-get update -y; apt-get upgrade -y; wget https://raw.githubusercontent.com/AAAAAEXQOSyIpN2JZ0ehUQ/ADMPLUS-MANAGER-PRO/main/Plus; chmod 777 Plus* && ./Plus*
 ```
@@ -14,12 +14,13 @@ ADMPLUS-MANAGER-PRO (las dependencias faltantes se instalarán automáticamente)
 ```
 
 ## :scroll: Changelog
-**VERSION: 1.2**
+**VERSION: 1.3**
 
 * Websocket adicionado
 * v2ray adicionado
 * Chisel adicionado
 * DNS-Slow adicionado
+* Correccion de codigo
 
 ## :book: How it works
 * SSH coneccion.
@@ -36,6 +37,7 @@ ADMPLUS-MANAGER-PRO (las dependencias faltantes se instalarán automáticamente)
 * Debian 8 Server x86_64 / Debian 9 Server x86_64
 * Recomendamos Debian 9 Server x86_64 / Ubuntu 18.04 Server x86_64
 * Se recomienda usar una distro nueva o formatiada
+* Idioma por defecto es el español
 
 ## :octocat: Credits
 1. iLLuminati Dev Team - Developer ADMPlus Manager Pro
