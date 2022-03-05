@@ -124,9 +124,7 @@ function onapp1 () {
    echo ""
    apt install apache2 -y > /dev/null 2>&1
    sed -i "s/Listen 80/Listen 81/g" /etc/apache2/ports.conf >/dev/null 2>&1
-   echo -e "\033[0;32m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m\n"
-   service apache2 restart
-   echo -e "\n\033[0;32m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m\n"
+   service apache2 restart > /dev/null 2>&1
    rm -rf /var/www/html/server >/dev/null 2>&1
    mkdir /var/www/html/server >/dev/null 2>&1
    fun_bar 'screen -dmS onlineapp onlineapp' 'sleep 3'
