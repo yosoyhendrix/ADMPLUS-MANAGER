@@ -1989,8 +1989,8 @@ exit 0' >$RCLOCAL
 		SCOLOR='\033[0m'
 			clear
 	        v2rayinst(){
-	            source <(curl -sL https://multi.netlify.app/v2ray.sh)
-	            ## source <(curl -sL https://raw.githubusercontent.com/leitura/SSHPLUS/master/Modulos/v2ray)
+	            ## source <(curl -sL https://multi.netlify.app/v2ray.sh)
+	            source <(curl -sL https://raw.githubusercontent.com/leitura/SSHPLUS/master/Modulos/v2ray)
                     sleep 6
 	        }
 	        if netstat -tunlp |grep v2ray 1> /dev/null 2> /dev/null; then
