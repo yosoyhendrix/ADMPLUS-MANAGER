@@ -1981,12 +1981,6 @@ exit 0' >$RCLOCAL
     }
 
         fun_v2rayins() {
-		cor1='\033[41;1;37m'
-		cor2='\033[44;1;37m'
-		scor='\033[0m'
-		GREEN='\033[1;32m'
-		YELLOW='\033[1;33m'
-		SCOLOR='\033[0m'
 			clear
 	        v2rayinst(){
 	            ## source <(curl -sL https://multi.netlify.app/v2ray.sh)
