@@ -210,7 +210,7 @@ echo -e " \033[1;32mInstalling DEPENDENCE:"
 echo ""
 fun_bar 'apt-get install apache2-utils'
 echo ""
-read -e -p " Nombre de usuario deseado: " usrn
+read -e -p "Nombre de usuario deseado: " usrn
 [[ $usrn = "" ]] && 
 echo "" && 
 echo -e " \033[1;31mEl usuario no puede ser nulo." && 
