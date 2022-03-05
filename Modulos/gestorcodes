@@ -173,7 +173,7 @@ echo -e "\033[1;32mPROXY SQUID NO INSTALADO, NO PUEDE CONTINUAR" &&
 ## echo "" && 
 return 0
 if [ -e $pwd ]; then 
-echo -e "\033[1;32mAUTENTIFICACIÓN PROXY SQUID"
+echo -e "\E[44;1;37m           AUTENTIFICACIÓN PROXY SQUID           \E[0m"
 echo -e "\n\033[1;33mDESEA DESHABILITAR LA AUTENTIFICACIÓN DE PROXY DE SQUID?"
 read -p "$(echo -ne "\n\033[1;32mQUÉ QUIERES HACER ? \033[1;33m[s/n]:\033[1;37m") " -e -i s sshsn
 [[ "$sshsn" = @(s|S|y|Y) ]] && {
@@ -201,7 +201,7 @@ service $service_ restart  > /dev/null 2>&1 &
 echo -e " \033[1;31mAUTENTIFICACIÓN PROXY SQUID DESHABILITADA"
 } 
 else
-echo -e "\033[1;32mAUTENTIFICACIÓN PROXY SQUID"
+echo -e "\E[44;1;37m           AUTENTIFICACIÓN PROXY SQUID           \E[0m"
 echo -e "\n\033[1;33mDESEA HABILITAR LA AUTENTIFICACIÓN DE PROXY SQUID?"
 read -p "$(echo -ne "\n\033[1;32mQUÉ QUIERES HACER ? \033[1;33m[s/n]:\033[1;37m") " -e -i n sshsn
 [[ "$sshsn" = @(s|S|y|Y) ]] && {
