@@ -58,5 +58,5 @@ echo -ne "\033[1;33mREINICIANDO FAIL2BAN "; fun_prog 'fail2ban-client -x stop &&
 echo ""
 sleep 1
 fi
-echo -e "\033[1;32mSERVICOS REINICIADOS COM SUCESSO!\033[0m"
+echo -e "\033[1;32mSERVICIOS REINICIADOS CON ÉXITO!\033[0m"
 sleep 1
