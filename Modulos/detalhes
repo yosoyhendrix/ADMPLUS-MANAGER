@@ -4,6 +4,7 @@ echo -e "\E[44;1;37m               INFORMACIÓN DE VPS                 \E[0m"
 echo ""
 if [ -f /etc/lsb-release ]
 then
+
 echo -e "\033[1;31m• \033[1;32mSISTEMA OPERACIONAL\033[1;31m •\033[0m"
 echo ""
 sistemaname=$(cat /etc/lsb-release |grep DESCRIPTION |awk -F = {'print $2'})
@@ -52,7 +53,6 @@ ram1=$(free -h | grep -i mem | awk {'print $2'})
 ram2=$(free -h | grep -i mem | awk {'print $4'})
 ram3=$(free -h | grep -i mem | awk {'print $3'})
 usoram=$(free -m | awk 'NR==2{printf "%.2f%%\t\t", $3*100/$2 }')
-
 echo -e "\033[1;31m• \033[1;32mMEMORIA RAM\033[1;31m •\033[0m"
 echo ""
 echo -e "\033[1;31mTotal: \033[1;37m$ram1"
@@ -66,6 +66,7 @@ echo ""
 echo "No se puede obtener información"
 fi
 [[ ! -e /bin/versao ]] && rm -rf /etc/SSHPlus
+
 echo -e "\033[1;31m• \033[1;32mSERVICIOS EN FUNCIONAMIENTO\033[1;31m •\033[0m"
 echo ""
 PT=$(lsof -V -i tcp -P -n | grep -v "ESTABLISHED" |grep -v "COMMAND" | grep "LISTEN")

@@ -174,10 +174,13 @@ if [ ! /proc/meminfo ]; then echo -e "\033[1;31mSistema No Soportado" && echo ""
 # SISTEMA OPERACIONAL
 echo -e "\033[1;32mSISTEMA OPERACIONAL \033[0m"
 system=$(cat /etc/issue.net)
+codename=$(cat /etc/lsb-release |grep CODENAME |awk -F = {'print $2'})
 based=$(cat /etc/*release | grep ID_LIKE | awk -F "=" '{print $2}')
 echo -e "\033[1;31mNombre de la máquina: \033[1;37m$(hostname)"
 [[ "$system" ]] && echo -e "\033[1;31mSistema: \033[1;37m$system" || echo -e "\033[1;33mSistema: \033[1;37m???"
+echo -e "\033[1;31mCodeName: \033[1;37m$codename"
 echo -e "\033[1;31mDirección IP: \033[1;37m$(ip addr | grep inet | grep -v inet6 | grep -v "host lo" | awk '{print $2}' | awk -F "/" '{print $1}')"
+echo -e "\033[1;31mKernel: \033[1;37m$(uname -s)"
 echo -e "\033[1;31mKernel Release: \033[1;37m$(uname -r)"
 [[ "$based" ]] && echo -e "\033[1;31mBasado en: \033[1;37m$based" || echo -e "\033[1;33mBasado en: \033[1;37m???"
 
@@ -189,12 +192,13 @@ cpus=$(cat /proc/cpuinfo | grep processor | wc -l)
 cpucores=$(grep -c cpu[0-9] /proc/stat)
 clock=$(lscpu | grep "CPU MHz" | awk '{print $3}')
 cache=$(cat /proc/cpuinfo |grep "cache size" |uniq |awk -F : {'print $2'})
+uso=$(top -bn1 | awk '/Cpu/ { cpu = "" 100 - $8 "%" }; END { print cpu }')
 [[ "$processor" ]] && echo -e "\033[1;31mProcesador: \033[1;37m$processor x$cpus" || echo -e "\033[1;33mProcesador: \033[1;37m???"
 echo -e "\033[1;31mNucleos:\033[1;37m $cpucores"
 [[ "$clock" ]] && echo -e "\033[1;31mFrequecia de Operación: \033[1;37m$clock MHz" || echo -e "\033[1;33mFrequecia de Operación: \033[1;37m???"
 echo -e "\033[1;31mMemoria Cache:\033[1;37m$cache"
 echo -e "\033[1;31mArquitetura: \033[1;37m$(uname -m)"
-echo -e "\033[1;31mUtilizado:: \033[1;37m$(ps aux  | awk 'BEGIN { sum = 0 }  { sum += sprintf("%f",$3) }; END { printf " " "%.2f" "%%", sum}')"
+echo -e "\033[1;31mUtilizado: \033[37m$uso"
 
 # MEMORIA RAM
 echo ""
@@ -214,6 +218,14 @@ echo -e "\033[1;31mSwap: \033[1;37m$(($swapram / 1024))MB"
 echo ""
 echo -e "\033[1;32mTIEMPO ONLINE \033[0m"
 echo -e "\033[1;31mTiempo Online: \033[1;37m$(uptime)"
+
+echo -e "\033[1;32mSERVICIOS EN FUNCIONAMIENTO \033[0m"
+echo ""
+PT=$(lsof -V -i tcp -P -n | grep -v "ESTABLISHED" |grep -v "COMMAND" | grep "LISTEN")
+for porta in `echo -e "$PT" | cut -d: -f2 | cut -d' ' -f1 | uniq`; do
+    svcs=$(echo -e "$PT" | grep -w "$porta" | awk '{print $1}' | uniq)
+    echo -e "\033[1;32mServicio \033[1;33m$svcs \033[1;32mPurta \033[1;37m$porta"
+done
 }
 
 limpar_caches () {
