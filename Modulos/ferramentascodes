@@ -170,7 +170,6 @@ if [ ! /proc/cpuinfo ]; then echo -e "\033[1;31mSistema No Soportado" && echo ""
 if [ ! /etc/issue.net ]; then echo -e "\033[1;31mSistema No Soportado" && echo ""; return 1; fi
 if [ ! /proc/meminfo ]; then echo -e "\033[1;31mSistema No Soportado" && echo ""; return 1; fi
 
-# NUEVO MENU DE SISTEMA DE INFORMACION
 # SISTEMA OPERACIONAL
 echo -e "\033[1;32mSISTEMA OPERACIONAL \033[0m"
 system=$(cat /etc/issue.net)
@@ -214,11 +213,13 @@ echo -e "\033[1;31mLibre: \033[1;37m$(($freeram / 1024))"
 echo -e "\033[1;31mUtilizado: \033[37m$usoram"
 echo -e "\033[1;31mSwap: \033[1;37m$(($swapram / 1024))MB"
 
-# TEMPO ONLINE
+# SERVICIOS EN FUNCIONAMIENTO
 echo ""
 echo -e "\033[1;32mTIEMPO ONLINE \033[0m"
 echo -e "\033[1;31mTiempo Online: \033[1;37m$(uptime)"
 
+# TEMPO ONLINE
+echo ""
 echo -e "\033[1;32mSERVICIOS EN FUNCIONAMIENTO \033[0m"
 echo ""
 PT=$(lsof -V -i tcp -P -n | grep -v "ESTABLISHED" |grep -v "COMMAND" | grep "LISTEN")
