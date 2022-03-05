@@ -169,37 +169,47 @@ echo ""
 if [ ! /proc/cpuinfo ]; then echo -e "\033[1;31mSistema No Soportado" && echo ""; return 1; fi
 if [ ! /etc/issue.net ]; then echo -e "\033[1;31mSistema No Soportado" && echo ""; return 1; fi
 if [ ! /proc/meminfo ]; then echo -e "\033[1;31mSistema No Soportado" && echo ""; return 1; fi
-totalram=$(free | grep Mem | awk '{print $2}')
-usedram=$(free | grep Mem | awk '{print $3}')
-freeram=$(free | grep Mem | awk '{print $4}')
-swapram=$(cat /proc/meminfo | grep SwapTotal | awk '{print $2}')
-system=$(cat /etc/issue.net)
-clock=$(lscpu | grep "CPU MHz" | awk '{print $3}')
-based=$(cat /etc/*release | grep ID_LIKE | awk -F "=" '{print $2}')
-processor=$(cat /proc/cpuinfo | grep "model name" | uniq | awk -F ":" '{print $2}')
-cpus=$(cat /proc/cpuinfo | grep processor | wc -l)
+
 # NUEVO MENU DE SISTEMA DE INFORMACION
 # SISTEMA OPERACIONAL
 echo -e "\033[1;32mSISTEMA OPERACIONAL \033[0m"
+system=$(cat /etc/issue.net)
+based=$(cat /etc/*release | grep ID_LIKE | awk -F "=" '{print $2}')
 echo -e "\033[1;31mNombre de la máquina: \033[1;37m$(hostname)"
 [[ "$system" ]] && echo -e "\033[1;31mSistema: \033[1;37m$system" || echo -e "\033[1;33mSistema: \033[1;37m???"
 echo -e "\033[1;31mDirección IP: \033[1;37m$(ip addr | grep inet | grep -v inet6 | grep -v "host lo" | awk '{print $2}' | awk -F "/" '{print $1}')"
 echo -e "\033[1;31mKernel Release: \033[1;37m$(uname -r)"
 [[ "$based" ]] && echo -e "\033[1;31mBasado en: \033[1;37m$based" || echo -e "\033[1;33mBasado en: \033[1;37m???"
+
 # PROCESSADOR
 echo ""
 echo -e "\033[1;32mPROCESADOR \033[0m"
+processor=$(cat /proc/cpuinfo | grep "model name" | uniq | awk -F ":" '{print $2}')
+cpus=$(cat /proc/cpuinfo | grep processor | wc -l)
+cpucores=$(grep -c cpu[0-9] /proc/stat)
+clock=$(lscpu | grep "CPU MHz" | awk '{print $3}')
+cache=$(cat /proc/cpuinfo |grep "cache size" |uniq |awk -F : {'print $2'})
 [[ "$processor" ]] && echo -e "\033[1;31mProcesador: \033[1;37m$processor x$cpus" || echo -e "\033[1;33mProcesador: \033[1;37m???"
-[[ "$clock" ]] && echo -e "\033[1;31mFrequecia de Operación: \033[1;37m$clock MHz" || echo -e "\033[1;33mFrequecia de Operación: v???"
+echo -e "\033[1;31mNucleos:\033[1;37m $cpucores"
+[[ "$clock" ]] && echo -e "\033[1;31mFrequecia de Operación: \033[1;37m$clock MHz" || echo -e "\033[1;33mFrequecia de Operación: \033[1;37m???"
+echo -e "\033[1;31mMemoria Cache:\033[1;37m$cache"
 echo -e "\033[1;31mArquitetura: \033[1;37m$(uname -m)"
 echo -e "\033[1;31mUtilizado:: \033[1;37m$(ps aux  | awk 'BEGIN { sum = 0 }  { sum += sprintf("%f",$3) }; END { printf " " "%.2f" "%%", sum}')"
+
 # MEMORIA RAM
 echo ""
 echo -e "\033[1;32mMEMORIA RAM \033[0m"
+totalram=$(free | grep Mem | awk '{print $2}')
+usedram=$(free | grep Mem | awk '{print $3}')
+freeram=$(free | grep Mem | awk '{print $4}')
+usoram=$(free -m | awk 'NR==2{printf "%.2f%%\t\t", $3*100/$2 }')
+swapram=$(cat /proc/meminfo | grep SwapTotal | awk '{print $2}')
 echo -e "\033[1;31mTotal: \033[1;37m$(($totalram / 1024))"
 echo -e "\033[1;31mEn Uso: \033[1;37m$(($usedram / 1024))"
 echo -e "\033[1;31mLibre: \033[1;37m$(($freeram / 1024))"
+echo -e "\033[1;31mUtilizado: \033[37m$usoram"
 echo -e "\033[1;31mSwap: \033[1;37m$(($swapram / 1024))MB"
+
 # TEMPO ONLINE
 echo ""
 echo -e "\033[1;32mTIEMPO ONLINE \033[0m"
