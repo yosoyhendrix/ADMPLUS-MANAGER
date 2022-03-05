@@ -162,9 +162,9 @@ echo -e "\033[1;33mBLOQUEIO\033[1;37m TORRENT \033[1;33mAPLICADO !\033[0m"
 echo ""
 echo -e "\033[1;32mFIREWALL APLICADO CON ÉXITO !"
 sleep 3
-menu
+ferramentascodes
 else
 	sleep 1
-	menu
+	ferramentascodes
 fi
 fi
