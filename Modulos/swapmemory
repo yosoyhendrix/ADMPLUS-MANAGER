@@ -4,9 +4,9 @@ fun_swap() {
     clear
 		echo -e "\E[44;1;37m            GESTIONAR MEMORIA VIRTUAL             \E[0m"
         echo ""
-        echo -e "\033[1;31mSwap es un ·rea de intercambio utilizada para aumentar la cantidad de memoria RAM \033[0m"
-        echo -e "\033[1;31m(RECOMENDADO PARA M¡QUINAS CON POCA RAM). \033[0m"
-        echo -e "\033[1;31mAntes de activar, conozca la cantidad de almacenamiento que tiene su m·quina, \033[0m"
+        echo -e "\033[1;31mSwap es un √°rea de intercambio utilizada para aumentar la cantidad de \033[0m"
+        echo -e "\033[1;31mmemoria RAM (RECOMENDADO PARA M√ÅQUINAS CON POCA RAM). \033[0m"
+        echo -e "\033[1;31mAntes de activar, conozca la cantidad de almacenamiento que tiene su m√°quina, \033[0m"
         echo -e "\033[1;31msiempre deje mucho espacio de almacenamiento para evitar choques. \033[0m"
         echo ""
 		echo -e "\033[1;31m[\033[1;36m1\033[1;31m] \033[1;37m‚Ä¢ \033[1;33mACTIVAR O CAMBIAR VALOR SWAP \033[0m"
