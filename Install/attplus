@@ -47,7 +47,6 @@ chmod +x $_Ink/list > /dev/null 2>&1
 
 function verif_db () {
 [[ -f "$HOME/usuarios.db" ]] && {
-    echo -e "\033[0;34m═════════════════════════════════════════════════\033[0m"
 	echo -e "\033[1;31m¡ATENCIÓN! \033[0m"
     echo -e "\033[1;33mUna base de datos de usuarios \033[1;32m(usuarios.db) \033[1;33mFue" 
     echo -e "ENCONTRADA!, Deseas Mantenerla para conservar sus limites"
