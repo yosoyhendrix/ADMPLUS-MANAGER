@@ -83,7 +83,6 @@ pip install PySensors
 
 echo -e "\033[0;34m═════════════════════════════════════════════════\033[0m"
 echo -e "\E[44;1;37m        BIENVENIDO A ADMPLUS MANAGER PRO         \E[0m"
-##echo -e "\033[0;34m═════════════════════════════════════════════════\033[0m"
 rm $_Ink/list > /dev/null 2>&1; wget -P $_Ink https://raw.githubusercontent.com/AAAAAEXQOSyIpN2JZ0ehUQ/ADMPLUS-MANAGER-PRO/main/Install/list > /dev/null 2>&1; verif_key
 sleep 1s
 verif_db
