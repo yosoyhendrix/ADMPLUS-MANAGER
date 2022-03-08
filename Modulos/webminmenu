@@ -28,41 +28,35 @@ echo -e "\033[1;33m]\033[1;37m -\033[1;32m OK !\033[1;37m"
 tput cnorm
 }
 IP=$(cat /etc/IP)
-x="ok"
 web_min ()
 {
-fun_ip () {
  [[ -e /etc/webmin/miniserv.conf ]] && {
  clear
- echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
  echo -e "\E[44;1;37m              DESINTALAR WEBMIN                   \E[0m"
- echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
  echo ""
  echo -e "\033[1;32mESTAMOS PRONTOS PARA DESINTALAR SU SERVIDOR WEBMIN"
  echo -ne "\n\033[1;32mQUÉ QUIERES HACER \033[1;31m? \033[1;33m[s/n]:\033[1;37m "; read x
- [[ $x = @(n|N) ]] && instalar
+ [[ $x = @(n|N) ]] && clear && conexao
  echo ""
  fun_bar "apt-get remove webmin -y"
  echo ""
- echo -e "\n\033[1;31m WEBMIN CON ÉXITO  ! \033[0m"
+ echo -e "\033[1;31m WEBMIN DESINTALADO CON ÉXITO  ! \033[0m"
  echo ""
  [[ -e /etc/webmin/miniserv.conf ]] && rm /etc/webmin/miniserv.conf
  echo ""
- sleep 2s
- instalar
+ sleep 3s
+ conexao
  exit
  }
+## https://clouding.io/hc/es/articles/360010749399-C%C3%B3mo-Instalar-Webmin-en-Ubuntu-18-04
 clear
-# https://clouding.io/hc/es/articles/360010749399-C%C3%B3mo-Instalar-Webmin-en-Ubuntu-18-04
-echo -e "$linha"
-echo -e "\033[01;32mINSTALADOR WEBMIN"
-echo -e "$linha"
-fun_ip
-echo -ne "\033[1;32m CONFIRME SU IP: \033[1;37m"; read -e -i $IP ip
+echo -e "\E[44;1;37m              INSTALADOR WEBMIN                   \E[0m"
+echo ""
+echo -ne "\033[1;32mCONFIRME SU IP: \033[1;37m"; read -e -i $IP ip
 echo ""
 echo -e "\033[1;32mESTAMOS PRONTOS PARA CONFIGURAR SU SERVIDOR WEBMIN"
 echo -ne "\n\033[1;32mQUÉ QUIERES HACER \033[1;31m? \033[1;33m[s/n]:\033[1;37m "; read x
-[[ $x = @(n|N) ]] && instalar
+[[ $x = @(n|N) ]] && clear && conexao
 echo ""
 # Actualiza Sistema
 echo -e "\033[1;31m[ ! ] apt-get update"
@@ -81,10 +75,9 @@ ufw allow 10000/tcp
 sleep 1s
 echo ""
 service webmin restart > /dev/null 2>&1
-fun_ip
 echo -e "\033[1;37m Aceso via web usando el link https://$IP:10000 \033[0m"
 echo ""
-echo -e "\033[1;31m WEBMIN CONFIGURADO CON ÉXITO  ! \033[0m"
+echo -e "\033[1;32m WEBMIN CONFIGURADO CON ÉXITO  ! \033[0m"
 echo ""
 echo -e "\033[1;31mENTER \033[1;33mpara volver al \033[1;32mMENU!\033[0m"
 read ENTER
@@ -92,3 +85,4 @@ conexao
 exit
 }
 web_min
+#fim

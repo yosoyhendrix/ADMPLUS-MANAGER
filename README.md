@@ -14,9 +14,9 @@ ADMPLUS-MANAGER-PRO (las dependencias faltantes se instalarán automáticamente)
 ```
 
 ## :scroll: Changelog
-**VERSION: 1.4**
+**VERSION: 1.5**
 
-* Error De Intalacion Reparado
+* Intalacion Reparado
 * Web Admin
 * Menu Apache
 
