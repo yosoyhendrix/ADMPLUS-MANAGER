@@ -1,4 +1,32 @@
 #!/bin/bash
+fun_bar () {
+comando[0]="$1"
+comando[1]="$2"
+ (
+[[ -e $HOME/fim ]] && rm $HOME/fim
+[[ ! -e /usr/lib/sshplus ]] && rm -rf /bin/menu > /dev/null 2>&1
+${comando[0]} -y > /dev/null 2>&1
+${comando[1]} -y > /dev/null 2>&1
+touch $HOME/fim
+ ) > /dev/null 2>&1 &
+ tput civis
+echo -ne "\033[1;33m["
+while true; do
+   for((i=0; i<18; i++)); do
+   echo -ne "\033[1;31m#"
+   sleep 0.1s
+   done
+   [[ -e $HOME/fim ]] && rm $HOME/fim && break
+   echo -e "\033[1;33m]"
+   sleep 1s
+   tput cuu1
+   tput dl1
+   echo -ne "\033[1;33m["
+done
+echo -e "\033[1;33m]\033[1;37m -\033[1;32m OK !\033[1;37m"
+tput cnorm
+}
+IP=$(cat /etc/IP)
 mportas () {
 unset portas
 portas_var=$(lsof -V -i tcp -P -n | grep -v "ESTABLISHED" |grep -v "COMMAND" | grep "LISTEN")
@@ -17,11 +45,12 @@ echo ""
 rm /etc/shadowsocks.json
 return 0
 }
-       echo -e "\033[1;32mINSTALADOR SHADOWSOCKS"
+       clear
+       echo -e "\E[44;1;37m            INSTALADOR SHADOWSOCKS                \E[0m"
        echo ""
        while true; do
-       echo -e "\033[0;32mSelecione ua Criptografia"
-       echo ""
+       echo -e "\033[1;32mSelecione ua Criptografia"
+       echo "\033[1;37m"
        encript=(aes-256-gcm aes-192-gcm aes-128-gcm aes-256-ctr aes-192-ctr aes-128-ctr aes-256-cfb aes-192-cfb aes-128-cfb camellia-128-cfb camellia-192-cfb camellia-256-cfb chacha20-ietf-poly1305 chacha20-ietf chacha20 rc4-md5)
        for((s=0; s<${#encript[@]}; s++)); do
        echo -e " [${s}] - ${encript[${s}]}"
@@ -29,7 +58,7 @@ return 0
        echo ""
        while true; do
        unset cript
-       echo -ne " Qual Criptografia? Escolha uma Opcao: "; read -e -i 0 cript
+       echo -ne "\033[1;32m Qual Criptografia? Escolha uma Opcao: "; read -e -i 0 cript
        [[ ${encript[$cript]} ]] && break
        echo -e "\033[0;31mOpcao Invalida"
        done
@@ -39,7 +68,7 @@ return 0
       done
 #ESCOLHENDO LISTEN
       echo ""
-      echo -e "\033[0;32mSelecione Uma Porta Para o Shadowsocks Escutar"
+      echo -e "\033[0;32mSeleccione Una Puerta Para Shadowsocks"
       echo ""
       while true; do
       unset Lport
@@ -64,7 +93,7 @@ echo -ne '"local_port":1080,\n"password":"' >> /etc/shadowsocks.json
 echo -ne "${Pass}" >> /etc/shadowsocks.json
 echo -ne '",\n"timeout":600,\n"method":"aes-256-cfb"\n}' >> /etc/shadowsocks.json
 echo ""
-echo -e "\033[0;33m STARTING\033[0m"
+echo -e "\033[0;32m STARTING\033[0m"
 ssserver -c /etc/shadowsocks.json -d start > /dev/null 2>&1
 value=$(ps x |grep ssserver|grep -v grep)
 [[ $value != "" ]] && value="\033[1;32mSTARTED" || value="\033[1;31mERROR"
