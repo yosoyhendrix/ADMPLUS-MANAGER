@@ -171,7 +171,7 @@ Port=$(echo {$port} | awk '{print $9}' | awk -F ":" '{print $2}')
 NOREPEAT+="$Port\n"
 case ${reQ} in
 apache|apache2)
-[[ -z $APC ]] && echo "" && local APC="\033[1;32mPUERTA: \033[1;37m"
+[[ -z $APC ]] && echo "" && local APC="\033[1;33mPUERTA\033[1;37m: \033[1;32m"
 APC+="$Port ";;
 esac
 done <<< "${portasVAR}"
