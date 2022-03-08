@@ -14,13 +14,11 @@ ADMPLUS-MANAGER-PRO (las dependencias faltantes se instalarán automáticamente)
 ```
 
 ## :scroll: Changelog
-**VERSION: 1.3**
+**VERSION: 1.4**
 
-* Websocket adicionado
-* v2ray adicionado
-* Chisel adicionado
-* DNS-Slow adicionado
-* Correccion de codigo
+* Error De Intalacion Reparado
+* Web Admin
+* Menu Apache
 
 ## :book: How it works
 * SSH coneccion.
