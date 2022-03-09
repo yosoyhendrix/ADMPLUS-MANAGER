@@ -57,7 +57,7 @@ vncserver
 echo ""
 echo -e "\033[1;32m VNC conecta usando o ip do vps na porta \033[1;37m5901"
 echo -e "\033[1;37m Ex: $IP:5901"
-echo -e "\033[1;32m Para acessar a interface gráfica") "
+echo -e "\033[1;32m Para acessar a interface gráfica "
 echo -e "\033[1;32m Faça o download da PlayStore: VNC VIWER"
 # VNC Desintala
 elif [[ $vnc != "" ]]; then
