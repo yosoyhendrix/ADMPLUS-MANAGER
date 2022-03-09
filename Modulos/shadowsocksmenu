@@ -70,7 +70,7 @@ exit
       done
 #ESCOLHENDO LISTEN
       echo ""
-      echo -e "\033[0;32mSeleccione Una Puerta Para Shadowsocks \033[0;37m"
+      echo -e "\033[1;32mSeleccione Una Puerta Para Shadowsocks \033[0;37m"
       while true; do
       unset Lport
       read -p " Listen Port: " Lport
@@ -79,10 +79,10 @@ exit
       done
 #INICIANDO
 echo ""
-echo -e "\033[0;32mDigite a Senha Shadowsocks \033[1;37m"
+echo -e "\033[1;32mDigite a Senha Shadowsocks \033[1;37m"
 read -p" Pass: " Pass
 echo ""
-echo -e "\033[0;32mINSTALANDO SHADOWSOCKS"
+echo -e "\033[1;32mINSTALANDO SHADOWSOCKS"
 echo ""
 fun_bar 'apt-get install python-pip python-m2crypto -y'
 fun_bar 'pip install shadowsocks'
@@ -94,7 +94,7 @@ echo -ne '"local_port":1080,\n"password":"' >> /etc/shadowsocks.json
 echo -ne "${Pass}" >> /etc/shadowsocks.json
 echo -ne '",\n"timeout":600,\n"method":"aes-256-cfb"\n}' >> /etc/shadowsocks.json
 echo ""
-echo -e "\033[0;32m STARTING\033[0m"
+echo -e "\033[1;32m STARTING\033[0m"
 ssserver -c /etc/shadowsocks.json -d start > /dev/null 2>&1
 value=$(ps x |grep ssserver|grep -v grep)
 [[ $value != "" ]] && value="\033[1;32mSTARTED" || value="\033[1;31mERROR"
