@@ -2186,7 +2186,7 @@ exit 0' >$RCLOCAL
 				exit;
 				;;
 			15 | 15)
-				installvnc
+				vnc_inst
 				exit;
 				;;
 			16 | 16)

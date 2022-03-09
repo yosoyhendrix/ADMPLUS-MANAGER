@@ -47,8 +47,8 @@ if [[ $vnc = "" ]]; then
 clear
 echo -e "\E[44;1;37m                       VNC                        \E[0m"
 echo ""
-echo -ne "\033[0;32mVNC não está ativo Deseja ativar? [S/N]: "; read x
-[[ $x = @(n|N) ]] && echo "" && return
+echo -ne "\033[1;32mVNC não está ativo Deseja ativar? [S/N]: "; read x
+[[ $x = @(n|N) ]] && echo "" && conexao
 echo ""
 echo -e " \033[1;36mInstalling VNC:"
 fun_bar 'apt-get install xfce4 xfce4-goodies gnome-icon-theme tightvncserver -y'
@@ -71,8 +71,8 @@ elif [[ $vnc != "" ]]; then
 clear
 echo -e "\E[44;1;37m                       VNC                        \E[0m"
 echo ""
-echo -ne "\033[0;32mSi VNC está ativo Deseja desabilitar? [S/N]: "; read x
-[[ $x = @(n|N) ]] && echo "" && return
+echo -ne "\033[1;32mSi VNC está ativo Deseja desabilitar? [S/N]: "; read x
+[[ $x = @(n|N) ]] && echo "" && conexao
 echo ""
 vncserver -kill :1 > /dev/null 2>&1
 echo -e " \033[1;36mremoving VNC:"
@@ -86,6 +86,8 @@ vncserver -kill :1 > /dev/null 2>&1
 vncserver -kill :2 > /dev/null 2>&1
 vncserver -kill :3 > /dev/null 2>&1
 fi
-msg -bar
+echo -ne "\n\033[1;31mENTER \033[1;33mpara volver al \033[1;32mMENU!\033[0m"; read
+conexao
+exit
 }
 vnc_fun
