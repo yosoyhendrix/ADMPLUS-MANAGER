@@ -44,6 +44,9 @@ vnc=""
 fi
 meu_ip
 if [[ $vnc = "" ]]; then
+clear
+echo -e "\E[44;1;37m                       VNC                        \E[0m"
+echo ""
 echo -ne "\033[0;32mVNC não está ativo Deseja ativar? [S/N]: "; read x
 [[ $x = @(n|N) ]] && echo "" && return
 echo ""
@@ -65,6 +68,9 @@ echo -e "\033[1;32m Para acessar a interface gráfica "
 echo -e "\033[1;32m Faça o download da PlayStore: VNC VIWER"
 # VNC Desintala
 elif [[ $vnc != "" ]]; then
+clear
+echo -e "\E[44;1;37m                       VNC                        \E[0m"
+echo ""
 echo -ne "\033[0;32mSi VNC está ativo Deseja desabilitar? [S/N]: "; read x
 [[ $x = @(n|N) ]] && echo "" && return
 echo ""
