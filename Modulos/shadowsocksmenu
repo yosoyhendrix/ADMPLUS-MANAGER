@@ -40,7 +40,7 @@ echo -e "$portas"
 fun_shadowsocks () {
 [[ -e /etc/shadowsocks.json ]] && {
 [[ $(ps x|grep ssserver|grep -v grep|awk '{print $1}') != "" ]] && kill -9 $(ps x|grep ssserver|grep -v grep|awk '{print $1}') > /dev/null 2>&1 && ssserver -c /etc/shadowsocks.json -d stop > /dev/null 2>&1
-echo -e "\033[0;31mSHADOWSOCKS PARADO"
+echo -e "\033[1;31mSHADOWSOCKS PARADO"
 echo ""
 rm /etc/shadowsocks.json
 sleep 3s
