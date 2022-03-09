@@ -43,14 +43,16 @@ fun_shadowsocks () {
 echo -e "\033[0;31mSHADOWSOCKS PARADO"
 echo ""
 rm /etc/shadowsocks.json
-return 0
+sleep 3s
+conexao
+exit
 }
        clear
        echo -e "\E[44;1;37m            INSTALADOR SHADOWSOCKS                \E[0m"
        echo ""
        while true; do
-       echo -e "\033[1;32mSelecione ua Criptografia"
-       echo "\033[1;37m"
+       echo -e "\033[1;32mSelecione ua Criptografia \033[1;37m"
+       echo  ""
        encript=(aes-256-gcm aes-192-gcm aes-128-gcm aes-256-ctr aes-192-ctr aes-128-ctr aes-256-cfb aes-192-cfb aes-128-cfb camellia-128-cfb camellia-192-cfb camellia-256-cfb chacha20-ietf-poly1305 chacha20-ietf chacha20 rc4-md5)
        for((s=0; s<${#encript[@]}; s++)); do
        echo -e " [${s}] - ${encript[${s}]}"
@@ -58,7 +60,7 @@ return 0
        echo ""
        while true; do
        unset cript
-       echo -ne "\033[1;32m Qual Criptografia? Escolha uma Opcao: "; read -e -i 0 cript
+       echo -ne "\033[1;32mQual Criptografia? Escolha uma Opcao: "; read -e -i 0 cript
        [[ ${encript[$cript]} ]] && break
        echo -e "\033[0;31mOpcao Invalida"
        done
@@ -68,8 +70,7 @@ return 0
       done
 #ESCOLHENDO LISTEN
       echo ""
-      echo -e "\033[0;32mSeleccione Una Puerta Para Shadowsocks"
-      echo ""
+      echo -e "\033[0;32mSeleccione Una Puerta Para Shadowsocks \033[0;37m"
       while true; do
       unset Lport
       read -p " Listen Port: " Lport
@@ -78,10 +79,10 @@ return 0
       done
 #INICIANDO
 echo ""
-echo -e "\033[0;32mDigite a Senha Shadowsocks"
+echo -e "\033[0;32mDigite a Senha Shadowsocks \033[1;37m"
 read -p" Pass: " Pass
 echo ""
-echo -e "\033[0;32mInstalando"
+echo -e "\033[0;32mINSTALANDO SHADOWSOCKS"
 echo ""
 fun_bar 'apt-get install python-pip python-m2crypto -y'
 fun_bar 'pip install shadowsocks'
@@ -100,6 +101,8 @@ value=$(ps x |grep ssserver|grep -v grep)
 echo ""
 echo -e "\033[0;32m ${value} "
 echo ""
-return 0
+sleep 3s
+conexao
+exit
 }
 fun_shadowsocks
