@@ -2100,6 +2100,7 @@ exit 0' >$RCLOCAL
 				xv2ray="\033[1;31m○ "
 			}
 			[[ "$(netstat -tunlp | grep 'apache2' | wc -l)" != '0' ]] && {
+				echo -e "\033[1;32mSERVICIO: \033[1;33mAPACHE2 \033[1;32mPUERTA: \033[1;37m$(netstat -nplt | grep 'apache2' | awk -F ":" {'print $4'} | xargs)"
 				apache2="\033[1;32m◉ "
 			} || {
 				apache2="\033[1;31m○ "
