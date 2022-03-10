@@ -185,11 +185,11 @@ codename=$(cat /etc/lsb-release |grep CODENAME |awk -F = {'print $2'})
 based=$(cat /etc/*release | grep ID_LIKE | awk -F "=" '{print $2}')
 echo -e "\033[1;31mNombre de la máquina: \033[1;37m$(hostname)"
 echo -e "\033[1;31mDirección IP: \033[1;37m$(ip addr | grep inet | grep -v inet6 | grep -v "host lo" | awk '{print $2}' | awk -F "/" '{print $1}')"
-[[ "$system" ]] && echo -e "\033[1;31mSistema: \033[1;37m$system" || echo -e "\033[1;33mSistema: \033[1;37m???"
-echo -e "\033[1;31mCodeName: \033[1;37m$codename"
+[[ "$system" ]] && echo -e "\033[1;31mSistema: \033[1;37m$system" || echo -e "\033[1;31mSistema: \033[1;37m???"
+[[ "$codename" ]] && echo -e "\033[1;31mCodeName: \033[1;37m$codename" || echo -e "\033[1;31mCodeName: \033[1;37m???"
 echo -e "\033[1;31mKernel: \033[1;37m$(uname -s)"
 echo -e "\033[1;31mKernel Release: \033[1;37m$(uname -r)"
-[[ "$based" ]] && echo -e "\033[1;31mBasado en: \033[1;37m$based" || echo -e "\033[1;33mBasado en: \033[1;37m???"
+[[ "$based" ]] && echo -e "\033[1;31mBasado en: \033[1;37m$based" || echo -e "\033[1;31mBasado en: \033[1;37m???"
 
 # PROCESSADOR
 echo ""
