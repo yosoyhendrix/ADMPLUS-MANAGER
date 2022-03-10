@@ -180,6 +180,8 @@ if [ ! /proc/meminfo ]; then echo -e "\033[1;31mSistema No Soportado" && echo ""
 
 # SISTEMA OPERACIONAL
 echo -e "\033[1;32mSISTEMA OPERACIONAL \033[0m"
+
+[[ ! -e /etc/lsb-release ]] && touch /etc/lsb-release > /dev/null 2>&1
 system=$(cat /etc/issue.net)
 codename=$(cat /etc/lsb-release |grep CODENAME |awk -F = {'print $2'})
 based=$(cat /etc/*release | grep ID_LIKE | awk -F "=" '{print $2}')
