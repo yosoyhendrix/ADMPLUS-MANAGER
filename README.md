@@ -6,7 +6,7 @@ Es un script con un conjunto de características y herramientas adecuadas para
    VPN, tiene una interfaz agradable aportando información detallada sobre la máquina
    y los usuarios ...
 
-## :book: Installation
+## :book: Installation Beta
 
 apt-get update -y; apt-get upgrade -y; wget https://raw.githubusercontent.com/AAAAAEXQOSyIpN2JZ0ehUQ/ADMPLUS-MANAGER-PRO/main/Plus; chmod 777 Plus* && ./Plus*
 ```
