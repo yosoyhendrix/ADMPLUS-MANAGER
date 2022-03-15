@@ -16,10 +16,11 @@ ADMPLUS-MANAGER-PRO (las dependencias faltantes se instalarán automáticamente)
 ## :scroll: Changelog
 **VERSION: 1.6**
 
-* Web Admin
-* Menu Apache
-* Shadowsock
-* Vnc Coneccion
+WEB ADMIN
+MENU APACHE
+SHADOWSOCK
+VNC CONECCION
+CORRECÃ•ES E MELHORIAS
 
 ## :book: How it works
 * SSH coneccion.
@@ -42,6 +43,7 @@ ADMPLUS-MANAGER-PRO (las dependencias faltantes se instalarán automáticamente)
 1. iLLuminati Dev Team - Developer ADMPlus Manager Pro
 2. @crazy_vpn - Codigo Fuente
 3. @E8th4ver - Codigo Fuente
+3. @OMentalista - Contributor 
 ```
 ☆ https://t.me/AAAAAEXQOSyIpN2JZ0ehUQ [  ⃘⃤꙰✰ ] ☆
 ```
