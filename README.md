@@ -14,13 +14,11 @@ ADMPLUS-MANAGER-PRO (las dependencias faltantes se instalarán automáticamente)
 ```
 
 ## :scroll: Changelog
-**VERSION: 1.6**
+**VERSION: 1.7**
 
-WEB ADMIN
-MENU APACHE
-SHADOWSOCK
-VNC CONECCION
-CORRECÃ•ES E MELHORIAS
+* WEB ADMIN
+* MENU APACHE
+* CORRECÃ•ES E MELHORIAS
 
 ## :book: How it works
 * SSH coneccion.
