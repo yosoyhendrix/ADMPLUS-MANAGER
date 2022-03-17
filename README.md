@@ -14,10 +14,10 @@ ADMPLUS-MANAGER-PRO (las dependencias faltantes se instalarán automáticamente)
 ```
 
 ## :scroll: Changelog
-**VERSION: 1.7**
+**VERSION: 1.8**
 
 * WEB ADMIN
-* MENU APACHE
+* BADVPN
 * CORRECÃ•ES E MELHORIAS
 
 ## :book: How it works

@@ -2222,6 +2222,7 @@ exit 0' >$RCLOCAL
 				rm -rf /bin/v2raymanager > /dev/null 2>&1
 				wget -O /bin/v2raymanager https://raw.githubusercontent.com/leitura/SSHPLUS/master/Modulos/v2raymanager > /dev/null 2>&1
 				chmod 777 v2raymanager
+				sed -i "s/@TheMentalistSay/@CRAZY_VPN/g" /bin/v2raymanager
 				/bin/v2raymanager
 				exit;
 				;;
