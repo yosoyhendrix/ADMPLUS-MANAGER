@@ -2218,7 +2218,6 @@ exit 0' >$RCLOCAL
 				fun_chisel
 				;;
 			11 | 11)
-				##v2raymanager
 				rm -rf /bin/v2raymanager > /dev/null 2>&1
 				wget -O /bin/v2raymanager https://raw.githubusercontent.com/leitura/SSHPLUS/master/Modulos/v2raymanager > /dev/null 2>&1
 				chmod 777 /bin/v2raymanager
