@@ -298,7 +298,7 @@ echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━�
 echo -e "\E[44;1;37m              GESTIONAR SISTEMA                   \E[0m"
 echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 echo ""
-echo -e "[\033[1;36m01\033[1;31m] \033[1;37m• \033[1;33mMONITOREO DEL SISTEMA \033[1;31m   
+echo -e "\033[1;31m[\033[1;36m01\033[1;31m] \033[1;37m• \033[1;33mMONITOREO DEL SISTEMA \033[1;31m   
 [\033[1;36m02\033[1;31m] \033[1;37m• \033[1;33mPROCESOS DEL SISTEMA \033[1;31m
 [\033[1;36m03\033[1;31m] \033[1;37m• \033[1;33mTRAFICO DEL SISTEMA\033[1;31m                  
 [\033[1;36m04\033[1;31m] \033[1;37m• \033[1;33mINFORMACION DEL SISTEMA \033[1;31m
