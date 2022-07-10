@@ -8,6 +8,10 @@ y los usuarios ...
 
 ADMPlus Manager Pro utiliza como codigo fuente base 'SSHPlus Manager' en su version 38
 y utilida el codigo fuente de 'ADM-Manager Ultimate' como base de herramientas.
+
+ADMPlus Manager Pro esta en proceso de traduccion al español y adaptacion de herramientas con en foque a 
+la estabilidad de uso de VPN si deceas ayudar puedes traducir los archivos y adaptar 
+las herramientas y subirla a nuestro grupo OFICIAL en [telegam](https://t.me/AAAAAEXQOSyIpN2JZ0ehUQ)
     
 ## :book: Installation (Beta Estable)
 ```
