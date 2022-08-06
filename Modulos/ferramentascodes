@@ -173,7 +173,7 @@ function onapp_ssh () {
 systen_info () {
 clear
 
-echo -e "\E[44;1;37m               INFORMACOES DO VPS                  \E[0m"
+echo -e "\E[44;1;37m               DETALHES DO SISTEMA                 \E[0m"
 echo ""
 if [ ! /proc/cpuinfo ]; then echo -e "\033[1;31mSistema No Soportado" && echo ""; return 1; fi
 if [ ! /etc/issue.net ]; then echo -e "\033[1;31mSistema No Soportado" && echo ""; return 1; fi
@@ -239,7 +239,7 @@ done
 }
 
 limpar_caches () {
-echo -e "\033[1;32mINICIANDO O CACHE LIMPO... \033[0m"
+echo -e "\033[1;32mINICIANDO O LIMPAR CACHE SISTEMA... \033[0m"
 echo ""
 (
 VE="\033[1;33m" && MA="\033[1;31m" && DE="\033[1;32m"
@@ -322,8 +322,8 @@ echo -e "[\033[1;36m01\033[1;31m] \033[1;37m• \033[1;33mSPEEDTEST \033[1;31m
 [\033[1;36m08\033[1;31m] \033[1;37m• \033[1;33mTCPSPEED $tcp\033[1;31m
 [\033[1;36m09\033[1;31m] \033[1;37m• \033[1;33mONLINE APP $stson \033[1;31m
 [\033[1;36m10\033[1;31m] \033[1;37m• \033[1;33mMEMORIA VIRTUAL \033[1;31m 
-[\033[1;36m11\033[1;31m] \033[1;37m• \033[1;33mINFORMACOES DO VPS \033[1;31m
-[\033[1;36m12\033[1;31m] \033[1;37m• \033[1;33mLIMPAR CACHE DO SISTEMA \033[1;31m
+[\033[1;36m11\033[1;31m] \033[1;37m• \033[1;33mDETALHES DO SISTEMA \033[1;31m
+[\033[1;36m12\033[1;31m] \033[1;37m• \033[1;33mLIMPAR CACHE SISTEMA \033[1;31m
 [\033[1;36m00\033[1;31m] \033[1;37m• \033[1;33mVOLTAR AO MENU \033[1;32m<\033[1;33m<\033[1;31m< \033[1;31m"
 echo ""
 echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
