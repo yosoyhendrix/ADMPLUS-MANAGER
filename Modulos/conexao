@@ -2072,7 +2072,7 @@ exit 0' >$RCLOCAL
 		while true $x != "ok"; do
 			[[ ! -e '/home/sshplus' ]] && exit 0
 			clear
-			echo -e "\E[44;1;37m                MENU DE INSTALACIONES           \E[0m\n"
+			echo -e "\E[44;1;37m                MENU DE INSTALACOES             \E[0m\n"
 			[[ "$(netstat -tlpn | grep 'sshd' | wc -l)" != '0' ]] && {
 			        echo -e "\033[1;32mSERVICIO: \033[1;33mOPENSSH \033[1;32mPUERTA: \033[1;37m$(netstat -nplt | grep 'sshd' | awk {'print $4'} | cut -d: -f2 | xargs)"
 				sts6="\033[1;32m◉ "
@@ -2175,13 +2175,13 @@ exit 0' >$RCLOCAL
 [\033[1;36m13\033[1;31m] \033[1;37m• \033[1;33mWEBMIN $webmin \033[1;31m
 [\033[1;36m14\033[1;31m] \033[1;37m• \033[1;33mSHADOWSOCKS $ssserver \033[1;31m
 [\033[1;36m15\033[1;31m] \033[1;37m• \033[1;33mVNC CONECCION $vnc \033[1;31m
-[\033[1;36m16\033[1;31m] \033[1;37m• \033[1;33mVOLVER AL MENU \033[1;32m<\033[1;33m<\033[1;31m< \033[1;31m
-[\033[1;36m00\033[1;31m] \033[1;37m• \033[1;33mSALIR DEL MENU \033[1;32m<\033[1;33m<\033[1;31m< \033[0m"
+[\033[1;36m16\033[1;31m] \033[1;37m• \033[1;33mVOLTAR AO MENU \033[1;32m<\033[1;33m<\033[1;31m< \033[1;31m
+[\033[1;36m00\033[1;31m] \033[1;37m• \033[1;33mSAIR DO MENU \033[1;32m<\033[1;33m<\033[1;31m< \033[0m"
 			echo ""
 			echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 			echo ""
 			tput civis
-			echo -ne "\033[1;32mOPCION \033[1;33m?\033[1;31m?\033[1;37m "
+			echo -ne "\033[1;32mOQUE DESEJA FAZER \033[1;33m?\033[1;31m?\033[1;37m "
 			read x
 			tput cnorm
 			clear
@@ -2245,13 +2245,13 @@ exit 0' >$RCLOCAL
 				;;
 
 			0 | 00)
-				echo -e "\033[1;31mSalindo...\033[0m"
+				echo -e "\033[1;31mSaindo...\033[0m"
 				sleep 1
 				clear
 				exit;
 				;;
 			*)
-				echo -e "\033[1;31mOpción inválida !\033[0m"
+				echo -e "\033[1;31mOpcao invalida !\033[0m"
 				sleep 1
 				;;
 			esac
