@@ -8,7 +8,7 @@ ADMPlus Manager Pro esta en proceso de adaptación de herramientas con en foque 
 la estabilidad de uso de VPN si deseas ayudar puedes traducir los archivos y adaptar 
 las herramientas y subirla a nuestro grupo oficial en [Telegram](https://t.me/AAAAAEXQOSyIpN2JZ0ehUQ).
   
-## :book: Installation (Beta Estable)
+## :book: Installation (!Beta Inestable)
 ```
 apt-get update -y; 
 apt-get upgrade -y; 
