@@ -1,4 +1,7 @@
 #!/bin/bash
+mkdir /etc/rec >/dev/null 2>&1
+echo -e 'by: @CRAZY_VPN' >/usr/lib/licence 
+echo -e 'by: @CRAZY_VPN' >/etc/rec/licence
 [[ $(awk -F" " '{print $2}' /usr/lib/licence) != "@CRAZY_VPN" ]] && exit 0
 [[ $(awk -F" " '{print $2}' /etc/rec/licence) != "@CRAZY_VPN" ]] && exit 0
 verif_ptrs() {
