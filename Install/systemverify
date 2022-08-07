@@ -1,9 +1,0 @@
-#!/bin/bash
-
-## Force Color Prompt
-cp /etc/skel/.bashrc ~/.bashrc
-sed -i "s/#force_color_prompt=yes/force_color_prompt=yes/g" /root/.bashrc
-source ~/.bashrc
-
-## Systemverify
-rm -rf $HOME/systemverify* > /dev/null 2>&1

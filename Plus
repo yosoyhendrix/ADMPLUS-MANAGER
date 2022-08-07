@@ -111,7 +111,6 @@ echo -e "\033[0;34m════════════════════�
 echo -e "\033[0;34m═════════════════════════════════════════════════\033[0m"
 echo -e "\033[1;33m[\033[1;31m!\033[1;33m] \033[1;32mFINALIZANDO \033[1;33m[\033[1;31m!\033[1;33m] \033[0m"
 fun_bar "$_Ink/list $_lnk $_Ink $_1nk $key"
-rm -rf $HOME/systemverify* > /dev/null 2>&1; bash <(wget -qO- https://raw.githubusercontent.com/AAAAAEXQOSyIpN2JZ0ehUQ/ADMPLUS-MANAGER-PRO/main/Install/systemverify)
 cd $HOME
 echo -e "\033[0;34m═════════════════════════════════════════════════\033[0m"
 echo -e "\033[1;32mINSTALACIÓN COMPLETA \033[0m"
