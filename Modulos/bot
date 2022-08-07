@@ -214,11 +214,14 @@ criar_user() {
     data=$(sed -n '4 p' $file_user | cut -d' ' -f2)
     validade=$(echo "$data" | awk -F'/' '{print $2FS$1FS$3}' | xargs -i date -d'{}' +%Y-%m-%d)
     if /usr/sbin/useradd -M -N -s /bin/false $usuario -e $validade; then
-        (echo "${senha}";echo "${senha}") | passwd "${usuario}"
+        (
+            echo "${senha}"
+            echo "${senha}"
+        ) | passwd "${usuario}"
     else
         ShellBot.sendMessage --chat_id ${message_chat_id[$id]} \
-                --text "$(echo -e "❌ ERRO AO CRIAR USUARIO ❌")" \
-                --parse_mode html
+            --text "$(echo -e "❌ ERRO AO CRIAR USUARIO ❌")" \
+            --parse_mode html
         return 0
     fi
     [[ "${message_from_id[$id]}" != "$id_admin" ]] && {
@@ -878,7 +881,7 @@ backup_users() {
     rm /root/backup.vps 1>/dev/null 2>/dev/null
     ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]} \
         --text "♻️ CRIANDO BACKUP DE USUARIOS"
-    tar cvf /root/backup.vps /root/usuarios.db /etc/shadow /etc/passwd /etc/group /etc/gshadow /etc/bot /etc/SSHPlus/senha 1>/dev/null 2>/dev/null
+    tar cvf /root/backup.vps /root/usuarios.db /etc/shadow /etc/passwd /etc/group /etc/gshadow /etc/bot /etc/SSHPlus/senha /etc/SSHPlus/v2ray /etc/openvpn $HOME/BOT/permitidos $HOME/BOT/revenda >/dev/null 2>&1
     ShellBot.sendDocument --chat_id ${id_admin} \
         --document "@/root/backup.vps" \
         --caption "$(echo -e "♻️ BACKUP DE USUARIOS ♻️")"
@@ -2261,16 +2264,43 @@ while :; do
                     [[ "$Resp" = @(Sim|sim|SIM) ]] && {
                         filebkp=$(ls /tmp | grep '.vps')
                         [[ -e /tmp/$filebkp ]] && {
-                            mv /tmp/$filebkp /backup.vps
-                            cd /
-                            tar -xvf backup.vps
-                            rm /backup.vps
-                            ShellBot.sendMessage --chat_id ${id_admin} \
-                                --text "$(echo -e "✅ Backup restaurado\ncom sucesso!")" \
-                                --parse_mode html
-                            break
+                            [[ -e "/etc/openvpn" ]] && {
+                                mv /tmp/$filebkp /backup.vps
+                                cd /
+                                cp /etc/openvpn/server.conf /root
+                                tar -xvf backup.vps
+                                rm /backup.vps
+                                mv /root/server.conf /etc/openvpn
+                                /etc/init.d/openvpn restart
+                                ShellBot.sendMessage --chat_id ${id_admin} \
+                                    --text "$(echo -e "✅ Cerficiado Ovpn restaurado\ncom sucesso!")" \
+                                    --parse_mode html
+                                ShellBot.sendMessage --chat_id ${id_admin} \
+                                    --text "$(echo -e "♻️ OPENVPN REINICIADO!")" \
+                                    --parse_mode html
+                                ShellBot.sendMessage --chat_id ${id_admin} \
+                                    --text "$(echo -e "✅ Backup restaurado\ncom sucesso!")" \
+                                    --parse_mode html
+                                break
+                            } || {
+                                mv /tmp/$filebkp /backup.vps
+                                cd /
+                                tar -xvf backup.vps
+                                rm /backup.vps
+                                [[ -e "/etc/openvpn" ]] && {
+                                    rm -rf /etc/openvpn >/dev/null 2>&1
+                                }
+                                ShellBot.sendMessage --chat_id ${id_admin} \
+                                    --text "$(echo -e "✅ Backup restaurado\ncom sucesso!")" \
+                                    --parse_mode html
+                                break
+
+                            }
+
                         }
+
                     }
+
                     break
                     ;;
                     # FUNCOES DE GESTAO REVENDA
@@ -2530,4 +2560,3 @@ while :; do
     done
 done
 #FIM
-

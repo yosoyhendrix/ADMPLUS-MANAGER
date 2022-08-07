@@ -2072,60 +2072,56 @@ exit 0' >$RCLOCAL
 		while true $x != "ok"; do
 			[[ ! -e '/home/sshplus' ]] && exit 0
 			clear
-			echo -e "\E[44;1;37m                MENU DE INSTALACOES             \E[0m\n"
-			[[ "$(netstat -tlpn | grep 'sshd' | wc -l)" != '0' ]] && {
-			        echo -e "\033[1;32mSERVICIO: \033[1;33mOPENSSH \033[1;32mPUERTA: \033[1;37m$(netstat -nplt | grep 'sshd' | awk {'print $4'} | cut -d: -f2 | xargs)"
-				sts6="\033[1;32m◉ "
+			echo -e "\E[44;1;37m                MODO DE CONEXAO                 \E[0m\n"
+			echo -e "\033[1;32mSERVICO: \033[1;33mOPENSSH \033[1;32mPORTA: \033[1;37m$(grep 'Port' /etc/ssh/sshd_config | cut -d' ' -f2 | grep -v 'no' | xargs)" && sts6="\033[1;32m◉ "
+			[[ "$(netstat -tlpn | grep 'docker' | wc -l)" != '0' ]] && {
+				echo -e "\033[1;32mSERVICO: \033[1;33mCHISEL: \033[1;32mPORTA: \033[1;37m$(netstat -nplt | grep 'docker' | awk {'print $4'} | cut -d: -f2 | xargs)"
+				sts8="\033[1;32m◉ "
 			} || {
-				sts6="\033[1;31m○ "
+				sts8="\033[1;31m○ "
+			}
+			[[ "$(ps x | grep 'slowdns' | grep -v 'grep' | wc -l)" != '0' ]] && {
+				sts9="\033[1;32m◉ "
+			} || {
+				sts9="\033[1;31m○ "
 			}
 			[[ "$(netstat -tlpn | grep 'sslh' | wc -l)" != '0' ]] && {
-			        echo -e "\033[1;32mSERVICIO: \033[1;33mSSLH: \033[1;32mPUERTA: \033[1;37m$(netstat -nplt | grep 'sslh' | awk {'print $4'} | cut -d: -f2 | xargs)"
+				echo -e "\033[1;32mSERVICO: \033[1;33mSSLH: \033[1;32mPORTA: \033[1;37m$(netstat -nplt | grep 'sslh' | awk {'print $4'} | cut -d: -f2 | xargs)"
 				sts7="\033[1;32m◉ "
 			} || {
 				sts7="\033[1;31m○ "
 			}
 
 			[[ "$(netstat -tlpn | grep 'openvpn' | wc -l)" != '0' ]] && {
-				echo -e "\033[1;32mSERVICIO: \033[1;33mOPENVPN: \033[1;32mPUERTA: \033[1;37m$(netstat -nplt | grep 'openvpn' | awk {'print $4'} | cut -d: -f2 | xargs)"
+				echo -e "\033[1;32mSERVICO: \033[1;33mOPENVPN: \033[1;32mPORTA: \033[1;37m$(netstat -nplt | grep 'openvpn' | awk {'print $4'} | cut -d: -f2 | xargs)"
 				sts5="\033[1;32m◉ "
 			} || {
 				sts5="\033[1;31m○ "
 			}
+
 			[[ "$(netstat -tlpn | grep 'python' | wc -l)" != '0' ]] && {
-				echo -e "\033[1;32mSERVICIO: \033[1;33mPROXY SOCKS \033[1;32mPUERTA: \033[1;37m$(netstat -nplt | grep 'python' | awk {'print $4'} | cut -d: -f2 | xargs)"
+				echo -e "\033[1;32mSERVICO: \033[1;33mPROXY SOCKS \033[1;32mPORTA: \033[1;37m$(netstat -nplt | grep 'python' | awk {'print $4'} | cut -d: -f2 | xargs)"
 				sts4="\033[1;32m◉ "
 			} || {
 				sts4="\033[1;31m○ "
 			}
 			[[ -e "/etc/stunnel/stunnel.conf" ]] && {
-				echo -e "\033[1;32mSERVICIO: \033[1;33mSSL TUNNEL \033[1;32mPUERTA: \033[1;37m$(netstat -nplt | grep 'stunnel' | awk {'print $4'} | cut -d: -f2 | xargs)"
+				echo -e "\033[1;32mSERVICO: \033[1;33mSSL TUNNEL \033[1;32mPORTA: \033[1;37m$(netstat -nplt | grep 'stunnel' | awk {'print $4'} | cut -d: -f2 | xargs)"
 				sts3="\033[1;32m◉ "
 			} || {
 				sts3="\033[1;31m○ "
 			}
 			[[ "$(netstat -tlpn | grep 'dropbear' | wc -l)" != '0' ]] && {
-				echo -e "\033[1;32mSERVICIO: \033[1;33mDROPBEAR \033[1;32mPUERTA: \033[1;37m$(netstat -nplt | grep 'dropbear' | awk -F ":" {'print $4'} | xargs)"
+				echo -e "\033[1;32mSERVICO: \033[1;33mDROPBEAR \033[1;32mPORTA: \033[1;37m$(netstat -nplt | grep 'dropbear' | awk -F ":" {'print $4'} | xargs)"
 				sts2="\033[1;32m◉ "
 			} || {
 				sts2="\033[1;31m○ "
 			}
 			[[ "$(netstat -tlpn | grep 'squid' | wc -l)" != '0' ]] && {
-			        echo -e "\033[1;32mSERVICIO: \033[1;33mSQUID \033[1;32mPUERTA: \033[1;37m$(netstat -nplt | grep 'squid' | awk -F ":" {'print $4'} | xargs)"
+				echo -e "\033[1;32mSERVICO: \033[1;33mSQUID \033[1;32mPORTA: \033[1;37m$(netstat -nplt | grep 'squid' | awk -F ":" {'print $4'} | xargs)"
 				sts1="\033[1;32m◉ "
 			} || {
 				sts1="\033[1;31m○ "
-			}
-			[[ "$(ps x | grep 'slow_dns' | grep -v 'grep'|wc -l)" != '0' ]] && {
-				sts8="\033[1;32m◉ "
-			} || {
-				sts8="\033[1;31m○ "
-			}
-			[[ "$(netstat -tlpn | grep 'docker' | wc -l)" != '0' ]] && {
-			        echo -e "\033[1;32mSERVICIO: \033[1;33mCHISEL: \033[1;32mPUERTA: \033[1;37m$(netstat -nplt | grep 'docker' | awk {'print $4'} | cut -d: -f2 | xargs)"
-				sts9="\033[1;32m◉ "
-			} || {
-				sts9="\033[1;31m○ "
 			}
 			[[ "$(netstat -tunlp | grep 'trojan-go' | wc -l)" != '0' ]] && {
 				trojansts="\033[1;32m◉ "
@@ -2168,8 +2164,8 @@ exit 0' >$RCLOCAL
 [\033[1;36m06\033[1;31m] \033[1;37m• \033[1;33mPROXY SOCKS $sts4\033[1;31m
 [\033[1;36m07\033[1;31m] \033[1;37m• \033[1;33mSSL TUNNEL $sts3\033[1;31m
 [\033[1;36m08\033[1;31m] \033[1;37m• \033[1;33mSSLH MULTIPLEX $sts7\033[1;31m
-[\033[1;36m09\033[1;31m] \033[1;37m• \033[1;33mSLOWDNS $sts8 \033[1;31m
-[\033[1;36m10\033[1;31m] \033[1;37m• \033[1;33mCHISEL $sts9 \033[1;31m
+[\033[1;36m08\033[1;31m] \033[1;37m• \033[1;33mCHISEL $sts8\033[1;31m
+[\033[1;36m09\033[1;31m] \033[1;37m• \033[1;33mSLOWDNS $sts9\033[1;31m
 [\033[1;36m11\033[1;31m] \033[1;37m• \033[1;33mV2RAY $xv2ray\033[1;31m
 [\033[1;36m12\033[1;31m] \033[1;37m• \033[1;33mTROJAN-GO $trojansts \033[1;31m
 [\033[1;36m13\033[1;31m] \033[1;37m• \033[1;33mWEBMIN $webmin \033[1;31m
@@ -2218,12 +2214,8 @@ exit 0' >$RCLOCAL
 				fun_chisel
 				;;
 			11 | 11)
-				rm -rf /bin/v2raymanager > /dev/null 2>&1
-				wget -O /bin/v2raymanager https://raw.githubusercontent.com/leitura/SSHPLUS/master/Modulos/v2raymanager > /dev/null 2>&1
-				chmod 777 /bin/v2raymanager
-				sed -i "s/@TheMentalistSay/@CRAZY_VPN/g" /bin/v2raymanager
 				v2raymanager
-				exit;
+				exit
 				;;
 			12 | 12)
 				trojan-go
