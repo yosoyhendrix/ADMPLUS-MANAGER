@@ -91,7 +91,7 @@ ferramentascodes
 
 [[ $(grep -wc mlocate /var/lib/dpkg/statoverride) != '0' ]] && sed -i '/mlocate/d' /var/lib/dpkg/statoverride
 clear
-echo -e "\E[44;1;37m                Otimizar Servidor                \E[0m"
+echo -e "\E[44;1;37m           Limpeza de cache do sistema           \E[0m"
 echo ""
 echo -e "\033[1;32m               Atualizando pacotes\033[0m"
 echo ""
