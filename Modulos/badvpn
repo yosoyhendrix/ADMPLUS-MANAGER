@@ -63,7 +63,7 @@ fun_bad() {
             echo ""
             fun_bar 'fun_stopbad'
             echo ""
-            echo -e "\033[1;32mBADVPN DESATIVADO COM SUCESSO!\033[1;33m"
+            echo -e " \033[1;31mBADVPN DESATIVADO COM SUCESSO!\033[1;33m"
             sleep 3
             ferramentascodes
         else
@@ -98,11 +98,11 @@ fun_bad() {
                     chmod 777 /bin/udp
                 }
             }
-            echo ""
+            # echo ""
             inst_udp
             fun_bar 'fun_udpon'
             echo ""
-            echo -e "\033[1;32mBADVPN PRO ATIVADO COM SUCESSO\033[1;33m"
+            echo -e " \033[1;32mBADVPN PRO ATIVADO COM SUCESSO\033[1;33m"
             sleep 3
             ferramentascodes
         fi
@@ -130,7 +130,7 @@ fun_bad() {
             }
             fun_bar 'fun_abrirptbad'
             echo ""
-            echo -e "\033[1;32mBADVPN ATIVADO COM SUCESSO\033[1;33m"
+            echo -e " \033[1;32mBADVPN ATIVADO COM SUCESSO\033[1;33m"
             sleep 2
             fun_badvpn
         else
