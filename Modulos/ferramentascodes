@@ -366,21 +366,12 @@ case "$x" in
    ;;
    bt | BT)
    clear
-   [[ ! -e /root/BOT ]] && mkdir /root/BOT > /dev/null 2>&1
-   rm -rf /root/BOT/ShellBot.sh > /dev/null 2>&1
-   wget -O /root/BOT/ShellBot.sh https://raw.githubusercontent.com/leitura/SSHPLUS/master/Sistema/ShellBot.sh > /dev/null 2>&1
-   chmod 777 /root/BOT/ShellBot.sh
-   rm -rf /bin/botteste.sh > /dev/null 2>&1
-   wget -O /bin/botteste.sh https://raw.githubusercontent.com/leitura/ospacotesmb/main/botteste.sh > /dev/null 2>&1
+   wget -O /bin/botteste.sh https://raw.githubusercontent.com/kiritosshxd/SSHPLUS/main/Modulos/botteste.sh > /dev/null 2>&1
    chmod 777 /bin/botteste.sh
    botteste.sh
    ;;
    br | BR)
    clear
-   [[ ! -e /root/BOT ]] && mkdir /root/BOT > /dev/null 2>&1
-   rm -rf /root/BOT/ShellBot.sh > /dev/null 2>&1
-   wget -O /root/BOT/ShellBot.sh https://raw.githubusercontent.com/leitura/SSHPLUS/master/Sistema/ShellBot.sh > /dev/null 2>&1
-   chmod 777 /root/BOT/ShellBot.sh
    initbot
    ;;
    7 | 07)
