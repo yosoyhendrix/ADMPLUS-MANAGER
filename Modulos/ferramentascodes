@@ -285,22 +285,22 @@ echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━�
 echo -e "\E[44;1;37m              MENU DE FERRAMENTAS                 \E[0m"
 echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 echo ""
-echo -e "\033[1;31m[\033[1;36m01\033[1;31m] \033[1;37m• \033[1;33mSPEEDTEST \033[1;31m                  
-[\033[1;36m02\033[1;31m] \033[1;37m• \033[1;33mCHECKUSER $stscheck\033[1;31m
-[\033[1;36m03\033[1;31m] \033[1;37m• \033[1;33mADICIONAR HOST \033[1;31m
-[\033[1;36m04\033[1;31m] \033[1;37m• \033[1;33mREMOVER HOST \033[1;31m
-[\033[1;36m05\033[1;31m] \033[1;37m• \033[1;33mFIREWALL $stsf\033[1;31m
-[\033[1;36m06\033[1;31m] \033[1;37m• \033[1;33m[+] BOT TELEGRAM $stsbot \033[1;31m
-[\033[1;36mbt\033[1;31m] \033[1;37m• \033[1;33m[+] BOT TESTE $stsbotteste \033[1;31m
-[\033[1;36mbr\033[1;31m] \033[1;37m• \033[1;33m[+] BOT REVENDA $stsbotrev\033[1;31m
-[\033[1;36m07\033[1;31m] \033[1;37m• \033[1;33mBADVPN PRO $stsu\033[1;31m
-[\033[1;36m08\033[1;31m] \033[1;37m• \033[1;33mTCPSPEED $tcp\033[1;31m
-[\033[1;36m09\033[1;31m] \033[1;37m• \033[1;33mONLINE APP $stson \033[1;31m
-[\033[1;36m10\033[1;31m] \033[1;37m• \033[1;33mMEMORIA VIRTUAL \033[1;31m 
-[\033[1;36m11\033[1;31m] \033[1;37m• \033[1;33mNload/htop/glances \033[1;31m 
-[\033[1;36m12\033[1;31m] \033[1;37m• \033[1;33mDETALHES DO SISTEMA \033[1;31m
-[\033[1;36m13\033[1;31m] \033[1;37m• \033[1;33mLIMPAR CACHE SISTEMA \033[1;31m
-[\033[1;36m00\033[1;31m] \033[1;37m• \033[1;33mVOLTAR AO MENU \033[1;32m<\033[1;33m<\033[1;31m< \033[1;31m"
+echo -e "\033[1;31m[\033[1;36m01\033[1;31m] \033[1;37m• \033[1;33mCHECKUSER $stscheck\033[0m"
+echo -e "\033[1;31m[\033[1;36m02\033[1;31m] \033[1;37m• \033[1;33mBADVPN PRO $stsu\033[0m"
+echo -e "\033[1;31m[\033[1;36m03\033[1;31m] \033[1;37m• \033[1;33mTCPSPEED $tcp\033[0m"
+echo -e "\033[1;31m[\033[1;36m04\033[1;31m] \033[1;37m• \033[1;33mONLINE APP $stson \033[0m"
+echo -e "\033[1;31m[\033[1;36m05\033[1;31m] \033[1;37m• \033[1;33mFIREWALL $stsf\033[0m"
+echo -e "\033[1;31m[\033[1;36m06\033[1;31m] \033[1;37m• \033[1;33m[+] BOT TELEGRAM $stsbot \033[0m"
+echo -e "\033[1;31m[\033[1;36m07\033[1;31m] \033[1;37m• \033[1;33m[+] BOT TESTE $stsbotteste \033[0m"
+echo -e "\033[1;31m[\033[1;36m08\033[1;31m] \033[1;37m• \033[1;33m[+] BOT REVENDA $stsbotrev\033[0m"
+echo -e "\033[1;31m[\033[1;36m09\033[1;31m] \033[1;37m• \033[1;33mSPEEDTEST\033[0m"
+echo -e "\033[1;31m[\033[1;36m10\033[1;31m] \033[1;37m• \033[1;33mADICIONAR HOST\033[0m"
+echo -e "\033[1;31m[\033[1;36m11\033[1;31m] \033[1;37m• \033[1;33mREMOVER HOST\033[0m"
+echo -e "\033[1;31m[\033[1;36m12\033[1;31m] \033[1;37m• \033[1;33mMEMORIA VIRTUAL \033[0m"
+echo -e "\033[1;31m[\033[1;36m13\033[1;31m] \033[1;37m• \033[1;33mNload/htop/glances \033[0m"
+echo -e "\033[1;31m[\033[1;36m14\033[1;31m] \033[1;37m• \033[1;33mDETALHES DO SISTEMA \033[0m"
+echo -e "\033[1;31m[\033[1;36m15\033[1;31m] \033[1;37m• \033[1;33mLIMPAR CACHE SISTEMA \033[0m"
+echo -e "\033[1;31m[\033[1;36m00\033[1;31m] \033[1;37m• \033[1;33mVOLTAR AO MENU \033[1;32m<\033[1;33m<\033[1;31m< \033[1;31m"
 echo ""
 echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 echo ""
@@ -309,24 +309,21 @@ echo -ne "\033[1;32mOQUE DESEJA FAZER \033[1;33m?\033[1;31m?\033[1;37m : "; read
 case "$x" in 
    1 | 01)
    clear
-   velocity
-   echo -ne "\n\033[1;31mENTER \033[1;33mpara retornar ao \033[1;32mMENU!\033[0m"; read
+   initcheck
    ;;
    2 | 02)
    clear
-   initcheck
+   badvpn
+   exit;
    ;;
-   3 | 03)
+   3 | 3)
    clear
-   addhost
-   echo -ne "\n\033[1;31mENTER \033[1;33mpara retornar ao \033[1;32mMENU!\033[0m"; read
-   ferramentascodes
+   TCPspeed
    ;;
    4 | 04)
    clear
-   delhost
+   onapp_ssh
    echo -ne "\n\033[1;31mENTER \033[1;33mpara retornar ao \033[1;32mMENU!\033[0m"; read
-   ferramentascodes
    ;;
    5 | 05)
    blockt
@@ -334,44 +331,47 @@ case "$x" in
    6 | 06)
    botssh
    ;;
-   bt | BT)
+   7 | 07)
    clear
    wget -O /bin/botteste.sh https://raw.githubusercontent.com/kiritosshxd/SSHPLUS/main/Modulos/botteste.sh > /dev/null 2>&1
    chmod 777 /bin/botteste.sh
    botteste.sh
    ;;
-   br | BR)
+   8 | 08)
    clear
    initbot
    ;;
-   7 | 07)
-   clear
-   badvpn
-   exit;
-   ;;
-   8 | 8)
-   clear
-   TCPspeed
-   ;;
    9 | 09)
    clear
-   onapp_ssh
+   velocity
    echo -ne "\n\033[1;31mENTER \033[1;33mpara retornar ao \033[1;32mMENU!\033[0m"; read
    ;;
    10)
    clear
-   swapmemory
+   addhost
+   echo -ne "\n\033[1;31mENTER \033[1;33mpara retornar ao \033[1;32mMENU!\033[0m"; read
+   ferramentascodes
    ;;
    11)
    clear
-   monitores
+   delhost
+   echo -ne "\n\033[1;31mENTER \033[1;33mpara retornar ao \033[1;32mMENU!\033[0m"; read
+   ferramentascodes
    ;;
    12)
+   clear
+   swapmemory
+   ;;
+   13)
+   clear
+   monitores
+   ;;
+   14)
    clear
    systen_info
    echo -ne "\n\033[1;31mENTER \033[1;33mpara retornar ao \033[1;32mMENU!\033[0m"; read
    ;;
-   13)
+   15)
    clear
    otimizar
    # limpar_caches
