@@ -1,6 +1,6 @@
 #!/bin/bash
-# [[ $(awk -F" " '{print $2}' /usr/lib/licence) != "by: @KIRITO_SSH" ]] && exit 0
-# [[ $(awk -F" " '{print $2}' /etc/rec/licence) != "by: @KIRITO_SSH" ]] && exit 0
+# [[ $(awk -F" " '{print $2}' /usr/lib/licence) != "@KIRITO_SSH" ]] && exit 0
+# [[ $(awk -F" " '{print $2}' /etc/rec/licence) != "@KIRITO_SSH" ]] && exit 0
 verif_ptrs() {
     porta=$1
     PT=$(lsof -V -i tcp -P -n | grep -v "ESTABLISHED" | grep -v "COMMAND" | grep "LISTEN")
