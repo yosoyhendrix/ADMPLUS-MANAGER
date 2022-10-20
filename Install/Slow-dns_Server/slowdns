@@ -18,7 +18,7 @@ banner='
 |___/____\___/ \_/\_/ |___/|_|\_|___/'
 
 echo -e "${CORTITLE}=====================================${SCOLOR}" 
-echo -e "${CORTITLE}       SSHPLUS CLIENTE SLOWDNS       ${SCOLOR}"
+echo -e "${CORTITLE}       ADMPLUS-MANAGER-PRO CLIENTE SLOWDNS       ${SCOLOR}"
 echo -e "${CORTITLE}=====================================${SCOLOR}" 
 echo -e "${RED}$banner${SCOLOR}"
 [[ ! -e dns ]] && {
@@ -29,7 +29,7 @@ echo -e "${RED}$banner${SCOLOR}"
     chmod +x $PREFIX/bin/slowdns
     [[ $(grep -c 'slowdns' $PREFIX/etc/profile) == '0' ]] && echo 'slowdns' >> $PREFIX/etc/profile
     echo -e "\n${GREEN}BAIXANDO O SCRIPT POR FAVOR AGUARDE ! ${SCOLOR}"
-    curl -O https://sshplus.net/scripts/dns > /dev/null 2>&1
+    curl -O https://ADMPLUS-MANAGER-PRO.net/scripts/dns > /dev/null 2>&1
     echo -e "\n${RED}[${YELLOW}!${RED}] ${YELLOW}SCRIPT BAIXADO ! DA PROXIMA VEZ\nEXECULTE APENAS O COMANDO ${RED}(${GREEN}slowdns${RED})\n${YELLOW}MESMO QUE VOCÊ ESTEJA OFFLINE !${SCOLOR}"
     chmod +x dns
 }
