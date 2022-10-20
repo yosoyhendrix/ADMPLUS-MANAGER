@@ -18,6 +18,7 @@ fun_prog ()
 	echo -e "\e[1DOK"
 }
 echo -ne "\033[1;33mREINICIANDO OPENSSH "; fun_prog 'service ssh restart'
+[[ -e /etc/init.d/ssh ]] && /etc/init.d/ssh restart > /dev/null 2>&1
 echo ""
 sleep 1
 if [[ -e /etc/squid/squid.conf ]]; then
@@ -31,16 +32,19 @@ sleep 1
 fi
 if [[ -e /etc/stunnel/stunnel.conf ]]; then
 echo -ne "\033[1;33mREINICIANDO SSL TUNNEL "; fun_prog 'service stunnel4 restart'
+[[ -e /etc/init.d/stunnel4 ]] && /etc/init.d/stunnel4 restart > /dev/null 2>&1
 echo ""
 sleep 1
 fi
 if [[ -e /etc/init.d/dropbear ]]; then
 echo -ne "\033[1;33mREINICIANDO DROPBEAR "; fun_prog 'service dropbear restart'
+[[ -e /etc/init.d/dropbear ]] && /etc/init.d/dropbear restart > /dev/null 2>&1
 echo ""
 sleep 1
 fi
 if [[ -e /etc/openvpn/server.conf ]]; then
 echo -ne "\033[1;33mREINICIANDO OPENVPN "; fun_prog 'service openvpn restart'
+[[ -e /etc/init.d/openvpn ]] && /etc/init.d/openvpn restart > /dev/null 2>&1
 echo ""
 sleep 1
 fi
@@ -49,5 +53,10 @@ echo -ne "\033[1;33mREINICIANDO APACHE2 "; fun_prog '/etc/init.d/apache2 restart
 echo ""
 sleep 1
 fi
-echo -e "\033[1;32mSERVICOS REINICIADOS COM SUCESSO!\033[0m"
+if netstat -nltp|grep 'fail2ban-client' > /dev/null; then
+echo -ne "\033[1;33mREINICIANDO FAIL2BAN "; fun_prog 'fail2ban-client -x stop && fail2ban-client -x start'
+echo ""
+sleep 1
+fi
+echo -e "\033[1;32mSERVICIOS REINICIADOS CON ÉXITO!\033[0m"
 sleep 1

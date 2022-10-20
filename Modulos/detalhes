@@ -65,7 +65,7 @@ echo -e "\033[1;32mMEMORIA RAM\033[0m"
 echo ""
 echo "No se puede obtener información"
 fi
-[[ ! -e /bin/versao ]] && rm -rf /etc/SSHPlus
+[[ ! -e /bin/versao ]] && rm -rf /etc/ADMPLUS-MANAGER-PRO
 
 echo -e "\033[1;31m• \033[1;32mSERVICIOS EN FUNCIONAMIENTO\033[1;31m •\033[0m"
 echo ""

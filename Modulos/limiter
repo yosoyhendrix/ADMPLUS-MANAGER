@@ -1,9 +1,9 @@
 #!/bin/bash
 #====================================================
-#	SCRIPT: LIMITER SSHPLUS MANAGER
+#	SCRIPT: LIMITER ADMPLUS-MANAGER-PRO MANAGER
 #	DESENVOLVIDO POR:	CRAZY_VPN
 #	CONTATO TELEGRAM:	http://t.me/crazy_vpn
-#	CANAL TELEGRAM:	http://t.me/sshplus
+#	CANAL TELEGRAM:	http://t.me/ADMPLUS-MANAGER-PRO
 #====================================================
 clear
 database="/root/usuarios.db"

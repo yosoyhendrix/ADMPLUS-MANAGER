@@ -1,14 +1,10 @@
 #!/bin/bash
-barra="\033[0;34m—————————————————————————————————————————————————— \033[0m"
-IP=$(cat /etc/IP)
-x="ok"
-
 fun_bar () {
 comando[0]="$1"
 comando[1]="$2"
  (
 [[ -e $HOME/fim ]] && rm $HOME/fim
-[[ ! -e /usr/lib/sshplus ]] && rm -rf /bin/menu > /dev/null 2>&1
+[[ ! -e /usr/lib/ADMPLUS-MANAGER-PRO ]] && rm -rf /bin/menu > /dev/null 2>&1
 ${comando[0]} -y > /dev/null 2>&1
 ${comando[1]} -y > /dev/null 2>&1
 touch $HOME/fim
@@ -30,13 +26,44 @@ done
 echo -e "\033[1;33m]\033[1;37m -\033[1;32m OK !\033[1;37m"
 tput cnorm
 }
-
+IP=$(cat /etc/IP)
+x="ok"
 menu ()
 {
+function autoexec () {
+   if grep "menu;" /etc/profile > /dev/null; then
+      clear
+      echo -e "\033[1;32mDESATIVANDO A EXECUÇÃO AUTOMÁTICA\033[0m"
+      offautmenu () {
+         sed -i '/menu;/d' /etc/profile
+      }
+      echo ""
+      fun_bar 'offautmenu'
+      echo ""
+      echo -e "\033[1;31mEXECUÇÃO AUTOMÁTICA DESATIVADA!\033[0m"
+      sleep 1.5s
+      menu
+   else
+      clear
+      echo -e "\033[1;32mATIVAR A EXECUÇÃO AUTOMÁTICA\033[0m"
+      autmenu () {
+         grep -v "^menu;" /etc/profile > /tmp/tmpass && mv /tmp/tmpass /etc/profile
+         echo "menu;" >> /etc/profile
+      }
+      echo ""
+      fun_bar 'autmenu'
+      echo ""
+      echo -e "\033[1;32mEXECUÇÃO AUTOMÁTICA ATIVADA!\033[0m"
+      sleep 1.5s
+      menu
+   fi
+
+}
+
 #limiter
 function limit1 () {
    clear
-   echo -e "\n\033[1;32mSTARTING THE LIMIT... \033[0m"
+   echo -e "\n\033[1;32mINICIANDO LIMITER... \033[0m"
    echo ""
    fun_bar 'screen -dmS limiter limiter' 'sleep 3'
    [[ $(grep -wc "limiter" /etc/autostart) = '0' ]] && {
@@ -45,13 +72,13 @@ function limit1 () {
        sed -i '/limiter/d' /etc/autostart
 	   echo -e "ps x | grep 'limiter' | grep -v 'grep' && echo 'ON' || screen -dmS limiter limiter" >> /etc/autostart
    }
-   echo -e "\n\033[1;32m  ACTIVE LIMIT !\033[0m"
+   echo -e "\n\033[1;32m  LIMITADOR ATIVO !\033[0m"
    sleep 3
    menu
 }
 function limit2 () {
    clear
-   echo -e "\033[1;32mSTOPPING THE LIMIT... \033[0m"
+   echo -e "\033[1;32mPARANDO LIMITER... \033[0m"
    echo ""
    fun_stplimiter () {
       sleep 1
@@ -63,42 +90,12 @@ function limit2 () {
       sleep 1
    }
    fun_bar 'fun_stplimiter' 'sleep 3'
-   echo -e "\n\033[1;31m STOPPED LIMIT !\033[0m"
+   echo -e "\n\033[1;31m LIMITER PARADO !\033[0m"
    sleep 3
    menu
 }
 function limit_ssh () {
 [[ $(ps x | grep "limiter"|grep -v grep |wc -l) = '0' ]] && limit1 || limit2
-}
-
-function autoexec () {
-   if grep "menu;" /etc/profile > /dev/null; then
-      clear
-      echo -e "\033[1;32mDISABLING AUTO EXECUTION\033[0m"
-      offautmenu () {
-         sed -i '/menu;/d' /etc/profile
-      }
-      echo ""
-      fun_bar 'offautmenu'
-      echo ""
-      echo -e "\033[1;31mAUTO EXECUTION DISABLED!\033[0m"
-      sleep 1.5s
-      menu
-   else
-      clear
-      echo -e "\033[1;32mENABLING AUTO EXECUTION\033[0m"
-      autmenu () {
-         grep -v "^menu;" /etc/profile > /tmp/tmpass && mv /tmp/tmpass /etc/profile
-         echo "menu;" >> /etc/profile
-      }
-      echo ""
-      fun_bar 'autmenu'
-      echo ""
-      echo -e "\033[1;32mAUTO EXECUTION ENABLED!\033[0m"
-      sleep 1.5s
-      menu
-   fi
-
 }
 
 while true $x != "ok"
@@ -124,7 +121,7 @@ else
 system=$(cut -d' ' -f1 /etc/issue.net)
 fi
 _ons=$(ps -x | grep sshd | grep -v root | grep priv | wc -l)
-[[ "$(cat /etc/SSHPlus/Exp)" != "" ]] && _expuser=$(cat /etc/SSHPlus/Exp) || _expuser="0"
+[[ "$(cat /etc/ADMPLUS-MANAGER-PRO/Exp)" != "" ]] && _expuser=$(cat /etc/ADMPLUS-MANAGER-PRO/Exp) || _expuser="0"
 [[ -e /etc/openvpn/openvpn-status.log ]] && _onop=$(grep -c "10.8.0" /etc/openvpn/openvpn-status.log) || _onop="0"
 [[ -e /etc/default/dropbear ]] && _drp=$(ps aux | grep dropbear | grep -v grep | wc -l) _ondrp=$(($_drp - 1)) || _ondrp="0"
 _onli=$(($_ons + $_onop + $_ondrp))
@@ -141,35 +138,36 @@ _onlin=$(printf '%-5s' "$_onli")
 _userexp=$(printf '%-5s' "$_expuser")
 _tuser=$(awk -F: '$3>=1000 {print $1}' /etc/passwd | grep -v nobody | wc -l)
 clear
-echo -e "\033[0;34m—————————————————————————————————————————————————— \033[0m"
-echo -e "\E[44;1;37m          ∆ ADMPLUS MANAGER COMMUNITY ∆           \E[0m"
-echo -e "\033[0;34m—————————————————————————————————————————————————— \033[0m"
-echo -e "\033[1;32mOS\033[1;37m/\033[1;32mDATE\033[1;37m/\033[1;32mHOUR      RAM MEMORY       SYSTEM\033[1;37m/\033[1;32mCPU "
+echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+echo -e "\E[44;1;37m             ⇱ ۩ Ⓢє➆𝒽 ۩ADMPLUS MANAGER PRO۩ Ⓢє➆𝒽 ۩ ⇲              \E[0m"
+echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+echo -e "\033[1;32mOS\033[1;37m/\033[1;32mDATA\033[1;37m/\033[1;32mHORA      MEMORIA RAM      SISTEMA\033[1;37m/\033[1;32mCPU "
 echo -e "\033[1;31mOS\033[1;31m: \033[1;37m$_system \033[1;31mTotal\033[1;31m: \033[1;37m$_ram\033[1;31mCore\033[1;31m:\033[1;37m $_core "
-echo -e "\033[1;31mDay\033[1;31m: \033[1;37m$_hoje \033[1;31m  Cache\033[1;31m: \033[1;37m$mb\033[1;31m  Base\033[1;31m:\033[1;37m $(uname -m)"
-echo -e "\033[1;31mHOUR\033[1;31m: \033[1;37m$_hora  \033[1;31m  In use\033[1;31m: \033[1;37m$_usor\033[1;31m CPU Usage\033[1;31m: \033[1;37m$_usop"
-echo -e "\033[0;34m—————————————————————————————————————————————————— \033[0m"
+echo -e "\033[1;31mDia\033[1;31m: \033[1;37m$_hoje \033[1;31m  Cache\033[1;31m: \033[1;37m$mb\033[1;31m  Base\033[1;31m:\033[1;37m $modelo1"
+echo -e "\033[1;31mHora\033[1;31m: \033[1;37m$_hora  \033[1;31m  Em uso\033[1;31m: \033[1;37m$_usor\033[1;31m Uso CPU\033[1;31m: \033[1;37m$_usop"
+echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 [[ ! -e /tmp/att ]]  && {
-    echo -e "\033[1;32mOnline:\033[1;37m $_onlin    \033[1;31mExpired: \033[1;37m$_userexp \033[1;33mTotal: \033[1;37m$_tuser\033[0m"
+    echo -e "\033[1;32mOnlines:\033[1;37m $_onlin    \033[1;31mExpirados: \033[1;37m$_userexp \033[1;33mTotal: \033[1;37m$_tuser\033[0m"
     var01='\033[1;33m[!]'
 } || {
-    echo -e "  \033[1;33m[\033[1;31m!\033[1;33m]  \033[1;32mThere is an available update \033[1;33m[\033[1;31m!\033[1;33m]\033[0m"
+    echo -e "  \033[1;33m[\033[1;31m!\033[1;33m]  \033[1;32mHÁ UMA ATUALIZAÇÃO DISPONÍVEL \033[1;33m[\033[1;31m!\033[1;33m]\033[0m"
     var01="\033[1;32m ! "
 }
-echo -e "\033[0;34m—————————————————————————————————————————————————— \033[0m"
+echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 echo ""
-echo -e "\033[1;31m[\033[1;36m01\033[1;31m] \033[1;37m• \033[1;33mMANAGE USERS \033[0m"
-echo -e "\033[1;31m[\033[1;36m02\033[1;31m] \033[1;37m\033[1;37m• \033[1;33mTOOLS MENU \033[0m"
-echo -e "\033[1;31m[\033[1;36m03\033[1;31m] \033[1;37m\033[1;37m• \033[1;33mSYSTEM MENU \033[0m"
-echo -e "\033[1;31m[\033[1;36m04\033[1;31m] \033[1;37m• $var01 \033[1;32mUPDATE ADM \033[0m"
-echo -e "\033[1;31m[\033[1;36m05\033[1;31m] \033[1;37m• \033[1;33m[!] \033[1;31mUNINSTALL ADM \033[0m"
-echo -e "\033[1;31m[\033[1;36m06\033[1;31m] \033[1;37m• \033[1;33mLIMITER SSH VERIFICATION $stsl\033[0m"
-echo -e "\033[1;31m[\033[1;36m07\033[1;31m] \033[1;37m• \033[1;33mAUTOMATIC EXECUTION $autm \033[0m"
-echo -e "\033[1;31m[\033[1;36m08\033[1;31m] \033[1;37m• \033[1;33mMENU INSTALLATION  \033[0m"
-echo -e "\033[1;31m[\033[1;36m00\033[1;31m] \033[1;37m• \033[1;33mEXIT MENU \033[1;32m<\033[1;33m<\033[1;31m<\033[1;31m"
+echo -e "[\033[1;36m01\033[1;31m] \033[1;37m• \033[1;33mGERENCIAR USUÁRIOS \033[1;31m
+[\033[1;36m02\033[1;31m] \033[1;37m\033[1;37m• \033[1;33mGERENCIAR FERRAMENTAS \033[1;31m
+[\033[1;36m03\033[1;31m] \033[1;37m\033[1;37m• \033[1;33mSISTEMA DE GERENCIAMENTO \033[1;31m
+[\033[1;36m04\033[1;31m] \033[1;37m• $var01 \033[1;32mATUALIZAR SCRIPT \033[1;31m
+[\033[1;36m05\033[1;31m] \033[1;37m• \033[1;33m[!] \033[1;31mDESINSTALAR ADMPLUS \033[1;31m
+[\033[1;36m06\033[1;31m] \033[1;37m• \033[1;33mVERIFICAÇÕES $stsl\033[1;31m
+[\033[1;36m07\033[1;31m] \033[1;37m• \033[1;33mAUTO EXECUÇÃO $autm \033[1;31m
+[\033[1;36m08\033[1;31m] \033[1;37m• \033[1;33mMENU DE INSTALAÇÕES \033[1;31m
+\033[1;31m[\033[1;36m00\033[1;31m] \033[1;37m• \033[1;33mSAIR DO MENU \033[1;32m<\033[1;33m<\033[1;31m<\033[1;31m"
 echo ""
-echo -e "\033[0;34m┌─[\033[01;31mCommand\033[0;34m]──[~]─[\033[1;32mlistener\033[0;34m]   "
-echo -ne "\033[0;34m└─────► \033[1;37m"; read x
+echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+echo ""
+echo -ne "\033[1;32mOPCAO \033[1;33m?\033[1;31m?\033[1;37m : "; read x
 
 case "$x" in 
    1 | 01)
@@ -202,13 +200,13 @@ case "$x" in
    exit
    ;;
    0 | 00)
-   echo -e "\033[1;31mGoing out...\033[0m"
+   echo -e "\033[1;31mSalindo...\033[0m"
    sleep 1
    clear
    exit;
    ;;
    *)
-   echo -e "\n\033[1;31mInvalid option !\033[0m"
+   echo -e "\n\033[1;31mOpción inválida !\033[0m"
    sleep 1
 esac
 done

@@ -1,5 +1,5 @@
 #!/bin/bash
-#-----TheMentalistSay------
+#-----seth42sp------
 fun_swap() {
     clear
 		echo -e "\E[44;1;37m            GESTIONAR MEMORIA VIRTUAL             \E[0m"
