@@ -84,13 +84,13 @@ pip install PySensors
 }
 
 echo -e "\033[0;34m═════════════════════════════════════════════════\033[0m"
-echo -e "\E[44;1;37m  Ⓢє➆𝒽      BEM-VINDO AO ADPLUS MANAGER PRO  Ⓢє➆𝒽       \E[0m"
+echo -e "\E[44;1;37m       BEM-VINDO AO ADPLUS MANAGER PRO        \E[0m"
 echo -e "\033[0;34m═════════════════════════════════════════════════\033[0m"
-echo -e "\033[1;31m¡ATENÇÃO! \033[1;33mESTE SCRIPT VAI  !\033[0m"
-echo -e "\033[1;31m• \033[1;33mINSTALAR UM CONJUNTO DE SCRIPTS COM FERRAMENTAS\033[0m" 
-echo -e "\033[1;33m  PARA GESTÃO DE REDES, SISTEMAS E USUÁRIOS\033[0m"
-echo -e "\033[1;32m• \033[1;32mⓈє➆𝒽! \033[1;33mUSE O TEMA DARK EM SEU TERMINAL PARA\033[0m"
-echo -e "\033[1;33m  UMA MELHOR EXPERIÊNCIA E VISUALIZAÇÃO !\033[0m"
+echo -e "\033[1;31mATENCAO! \033[1;33mESSE SCRIPT IRA !\033[0m"
+echo -e "\033[1;31m• \033[1;33mINSTALAR UM CONJUNTO DE SCRIPTS COMO FERRAMENTAS\033[0m" 
+echo -e "\033[1;33m  PARA O GERENCIAMENTO DE REDE, SISTEMA E USUARIOS\033[0m"
+echo -e "\033[1;32m• \033[1;32mDICA! \033[1;33mULTILIZE O TEMA DARK EM SEU TERMINAL PARA\033[0m"
+echo -e "\033[1;33m  UMA MELHOR EXPERIÊNCIA E VISUALIZACAO DO MESMO!\033[0m"
 ## echo -e "\n\033[1;31m                           [\033[1;33m • \033[1;32mBY XXXXXXX XXX\033[1;33m •\033[1;31m ]\033[0m"
 echo -e "\033[0;34m═════════════════════════════════════════════════\033[0m"
 read -p "$(echo -e "\033[1; DESEJA CONTINUAR ? \033[1;33m[S/N]:\033[1;37m ")" -e -i s resp
