@@ -36,7 +36,7 @@ comando[0]="$1"
 comando[1]="$2"
  (
 [[ -e $HOME/fim ]] && rm $HOME/fim
-[[ ! -d /etc/ADMPLUS-MANAGER-PRO ]] && rm -rf /bin/menu
+[[ ! -d /etc/SSHPlus ]] && rm -rf /bin/menu
 ${comando[0]} > /dev/null 2>&1
 ${comando[1]} > /dev/null 2>&1
 touch $HOME/fim
@@ -62,7 +62,7 @@ fun_tst () {
 speedtest --share > speed
 }
 echo ""
-echo -e "   \033[1;32mTESTE DE VELOCIDADE DO SERVIDOR !\033[0m"
+echo -e "   \033[1;32mTESTANDO A VELOCIDADE DO SERVIDOR !\033[0m"
 echo ""
 aguarde 'fun_tst'
 echo ""
@@ -79,201 +79,11 @@ echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━�
 rm -rf $HOME/speed
 }
 
-TCPspeed () {
-if [[ `grep -c "^#ADM" /etc/sysctl.conf` -eq 0 ]]; then
-#INSTALA
-echo -e "\033[1;32mTCP SPEED NÃO HABILITADO, QUERO ATIVAR AGORA ? \033[0m"
-echo ""
-read -p "$(echo -ne "\033[1;32mQUÉ VOCÊ QUER FAZER \033[1;31m? \033[1;33m[s/n]:\033[1;37m ") " -e -i s resposta
-[[ "$resposta" = @(s|S|y|Y) ]] && {
-echo "#ADM" >> /etc/sysctl.conf
-echo "net.ipv4.tcp_window_scaling = 1
-net.core.rmem_max = 16777216
-net.core.wmem_max = 16777216
-net.ipv4.tcp_rmem = 4096 87380 16777216
-net.ipv4.tcp_wmem = 4096 16384 16777216
-net.ipv4.tcp_low_latency = 1
-net.ipv4.tcp_slow_start_after_idle = 0" >> /etc/sysctl.conf
-sysctl -p /etc/sysctl.conf > /dev/null 2>&1
-echo -e "\n\033[1;32m TCP ACTIVADO CON ÉXITO ! \033[0m"
-sleep 3
-ferramentascodes
-} || echo -e "\n\033[1;31m CANCELADO ! \033[0m"
- sleep 3
- ferramentascodes
- else
-#REMOVE
-echo -e "\033[1;32mTCP SPEED JÁ ESTÁ ATIVADO, VOCÊ QUER DESATIVÁ-LO AGORA ? \033[0m"
-echo ""
-read -p "$(echo -ne "\033[1;32mQUER FAZER \033[1;31m? \033[1;33m[s/n]:\033[1;37m ") " -e -i n resposta
-[[ "$resposta" = @(s|S|y|Y) ]] && {
-grep -v "^#ADM
-net.ipv4.tcp_window_scaling = 1
-net.core.rmem_max = 16777216
-net.core.wmem_max = 16777216
-net.ipv4.tcp_rmem = 4096 87380 16777216
-net.ipv4.tcp_wmem = 4096 16384 16777216
-net.ipv4.tcp_low_latency = 1
-net.ipv4.tcp_slow_start_after_idle = 0" /etc/sysctl.conf > /tmp/syscl && mv -f /tmp/syscl /etc/sysctl.conf
-sysctl -p /etc/sysctl.conf > /dev/null 2>&1
-echo -e "\n\033[1;31m TCP DETENIDO CON ÉXITO  ! \033[0m"
-sleep 3
-ferramentascodes
-} || echo -e "\n\033[1;31m CANCELADO ! \033[0m"
-sleep 3
-ferramentascodes
-fi
-}
-
-#onlineapp
-function onapp1 () {
-   clear
-   echo -e "\n\033[1;32mINICIANDO ONLINE APP... \033[0m"
-   echo ""
-   apt install apache2 -y > /dev/null 2>&1
-   sed -i "s/Listen 80/Listen 81/g" /etc/apache2/ports.conf >/dev/null 2>&1
-   service apache2 restart > /dev/null 2>&1
-   rm -rf /var/www/html/server >/dev/null 2>&1
-   mkdir /var/www/html/server >/dev/null 2>&1
-   fun_bar 'screen -dmS onlineapp onlineapp' 'sleep 3'
-   [[ $(grep -wc "onlineapp" /etc/autostart) = '0' ]] && {
-       echo -e "ps x | grep 'onlineapp' | grep -v 'grep' && echo 'ON' || screen -dmS onlineapp onlineapp" >> /etc/autostart
-   } || {
-       sed -i '/onlineapp/d' /etc/autostart
-	   echo -e "ps x | grep 'onlineapp' | grep -v 'grep' && echo 'ON' || screen -dmS onlineapp onlineapp" >> /etc/autostart
-   }
-   IP=$(wget -qO- ipv4.icanhazip.com) >/dev/null 2>&1
-   echo -e "\n\033[1;32m  ONLINE APP ACTIVO !\033[0m"
-   echo ""
-   echo -e "\033[1;31m \033[1;33mURL de Usuários Online para usar en App\033[0m"
-   echo ""
-   echo -e " \033[1;32mhttp://$IP:81/server/online"
-}
-function onapp2 () {
-   clear
-   echo -e "\033[1;32m PARANDO ONLINE APP... \033[0m"
-   echo ""
-   fun_stponlineapp () {
-      sleep 1
-      screen -r -S "onlineapp" -X quit
-      screen -wipe 1>/dev/null 2>/dev/null
-      [[ $(grep -wc "onlineapp" /etc/autostart) != '0' ]] && {
-          sed -i '/onlineapp/d' /etc/autostart
-      }
-      sleep 1
-   }
-   fun_bar 'fun_stponlineapp' 'sleep 3'
-   rm -rf /var/www/html/server >/dev/null 2>&1
-   echo -e "\n\033[1;31m ONLINE APP PARADO !\033[0m"
-}
-function onapp_ssh () {
-[[ $(ps x | grep "onlineapp"|grep -v grep |wc -l) = '0' ]] && onapp1 || onapp2
-}
-
-systen_info () {
-clear
-echo -e "\E[44;1;37m               INFORMAÇÕES VPS                 \E[0m"
-echo ""
-if [ ! /proc/cpuinfo ]; then echo -e "\033[1;31mSistema No Soportado" && echo ""; return 1; fi
-if [ ! /etc/issue.net ]; then echo -e "\033[1;31mSistema No Soportado" && echo ""; return 1; fi
-if [ ! /proc/meminfo ]; then echo -e "\033[1;31mSistema No Soportado" && echo ""; return 1; fi
-
-# SISTEMA OPERACIONAL
-echo -e "\033[1;32mSISTEMA OPERACIONAL \033[0m"
-[[ ! -e /etc/lsb-release ]] && touch /etc/lsb-release
-system=$(cat /etc/issue.net)
-codename=$(cat /etc/lsb-release |grep CODENAME |awk -F = {'print $2'})
-based=$(cat /etc/*release | grep ID_LIKE | awk -F "=" '{print $2}')
-echo -e "\033[1;31mNombre de la máquina: \033[1;37m$(hostname)"
-echo -e "\033[1;31mDirección IP: \033[1;37m$(ip addr | grep inet | grep -v inet6 | grep -v "host lo" | awk '{print $2}' | awk -F "/" '{print $1}')"
-[[ "$system" ]] && echo -e "\033[1;31mSistema: \033[1;37m$system" || echo -e "\033[1;31mSistema: \033[1;37m???"
-[[ "$codename" ]] && echo -e "\033[1;31mCodeName: \033[1;37m$codename" || echo -e "\033[1;31mCodeName: \033[1;37m???"
-echo -e "\033[1;31mKernel: \033[1;37m$(uname -s)"
-echo -e "\033[1;31mKernel Release: \033[1;37m$(uname -r)"
-[[ "$based" ]] && echo -e "\033[1;31mBasado en: \033[1;37m$based" || echo -e "\033[1;31mBasado en: \033[1;37m???"
-
-# PROCESSADOR
-echo ""
-echo -e "\033[1;32mPROCESADOR \033[0m"
-processor=$(cat /proc/cpuinfo | grep "model name" | uniq | awk -F ":" '{print $2}')
-cpus=$(cat /proc/cpuinfo | grep processor | wc -l)
-cpucores=$(grep -c cpu[0-9] /proc/stat)
-clock=$(lscpu | grep "CPU MHz" | awk '{print $3}')
-cache=$(cat /proc/cpuinfo |grep "cache size" |uniq |awk -F : {'print $2'})
-uso=$(top -bn1 | awk '/Cpu/ { cpu = "" 100 - $8 "%" }; END { print cpu }')
-[[ "$processor" ]] && echo -e "\033[1;31mProcesador: \033[1;37m$processor x$cpus" || echo -e "\033[1;33mProcesador: \033[1;37m???"
-echo -e "\033[1;31mNucleos:\033[1;37m $cpucores"
-[[ "$clock" ]] && echo -e "\033[1;31mFrequecia de Operación: \033[1;37m$clock MHz" || echo -e "\033[1;33mFrequecia de Operación: \033[1;37m???"
-echo -e "\033[1;31mMemoria Cache:\033[1;37m$cache"
-echo -e "\033[1;31mArquitetura: \033[1;37m$(uname -m)"
-echo -e "\033[1;31mUtilizado: \033[37m$uso"
-
-# MEMORIA RAM
-echo ""
-echo -e "\033[1;32mMEMORIA RAM \033[0m"
-totalram=$(free | grep Mem | awk '{print $2}')
-usedram=$(free | grep Mem | awk '{print $3}')
-freeram=$(free | grep Mem | awk '{print $4}')
-usoram=$(free -m | awk 'NR==2{printf "%.2f%%\t\t", $3*100/$2 }')
-swapram=$(cat /proc/meminfo | grep SwapTotal | awk '{print $2}')
-echo -e "\033[1;31mTotal: \033[1;37m$(($totalram / 1024))"
-echo -e "\033[1;31mEn Uso: \033[1;37m$(($usedram / 1024))"
-echo -e "\033[1;31mLibre: \033[1;37m$(($freeram / 1024))"
-echo -e "\033[1;31mUtilizado: \033[37m$usoram"
-echo -e "\033[1;31mSwap: \033[1;37m$(($swapram / 1024))MB"
-
-# SERVIÇOS EM FUNCIONAMENTO
-echo ""
-echo -e "\033[1;32mTIEMPO ONLINE \033[0m"
-echo -e "\033[1;31mTiempo Online: \033[1;37m$(uptime)"
-
-# TEMPO ONLINE
-echo ""
-echo -e "\033[1;32mSERVIÇOS EM FUNCIONAMENTO \033[0m"
-PT=$(lsof -V -i tcp -P -n | grep -v "ESTABELECIDO" |grep -v "COMANDO" | grep "LISTEN")
-for porta in `echo -e "$PT" | cut -d: -f2 | cut -d' ' -f1 | uniq`; do
-    svcs=$(echo -e "$PT" | grep -w "$porta" | awk '{print $1}' | uniq)
-    echo -e "\033[1;31m$svcs: \033[1;37m$porta"
-done
-}
-
-limpar_caches () {
-echo -e "\033[1;32mINICIANDO LIMPIEZA CACHE... \033[0m"
-echo ""
-(
-VE="\033[1;33m" && MA="\033[1;31m" && DE="\033[1;32m"
-while [[ ! -e /tmp/abc ]]; do
-A+="#"
-echo -e "${VE}[${MA}${A}${VE}]" >&2
-sleep 0.3s
-tput cuu1 && tput dl1
-done
-echo -e "${VE}[${MA}${A}${VE}] - ${DE}[100%]" >&2
-rm /tmp/abc
-) &
-echo 3 > /proc/sys/vm/drop_caches &>/dev/null
-sleep 1s
-sysctl -w vm.drop_caches=3 &>/dev/null
-apt-get autoclean -y &>/dev/null
-sleep 1s
-apt-get clean -y &>/dev/null
-rm /tmp/* &>/dev/null
-touch /tmp/abc
-sleep 0.5s
-echo -e "\n  \033[1;32mPROCESSO CONCLUÍDO !\033[0m"
-sleep 3
-ferramentascodes
-}
-
 while true $x != "ok"
 do
-on="\033[1;32m◉ " && off="\033[1;31m○ "
-[[ `grep -c "^#ADM" /etc/sysctl.conf` -eq 0 ]] && tcp=$off || tcp=$on
 [[ -e /etc/Plus-torrent ]] && stsf=$(echo -e "\033[1;32m◉ ") || stsf=$(echo -e "\033[1;31m○ ")
 stsbot=$(ps x | grep "bot_plus"|grep -v grep > /dev/null && echo -e "\033[1;32m◉ " || echo -e "\033[1;31m○ ")
-stsbotteste=$(ps x | grep "bot_plus"|grep -v grep > /dev/null && echo -e "\033[1;32m◉ " || echo -e "\033[1;31m○ ")
 autm=$(grep "menu;" /etc/profile > /dev/null && echo -e "\033[1;32m◉ " || echo -e "\033[1;31m○ ")
-stson=$(ps x | grep "onlineapp"|grep -v grep > /dev/null && echo -e "\033[1;32m◉ " || echo -e "\033[1;31m○ ")
 [[ ! -e /usr/lib/licence ]] && rm -rf /bin > /dev/null 2>&1
 stsl=$(ps x | grep "limiter"|grep -v grep > /dev/null && echo -e "\033[1;32m◉ " || echo -e "\033[1;31m○ ")
 stsu=$(ps x | grep "udpvpn"|grep -v grep > /dev/null && echo -e "\033[1;32m◉ " || echo -e "\033[1;31m○ ")
@@ -294,62 +104,53 @@ _ons=$(ps -x | grep sshd | grep -v root | grep priv | wc -l)
 [[ -e /etc/default/dropbear ]] && _drp=$(ps aux | grep dropbear | grep -v grep | wc -l) _ondrp=$(($_drp - 1)) || _ondrp="0"
 _onli=$(($_ons + $_onop + $_ondrp))
 _ram=$(printf ' %-9s' "$(free -h | grep -i mem | awk {'print $2'})")
-mb=$(printf '%-8s' "$(free -h | grep Mem | sed 's/\s\+/,/g' | cut -d , -f6)")
 _usor=$(printf '%-8s' "$(free -m | awk 'NR==2{printf "%.2f%%", $3*100/$2 }')")
 _usop=$(printf '%-1s' "$(top -bn1 | awk '/Cpu/ { cpu = "" 100 - $8 "%" }; END { print cpu }')")
-modelo1=$(printf '%-11s' "$(lscpu | grep Arch | sed 's/\s\+/,/g' | cut -d , -f2)")
 _core=$(printf '%-1s' "$(grep -c cpu[0-9] /proc/stat)")
-_system=$(printf '%-13s' "$system")
-_hoje=$(date +'%d/%m/%Y')
+_system=$(printf '%-14s' "$system")
 _hora=$(printf '%(%H:%M:%S)T')
 _onlin=$(printf '%-5s' "$_onli")
 _userexp=$(printf '%-5s' "$_expuser")
 _tuser=$(awk -F: '$3>=1000 {print $1}' /etc/passwd | grep -v nobody | wc -l)
 clear
 echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-echo -e "\E[44;1;37m              GERENCIAR FERRAMENTAS               \E[0m"
+echo -e "\E[41;1;37m              GERENCIAR FERRAMENTAS               \E[0m"
 echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 echo ""
 echo -e "[\033[1;36m01\033[1;31m] \033[1;37m• \033[1;33mSPEEDTEST \033[1;31m                  
 [\033[1;36m02\033[1;31m] \033[1;37m• \033[1;33mOTIMIZAR \033[1;31m
-[\033[1;36m03\033[1;31m] \033[1;37m• \033[1;33mAGREGAR HOST \033[1;31m
-[\033[1;36m04\033[1;31m] \033[1;37m• \033[1;33mELIMINAR HOST \033[1;31m
+[\033[1;36m03\033[1;31m] \033[1;37m• \033[1;33mADICIONAR HOST \033[1;31m
+[\033[1;36m04\033[1;31m] \033[1;37m• \033[1;33mREMOVER HOST \033[1;31m
 [\033[1;36m05\033[1;31m] \033[1;37m• \033[1;33mFIREWALL $stsf\033[1;31m
-[\033[1;36m06\033[1;31m] \033[1;37m• \033[1;33mBOT TELEGRAM $stsbot \033[1;31m
-[\033[1;36mTE\033[1;31m] \033[1;37m• \033[1;33mBOT TESTE $stsbotteste \033[1;31m
+[\033[1;36m06\033[1;31m] \033[1;37m• \033[1;33mBOT TELEGRAM $stsbot\033[1;31m
 [\033[1;36m07\033[1;31m] \033[1;37m• \033[1;33mBAD VPN $stsu\033[1;31m
-[\033[1;36m08\033[1;31m] \033[1;37m• \033[1;33mTCPSPEED $tcp\033[1;31m
-[\033[1;36m09\033[1;31m] \033[1;37m• \033[1;33mONLINE APP $stson \033[1;31m
-[\033[1;36m10\033[1;31m] \033[1;37m• \033[1;33mMEMORIA VIRTUAL \033[1;31m 
-[\033[1;36m11\033[1;31m] \033[1;37m• \033[1;33mINFORMAÇÃO DO SISTEMA \033[1;31m
-[\033[1;36m12\033[1;31m] \033[1;37m• \033[1;33mLIMPAR CACHE DO SISTEMA \033[1;31m
-[\033[1;36m00\033[1;31m] \033[1;37m• \033[1;33mVOLTA AO MENU \033[1;32m<\033[1;33m<\033[1;31m< \033[1;31m"
+[\033[1;36m00\033[1;31m] \033[1;37m• \033[1;33mRETORNAR AO MENU \033[1;32m<\033[1;33m<\033[1;31m< \033[1;31m"
 echo ""
 echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 echo ""
-echo -ne "\033[1;32mOPCAO \033[1;33m?\033[1;31m?\033[1;37m : "; read x
+echo -ne "\033[1;32mOQUE DESEJA FAZER \033[1;33m?\033[1;31m?\033[1;37m : "; read x
 
 case "$x" in 
    1 | 01)
    clear
    velocity
-   echo -ne "\n\033[1;31mENTER \033[1;33mretornar para \033[1;32mMENU!\033[0m"; read
+   echo -ne "\n\033[1;31mENTER \033[1;33mpara retornar ao \033[1;32mMENU!\033[0m"; read
    ;;
    2 | 02)
    clear
    otimizar
-   echo -ne "\n\033[1;31mENTER \033[1;33mretornar para \033[1;32mMENU!\033[0m"; read
+   echo -ne "\n\033[1;31mENTER \033[1;33mpara retornar ao \033[1;32mMENU!\033[0m"; read
    ;;
    3 | 03)
    clear
    addhost
-   echo -ne "\n\033[1;31mENTER \033[1;33mretornar para \033[1;32mMENU!\033[0m"; read
+   echo -ne "\n\033[1;31mENTER \033[1;33mpara retornar ao \033[1;32mMENU!\033[0m"; read
    ferramentascodes
    ;;
    4 | 04)
    clear
    delhost
-   echo -ne "\n\033[1;31mENTER \033[1;33mretornar para \033[1;32mMENU!\033[0m"; read
+   echo -ne "\n\033[1;31mENTER \033[1;33mpara retornar ao \033[1;32mMENU!\033[0m"; read
    ferramentascodes
    ;;
    5 | 05)
@@ -358,50 +159,18 @@ case "$x" in
    6 | 06)
    botssh
    ;;
-   te | TE)
-   [[ ! -e /root/BOT ]] && mkdir /root/BOT > /dev/null 2>&1
-   rm -rf /root/BOT/ShellBot.sh > /dev/null 2>&1
-   rm -rf /bin/botteste.sh > /dev/null 2>&1
-   wget -O /root/BOT/ShellBot.sh https://raw.githubusercontent.com/leitura/ADMPLUS-MANAGER-PRO/main/Sistema/ShellBot.sh > /dev/null 2>&1
-   wget -O /bin/botteste.sh https://raw.githubusercontent.com/leitura/ospacotesmb/main/botteste.sh > /dev/null 2>&1
-   chmod 777 /root/BOT/ShellBot.sh
-   chmod 777 /bin/botteste.sh
-   botteste.sh
-   ;;
    7 | 07)
    clear
    badvpn
    exit;
-   ;;
-   8 | 8)
-   clear
-   TCPspeed
-   ;;
-   9 | 09)
-   clear
-   onapp_ssh
-   echo -ne "\n\033[1;31mENTER \033[1;33mretornar para \033[1;32mMENU!\033[0m"; read
-   ;;
-   10)
-   clear
-   swapmemory
-   ;;
-   11)
-   clear
-   systen_info
-   echo -ne "\n\033[1;31mENTER \033[1;33mretornar para \033[1;32mMENU!\033[0m"; read
-   ;;
-   12)
-   clear
-   limpar_caches
    ;;
    0 | 00)
    menu
    exit;
    ;;
    *)
-   echo -e "\n\033[1;31mOpcao inválida !\033[0m"
-   sleep 1
+   echo -e "\n\033[1;31mOpcao invalida !\033[0m"
+   sleep 2
 esac
 done
 }
