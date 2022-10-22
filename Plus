@@ -84,7 +84,7 @@ pip install PySensors
 }
 
 echo -e "\033[0;34m═════════════════════════════════════════════════\033[0m"
-echo -e "\E[44;1;37m       BEM-VINDO AO ADPLUS MANAGER PRO        \E[0m"
+echo -e "\E[44;1;37m         BEM-VINDO AO ADPLUS MANAGER          \E[0m"
 echo -e "\033[0;34m═════════════════════════════════════════════════\033[0m"
 echo -e "\033[1;31mATENCAO! \033[1;33mESSE SCRIPT IRA !\033[0m"
 echo -e "\033[1;31m• \033[1;33mINSTALAR UM CONJUNTO DE SCRIPTS COMO FERRAMENTAS\033[0m" 
