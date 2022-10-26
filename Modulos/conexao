@@ -2044,8 +2044,8 @@ exit 0' >$RCLOCAL
 	        }
 	        if netstat -tunlp |grep v2ray 1> /dev/null 2> /dev/null; then
 	            echo -e "\E[44;1;37m            INSTALADOR V2RAY             \E[0m"
-	            echo -e "\n\033[1;33mV2RAY YA ESTÃ INSTALADO\nQUIERES REINSTALAR? \033[0m\n"
-	            echo -ne "\033[1;32mQUIERES CONTINUAR CON LA REINSTALACIÃ“N ? \033[1;33m[s/n]:\033[0m "
+	            echo -e "\n\033[1;33mV2RAY JÁ ESTÁ INSTALADO\nDESEJA REINSTALAR? \033[0m\n"
+	            echo -ne "\033[1;32mVOCÊ QUER CONTINUAR COM A REINSTALAÇÃO ? \033[1;33m[s/n]:\033[0m "
 	            read resp
 	            [[ "$resp" != @(s|y|S|Y) ]] && {
 	                echo -e "\n\033[1;31mRetornando...\033[0m"
@@ -2055,8 +2055,8 @@ exit 0' >$RCLOCAL
 	            v2rayinst
 	        else
 	            echo -e "\E[44;1;37m            INSTALADOR V2RAY             \E[0m"
-	            echo -e "\n\033[1;33mTENGA EN CUENTA QUE ESTE MÃ‰TODO ES INESTABLE\nSER CONSCIENTE DE LOS RIESGOS ! \033[0m\n"
-	            echo -ne "\033[1;32mQUIERES CONTINUAR CON LA INSTALACIÃ“N ? \033[1;33m[s/n]:\033[0m "
+	            echo -e "\n\033[1;33mOBSERVE QUE ESTE MÉTODO É INSTÁVEL\nESTEJA CIENTE DOS RISCOS ! \033[0m\n"
+	            echo -ne "\033[1;32mQUER CONTINUAR COM A INSTALAÇÃO ? \033[1;33m[s/n]:\033[0m "
 	            read resp
 	            [[ "$resp" != @(s|y|S|Y) ]] && {
 	                echo -e "\n\033[1;31mRetornando...\033[0m"
