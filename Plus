@@ -77,13 +77,9 @@ for _prog in ${_pacotes[@]}; do
     apt install $_prog -y
 done
 pip install speedtest-cli
-apt-get install python-pip build-essential python-dev -y
-pip install Glances
-pip install PySensors
 }
 
 echo -e "\033[0;34m═════════════════════════════════════════════════\033[0m"
-## echo -e "\E[44;1;37m        BEM VINDO AO ADMPLUS MANAGER XXX         \E[0m"
 echo -e "\E[44;1;37m          ∆ ADMPLUS MANAGER COMMUNITY ∆          \E[0m"
 echo -e "\033[0;34m═════════════════════════════════════════════════\033[0m"
 echo -e "\033[1;31mATENCAO! \033[1;33mESSE SCRIPT IRA !\033[0m"
