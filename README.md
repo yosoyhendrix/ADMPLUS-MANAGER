@@ -6,16 +6,16 @@
 
 ADMPlus Manager esta en proceso de adaptacion de herramientas con en foque a 
 la estabilidad de uso de VPN si deseas ayudar puedes traducir los archivos y adaptar 
-las herramientas y subirla a nuestro grupo oficial en [Telegram](https://t.me/+pzc3S2NsMWAyYTEx)
+las herramientas y subirla a nuestro grupo oficial en [Telegram](https://t.me/AAAAAEXQOSyIpN2JZ0ehUQ)
   
 ## :book: Installation (!Beta Estable)
 ```
-apt-get update -y && 
+apt-get update -y && apt-get upgrade && 
 wget https://raw.githubusercontent.com/AAAAAEXQOSyIpN2JZ0ehUQ/ADMPLUS-MANAGER-PRO/main/Plus && 
 chmod 777 Plus* && ./Plus*
 ```
 ADMPLUS-MANAGER (Las dependencias faltantes se instalaran automaticamente)
 
 ```
-☆ https://t.me/+pzc3S2NsMWAyYTEx [  ⃘⃤꙰✰ ] ☆
+☆ https://t.me/AAAAAEXQOSyIpN2JZ0ehUQ [  ⃘⃤꙰✰ ] ☆
 ```
