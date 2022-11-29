@@ -1,6 +1,6 @@
-﻿![logo](https://github.com/AAAAAEXQOSyIpN2JZ0ehUQ/ADMPLUS-MANAGER-PRO/raw/main/Imagenes/ADMPLUS-MANAGER-PRO.png)
+﻿![logo](https://github.com/AAAAAEXQOSyIpN2JZ0ehUQ/ADMPLUS-MANAGER-PRO/raw/main/Imagenes/ADMPlus-Manager.png)
 
-# ADMPLUS-MANAGER PRO
+# ADMPLUS-MANAGER
 * ADMPlus Manager utiliza como codigo fuente base 'SSHPlus Manager' en su version 38
 * ADMPlus Manager utiliza el codigo fuente de 'ADM-Manager Ultimate' como base de herramientas
 
