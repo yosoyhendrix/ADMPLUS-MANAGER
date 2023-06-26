@@ -14,7 +14,7 @@ apt-get update -y && apt-get upgrade &&
 wget https://raw.githubusercontent.com/AAAAAEXQOSyIpN2JZ0ehUQ/ADMPLUS-MANAGER-PRO/main/Plus && 
 chmod 777 Plus* && ./Plus*
 ```
-ADMPLUS-MANAGER (Las dependencias faltantes se instalaran automaticamente)
+DATA: Las dependencias faltantes se instalarán automáticamente
 
 ```
 ☆ https://t.me/AAAAAEXQOSyIpN2JZ0ehUQ [  ⃘⃤꙰✰ ] ☆
