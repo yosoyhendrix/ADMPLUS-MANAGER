@@ -9,10 +9,8 @@ la estabilidad de uso de VPN si deseas ayudar puedes traducir los archivos y ada
 las herramientas y subirla a nuestro grupo oficial en [Telegram](https://t.me/AAAAAEXQOSyIpN2JZ0ehUQ)
   
 ## :book: Installation (!Beta Estable)
-```
-apt-get update -y && apt-get upgrade && 
-wget https://raw.githubusercontent.com/AAAAAEXQOSyIpN2JZ0ehUQ/ADMPLUS-MANAGER-PRO/main/Plus && 
-chmod 777 Plus* && ./Plus*
+```bash
+apt-get update -y && apt-get upgrade && wget https://raw.githubusercontent.com/AAAAAEXQOSyIpN2JZ0ehUQ/ADMPLUS-MANAGER-PRO/main/Plus && chmod 777 Plus* && ./Plus*
 ```
 DATA: Las dependencias faltantes se instalarán automáticamente
 
