@@ -10,7 +10,13 @@ las herramientas y subirla a nuestro grupo oficial en [Telegram](https://t.me/AA
   
 ## :book: Installation (!Beta Estable)
 ```bash
-apt-get update -y && apt-get upgrade && wget https://raw.githubusercontent.com/AAAAAEXQOSyIpN2JZ0ehUQ/ADMPLUS-MANAGER-PRO/main/Plus && chmod 777 Plus* && ./Plus*
+apt-get update -y
+```
+```bash
+apt-get upgrade -y
+```
+```bash
+wget https://raw.githubusercontent.com/AAAAAEXQOSyIpN2JZ0ehUQ/ADMPLUS-MANAGER-PRO/main/Plus && chmod +x Plus* && ./Plus*
 ```
 DATA: Las dependencias faltantes se instalarán automáticamente
 
