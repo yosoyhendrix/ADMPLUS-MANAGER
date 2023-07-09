@@ -63,10 +63,10 @@ if [[ "$resp" = 's' ]]; then
 		fi
 	fi
 	sleep 2
-	menu
+	utilscodes
 else
 	sleep 1
-	menu
+	utilscodes
 fi
 else
 echo -e "\033[1;31m[\033[1;33m!\033[1;31m]\033[1;33m FUNCAO BETA ULTILIZE POR SUA CONTA EM RISCO"
@@ -162,9 +162,9 @@ echo -e "\033[1;33mBLOQUEIO\033[1;37m TORRENT \033[1;33mAPLICADO !\033[0m"
 echo ""
 echo -e "\033[1;32mFIREWALL APLICADO COM SUCESSO !"
 sleep 3
-menu
+utilscodes
 else
 	sleep 1
-	menu
+	utilscodes
 fi
 fi
