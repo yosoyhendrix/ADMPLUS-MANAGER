@@ -158,7 +158,7 @@ echo -e "\033[1;31mHora\033[1;31m: \033[1;37m$_hora  \033[1;31m  Em uso\033[1;31
 echo -e "$barra"
 echo -e "\033[1;32mOnlines:\033[1;37m $_onlin    \033[1;31mExpirados: \033[1;37m$_userexp \033[1;33mTotal: \033[1;37m$_tuser\033[0m"
 echo -e "$barra"
-echo -e "\033[1;31m[\033[1;32m ADMPLUS MANAGER \033[1;31m] IP: \033[1;37m$IP \033[1;31mIP: \033[1;37m$USER"
+echo -e "\033[1;31m[\033[1;32m ADMPLUS MANAGER \033[1;31m] IP: \033[1;37m$IP \033[1;31mID: \033[1;37m$USER"
 echo -e "$barra"
 echo -e "\033[1;31m[\033[1;36m01\033[1;31m] \033[1;37m• \033[1;33mGERENCIAR USUARIOS "
 echo -e "\033[1;31m[\033[1;36m02\033[1;31m] \033[1;37m\033[1;37m• \033[1;33mGERENCIAR FERRAMENTAS "
