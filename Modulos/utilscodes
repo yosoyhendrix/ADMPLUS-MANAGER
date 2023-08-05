@@ -36,6 +36,8 @@ utilscodes ()
 
 while true $x != "ok"
 do
+on="\033[1;32m◉ " && off="\033[1;31m○ "
+[[ `grep -c "^#ADM" /etc/sysctl.conf` -eq 0 ]] && tcp=$off || tcp=$on
 [[ -e /etc/Plus-torrent ]] && stsf=$(echo -e "\033[1;32m◉ ") || stsf=$(echo -e "\033[1;31m○ ")
 stsbot=$(ps x | grep "bot_plus"|grep -v grep > /dev/null && echo -e "\033[1;32m◉ " || echo -e "\033[1;31m○ ")
 autm=$(grep "menu;" /etc/profile > /dev/null && echo -e "\033[1;32m◉ " || echo -e "\033[1;31m○ ")
@@ -71,7 +73,6 @@ clear
 echo -e "$barra"
 echo -e "\033[1;32mGERENCIAR UTILITARIOS "
 echo -e "$barra"
-[[ "$(cat /etc/sysctl.conf)" != "^#ADM" ]] && tcp=$(echo -e "\033[1;32m◉ ") || tcp=$(echo -e "\033[1;31m○ ")
 echo -e "\033[1;31m[\033[1;36m01\033[1;31m] \033[1;37m• \033[1;33mTCPSPEED $tcp "
 echo -e "\033[1;31m[\033[1;36m02\033[1;31m] \033[1;37m• \033[1;33mFIREWALL $stsf "
 echo -e "\033[1;31m[\033[1;36m03\033[1;31m] \033[1;37m• \033[1;33mBAD VPN $stsu "
