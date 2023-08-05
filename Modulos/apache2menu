@@ -63,7 +63,7 @@ echo -e "\033[1;32mREINICIANDO APACHE2!"
 echo ""
 fun_bar 'service apache2 start' 'service apache2 restart'
 echo ""
-echo -e "\033[01;32m APACHE CONFIGURADO COM SUCESSO"
+echo -e "\033[01;32m APACHE ACTIVADO!"
 echo ""
 sleep 2s
 conexao
@@ -81,7 +81,7 @@ apt-get purge apache2 -y
 }
 fun_bar "purge_apache"
 echo ""
-echo -e "\033[01;32m APACHE2 DESINLADO CON ÉXITO"
+echo -e "\033[01;32m APACHE2 DESINLADO!"
 [[ -d /etc/apache2 ]] && rm -rf /etc/apache2
 echo ""
 sleep 2s
@@ -139,7 +139,7 @@ echo ""
 fun_bar "service apache2 stop"
 echo "#STOP" > /etc/apache2/apache_stop
 echo ""
-echo -e "\033[1;32m APACHE2 PARADO COM SUCESSO"
+echo -e "\033[1;32m APACHE2 PARADO!"
 echo ""
 sleep 2s
 gestorapache2
@@ -151,7 +151,7 @@ service apache2 start > /dev/null 2>&1
 fun_bar "service apache2 restart"
 rm -rf /etc/apache2/apache_stop
 echo ""
-echo -e "\033[1;32m APACHE ATIVADO COM SUCESSO"
+echo -e "\033[1;32m APACHE ATIVADO!"
 echo ""
 sleep 2s
 gestorapache2
@@ -167,7 +167,7 @@ rm -rf index.html > /dev/null 2>&1
 wget https://raw.githubusercontent.com/AAAAAEXQOSyIpN2JZ0ehUQ/ADM-ULTIMATE-NEW-FREE/master/Install/notfound404.zip > /dev/null 2>&1
 unzip notfound404.zip > /dev/null 2>&1
 rm -rf notfound404.zip > /dev/null 2>&1 
-echo -e "\033[1;33mACTIVADO COM SUCESSO"
+echo -e "\033[1;33mACTIVADO!"
 echo ""
 sleep 2s
 gestorapache2
@@ -241,7 +241,7 @@ case "$x" in
    exit;
    ;;
    *)
-   echo -e "\n\033[1;31mOpção inválida !\033[0m"
+   echo -e "\n\033[1;31mOpcao invalida !\033[0m"
    sleep 1
 esac
 done
