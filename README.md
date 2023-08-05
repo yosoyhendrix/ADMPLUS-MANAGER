@@ -47,9 +47,9 @@ DATA: Las dependencias faltantes se instalarán automáticamente
 * Idioma por defecto es el portugués
 
 ## :octocat: Credits
-1. @crazy_vpn - Developer of SSHPlus Manager
+1. [@crazy_vpn](https://t.me/crazy_vpn) - Developer of SSHPlus Manager
 2. [@E8th4ver](https://t.me/E8th4ver) - Developer of New-Ultimate
-2. illuminati Dev Team - Update Version 
+2. [illuminati Dev Team](https://t.me/AAAAAEXQOSyIpN2JZ0ehUQ) - Update Version 
 ```
 ☆ https://t.me/AAAAAEXQOSyIpN2JZ0ehUQ [  ⃘⃤꙰✰ ] ☆
 ```
