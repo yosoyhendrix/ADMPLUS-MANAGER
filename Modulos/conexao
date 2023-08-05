@@ -2087,7 +2087,7 @@ exit 0' >$RCLOCAL
 		while true $x != "ok"; do
 			clear
 			echo -e "$barra"
-			echo -e "\033[1;32mMODO DE CONEXAO "
+			echo -e "\033[1;32mMENU DE INSTALACOES "
 			echo -e "$barra"
 			[[ "$(netstat -tlpn | grep 'sshd' | wc -l)" != '0' ]] && {
 				sts6="\033[1;32m◉ "
