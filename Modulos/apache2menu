@@ -72,7 +72,7 @@ exit
 
 remover_apache2 () {
 clear
-echo -e "\033[01;32mDESINSTALANDO O APACHE2... "
+echo -e "\033[01;32mDESINSTALANDO APACHE2... "
 echo ""
 purge_apache () {
 /etc/init.d/apache2 stop
@@ -81,7 +81,7 @@ apt-get purge apache2 -y
 }
 fun_bar "purge_apache"
 echo ""
-echo -e "\033[01;32m APACHE2 DESINLADO!"
+echo -e "\033[01;32m APACHE2 DESINSTALADO!"
 [[ -d /etc/apache2 ]] && rm -rf /etc/apache2
 echo ""
 sleep 2s
@@ -205,7 +205,7 @@ unset OPENBAR
 echo -e "\E[44;1;37m               GERENCIAR APACHE2                  \E[0m"
 mine_port
 echo ""
-echo -e "\033[1;31m[\033[1;36m01\033[1;31m] \033[1;37m• \033[1;33mDESINSTALAR O APACHE2 "   
+echo -e "\033[1;31m[\033[1;36m01\033[1;31m] \033[1;37m• \033[1;33mDESINSTALAR APACHE2 "   
 echo -e "\033[1;31m[\033[1;36m02\033[1;31m] \033[1;37m• \033[1;33mREDEFINIR PORTA "
 echo -e "\033[1;31m[\033[1;36m03\033[1;31m] \033[1;37m• \033[1;33mEDITAR CLIENTE \033[1;31m(comand nano) "                   
 echo -e "\033[1;31m[\033[1;36m04\033[1;31m] \033[1;37m• \033[1;33mINICIAR OU PARAR $OPENBAR "
