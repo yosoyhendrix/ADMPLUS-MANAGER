@@ -52,23 +52,6 @@ local PORTENTRY="$2"
 [[ ! $(echo -e $(port|grep -v ${SERVICE})|grep -w "$PORTENTRY") ]] && return 0 || return 1
 }
 
-apache2_install () {
-clear
-echo -e "\033[01;32mINSTALANDO APACHE2... "
-echo ""
-fun_bar "apt-get install apache2 -y"
-sed -i "s;Listen 80;Listen 81;g" /etc/apache2/ports.conf
-echo ""
-echo -e "\033[1;32mREINICIANDO APACHE2!"
-echo ""
-fun_bar 'service apache2 start' 'service apache2 restart'
-echo ""
-echo -e "\033[01;32m APACHE ACTIVADO!"
-echo ""
-sleep 2s
-conexao
-exit
-}
 
 remover_apache2 () {
 clear
@@ -159,7 +142,7 @@ exit
 }
 
 fun_notfound404 () {
-echo -e "\033[1;32mINDEX NOT FOUND 404...
+echo -e "\033[1;32mINDEX NOT FOUND 404... "
 echo ""
 download_notfound404 () {
 cd /var/www/html/
@@ -173,7 +156,7 @@ rm -rf notfound404.zip > /dev/null 2>&1
 }
 fun_bar "download_notfound404"
 echo ""
-echo -e "\033[1;33mACTIVADO!"
+echo -e "\033[1;33mACTIVADO! "
 echo ""
 sleep 2s
 gestorapache2
@@ -207,7 +190,8 @@ exit 1
 fi
 clear
 unset OPENBAR
-[[ $(port|grep -w "apache2") ]] && OPENBAR="\033[1;32m...[\033[1;32m♦\033[1;32m] " || OPENBAR="\033[1;31m...[\033[1;31m○\033[1;31m] "
+[[ $(port|grep -w "apache2") ]] && OPENBAR="\033[1;32m◉ " || OPENBAR="\033[1;31m○ "
+##[[ $(port|grep -w "apache2") ]] && OPENBAR="\033[1;32m...[\033[1;32m♦\033[1;32m] " || OPENBAR="\033[1;31m...[\033[1;31m○\033[1;31m] "
 echo -e "\E[44;1;37m               GERENCIAR APACHE2                  \E[0m"
 mine_port
 echo ""
