@@ -168,8 +168,10 @@ wget https://raw.githubusercontent.com/AAAAAEXQOSyIpN2JZ0ehUQ/ADM-ULTIMATE-NEW-F
 unzip notfound404.zip > /dev/null 2>&1
 rm -rf notfound404.zip > /dev/null 2>&1 
 echo -e "\033[1;33mACTIVADO COM SUCESSO"
-msg -bar
-return 0
+echo ""
+sleep 2s
+gestorapache2
+exit
 }
 
 mine_port () {
