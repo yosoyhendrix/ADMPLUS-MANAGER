@@ -8,7 +8,6 @@ comando[0]="$1"
 comando[1]="$2"
  (
 [[ -e $HOME/fim ]] && rm $HOME/fim
-[[ ! -e /usr/lib/sshplus ]] && rm -rf /bin/menu > /dev/null 2>&1
 ${comando[0]} -y > /dev/null 2>&1
 ${comando[1]} -y > /dev/null 2>&1
 touch $HOME/fim
