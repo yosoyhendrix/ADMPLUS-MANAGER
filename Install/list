@@ -37,6 +37,7 @@ echo -e 'by: @CRAZY_VPN' >/usr/lib/sshplus
 cat /usr/lib/sshplus >$lst2/licence
 cat /usr/lib/sshplus > /etc/SSHPlus/.tmp/crazy
 echo "/bin/menu" > /bin/adm && chmod +x /bin/adm
+echo "/bin/menu" > /bin/vps && chmod +x /bin/vps
 echo "/bin/menu" > /bin/h && chmod +x /bin/h
 netstat -nplt | grep -w 'apache2' | grep -w '80' && sed -i "s/Listen 80/Listen 81/g" /etc/apache2/ports.conf
 service apache2 restart
