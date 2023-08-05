@@ -1,17 +1,17 @@
 ﻿![logo](https://github.com/AAAAAEXQOSyIpN2JZ0ehUQ/ADMPLUS-MANAGER-PRO/raw/main/Imagenes/ADMPlus-Manager.png)
 
-# ADMPLUS-MANAGER-PRO 
+# ADMPLUS COMMUNITY 
 Es un script con un conjunto de características y herramientas adecuadas para 
 ofrecer extrema facilidad de manejo en servidores Linux con un enfoque en el uso de 
 VPN, tiene una interfaz agradable aportando información detallada sobre la maquina 
 y los usuarios...
 
-ADMPlus Manager esta en proceso de adaptacion de herramientas con en foque a 
+ADMPlus Community esta en proceso de adaptacion de herramientas con en foque a 
 la estabilidad de uso de VPN si deseas ayudar puedes traducir los archivos y adaptar 
 las herramientas y subirla a nuestro grupo oficial en [Telegram](https://t.me/AAAAAEXQOSyIpN2JZ0ehUQ)
 
-* ADMPlus Manager utiliza como codigo fuente base 'SSHPlus Manager' [@crazy_vpn](https://t.me/crazy_vpn) en su version 38
-* ADMPlus Manager utiliza el codigo fuente de 'ADM-Manager Ultimate' [@E8th4ver](https://t.me/E8th4ver) como base de herramientas
+* ADMPlus Community utiliza como codigo fuente base 'SSHPlus Manager' [@crazy_vpn](https://t.me/crazy_vpn) en su version 38
+* ADMPlus Community utiliza el codigo fuente de 'ADM-Manager Ultimate' [@E8th4ver](https://t.me/E8th4ver) como base de herramientas
 
 ## :book: Installation
 ```bash
