@@ -76,7 +76,6 @@ comando[0]="$1"
 comando[1]="$2"
  (
 [[ -e $HOME/fim ]] && rm $HOME/fim
-[[ ! -d /etc/SSHPlus ]] && rm -rf /bin/menu
 ${comando[0]} > /dev/null 2>&1
 ${comando[1]} > /dev/null 2>&1
 touch $HOME/fim
@@ -146,7 +145,6 @@ case "$x" in
    ;;
    *)
    echo -e "\n\033[1;31mOpcao invalida !\033[0m"
-   sleep 2
 esac
 done
 }

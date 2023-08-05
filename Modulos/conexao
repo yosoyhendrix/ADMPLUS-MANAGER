@@ -2090,6 +2090,12 @@ exit 0' >$RCLOCAL
 			echo -e "$barra"
 			echo -e "\033[1;32mMODO DE CONEXAO "
 			echo -e "$barra"
+			[[ "$(netstat -tlpn | grep 'sshd' | wc -l)" != '0' ]] && {
+				sts6="\033[1;32m◉ "
+			} || {
+				sts6="\033[1;31m○ "
+			}
+
 			[[ "$(netstat -tlpn | grep 'docker' | wc -l)" != '0' ]] && {
 				sts8="\033[1;32m◉ "
 			} || {
@@ -2179,7 +2185,7 @@ exit 0' >$RCLOCAL
 
 			echo -e "$barra"
 			echo -e "\033[1;31m[\033[1;36m01\033[1;31m] \033[1;37m• \033[1;33mAPACHE2 $apache2\033[1;31m          [\033[1;36m10\033[1;31m] \033[1;37m• \033[1;33mSLOWDNS $sts9 "
-			echo -e "\033[1;31m[\033[1;36m02\033[1;31m] \033[1;37m• \033[1;33mOPENSSH $sts6\033[1;31m            [\033[1;36m11\033[1;31m] \033[1;37m• \033[1;33mV2RAY $xv2ray "
+			echo -e "\033[1;31m[\033[1;36m02\033[1;31m] \033[1;37m• \033[1;33mOPENSSH $sts6\033[1;31m          [\033[1;36m11\033[1;31m] \033[1;37m• \033[1;33mV2RAY $xv2ray "
 			echo -e "\033[1;31m[\033[1;36m03\033[1;31m] \033[1;37m• \033[1;33mSQUID PROXY $sts1\033[1;31m      [\033[1;36m12\033[1;31m] \033[1;37m• \033[1;33mTROJAN-GO $trojansts "
 			echo -e "\033[1;31m[\033[1;36m04\033[1;31m] \033[1;37m• \033[1;33mDROPBEAR $sts2\033[1;31m         [\033[1;36m13\033[1;31m] \033[1;37m• \033[1;33mWEBMIN $webmin "
 			echo -e "\033[1;31m[\033[1;36m05\033[1;31m] \033[1;37m• \033[1;33mOPENVPN $sts5\033[1;31m          [\033[1;36m14\033[1;31m] \033[1;37m• \033[1;33mSHADOWSOCKS $ssserver "
@@ -2257,13 +2263,11 @@ exit 0' >$RCLOCAL
 
 			exit | -e)
 				echo -e "\033[1;31mSaindo...\033[0m"
-				sleep 2
 				clear
 				exit
 				;;
 			*)
 				echo -e "\033[1;31mOpcao invalida !\033[0m"
-				sleep 2
 				;;
 			esac
 		done

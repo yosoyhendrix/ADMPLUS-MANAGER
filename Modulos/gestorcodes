@@ -140,12 +140,10 @@ case "$x" in
    1 | 01)
    clear
    atualizarsistema
-   sleep 3
    ;;
    2 | 02)
    clear
    reiniciarservicos
-   sleep 3
    ;;
    3 | 03)
    clear
@@ -154,19 +152,20 @@ case "$x" in
    4 | 04)
    clear
    senharoot
-   sleep 3
    ;;
    5 | 05)
    clear
    echo -e "\033[1;32mPARA SAIR CLICK CTRL + C\033[1;36m"
-   sleep 4
+   # echo -e "\033[1;32mPARA SAIR CLICK LETRA \033[1;36mq\033[1;36m"
+   sleep 3
+   [[ $(dpkg --get-selections|grep -w "nload"|head -1) ]] || apt-get install nload -y &>/dev/null
    nload
    ;;
    6 | 06)
    clear
    echo -e "\033[1;32mPARA SAIR CLICK CTRL + C\033[1;36m"
    # echo -e "\033[1;32mPARA SAIR CLICK LETRA \033[1;36mq\033[1;36m"
-   sleep 4
+   sleep 3
    [[ $(dpkg --get-selections|grep -w "htop"|head -1) ]] || apt-get install htop -y &>/dev/null
    htop
    ;;
@@ -186,7 +185,6 @@ case "$x" in
    ;;
    *)
    echo -e "\n\033[1;31mOpcao invalida !\033[0m"
-   sleep 2
 esac
 done
 }
