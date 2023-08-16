@@ -30,12 +30,12 @@ echo -e "\033[1;33m]\033[1;37m -\033[1;32m OK !\033[1;37m"
 tput cnorm
 }
 
-gestorcodes ()
+function gestorcodes ()
 {
 
 inst_components () {
 # 
-# echo -ne " \033[1;31m[ ! ] apt-get grep"
+# echo -ne " \033[1;31m[!] apt-get grep"
 # apt-get install grep -y > /dev/null 2>&1 && echo -e "\033[1;32m [OK]" || echo -e "\033[1;31m [FAIL]"
 # echo -ne " \033[1;31m[ ! ] apt-get at"
 # apt-get install at -y > /dev/null 2>&1 && echo -e "\033[1;32m [OK]" || echo -e "\033[1;31m [FAIL]"
@@ -90,7 +90,7 @@ pip install speedtest-cli &>/dev/null
 return
 }
 
-function namesistema () {
+namesistema () {
    clear
    echo -e "\033[1;33mTHE NAME WILL BE CHANGED INTERNALLY IN THE SYSTEM \033[0m"
    unset name
@@ -159,8 +159,7 @@ echo -e "$barra"
 rm -rf $HOME/speed
 }
 
-verconexionsshentiemporeal ()
-{ 
+verconexionsshentiemporeal () { 
 clear
 echo -e "\E[44;1;37m          Conexiones SSH en tiempo real      \E[0m"
 echo ""
@@ -169,8 +168,7 @@ journalctl -fu ssh
 echo ""
 }
 
-verlogconexionsshentiemporeal ()
-{
+verlogconexionsshentiemporeal () {
 clear
 echo -e "\E[44;1;37m         Log de conexiones SSH               \E[0m"
 echo ""
@@ -179,8 +177,7 @@ tail -100 /var/log/auth.log | grep 'sshd'
 echo ""
 }
 
-verdelogconexionssh ()
-{
+verdelogconexionssh () {
 clear
 echo -e "\E[44;1;37m         Log de conexiones SSH usuarios      \E[0m"
 echo ""
