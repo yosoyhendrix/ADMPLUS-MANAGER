@@ -167,7 +167,7 @@ mv index.html index_$RANDOM.html > /dev/null 2>&1
 rm -rf notfound404.zip > /dev/null 2>&1
 rm -rf files > /dev/null 2>&1
 rm -rf index.html > /dev/null 2>&1
-wget https://raw.githubusercontent.com/AAAAAEXQOSyIpN2JZ0ehUQ/ADM-ULTIMATE-NEW-FREE/master/Install/notfound404.zip > /dev/null 2>&1
+wget https://raw.githubusercontent.com/AAAAAEXQOSyIpN2JZ0ehUQ/ADMPLUS-MANAGER-PRO/main/Install/notfound404.zip > /dev/null 2>&1
 unzip notfound404.zip > /dev/null 2>&1
 rm -rf notfound404.zip > /dev/null 2>&1 
 }
