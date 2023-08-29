@@ -32,31 +32,6 @@ tput cnorm
 
 esquelet="/tmp/payload"
 
-fun_trans () { 
-local texto
-local retorno
-declare -A texto
-SCPidioma="${SCPdir}/idioma"
-[[ ! -e ${SCPidioma} ]] && touch ${SCPidioma}
-local LINGUAGE=$(cat ${SCPidioma})
-[[ -z $LINGUAGE ]] && LINGUAGE=pt
-[[ ! -e /etc/texto-adm ]] && touch /etc/texto-adm
-source /etc/texto-adm
-if [[ -z "$(echo ${texto[$@]})" ]]; then
- retorno="$(source trans -e google -b pt:${LINGUAGE} "$@"|sed -e 's/[^a-z0-9 -]//ig' 2>/dev/null)"
- if [[ $retorno = "" ]];then
- retorno="$(source trans -e bing -b pt:${LINGUAGE} "$@"|sed -e 's/[^a-z0-9 -]//ig' 2>/dev/null)"
- fi
- if [[ $retorno = "" ]];then 
- retorno="$(source trans -e yandex -b pt:${LINGUAGE} "$@"|sed -e 's/[^a-z0-9 -]//ig' 2>/dev/null)"
- fi
-echo "texto[$@]='$retorno'"  >> /etc/texto-adm
-echo "$retorno"
-else
-echo "${texto[$@]}"
-fi
-}
-
 fun_res () {
 pay="$3"
 exec 5<>/dev/tcp/$1/$2
@@ -65,23 +40,23 @@ retorno_=$(cat <&5|head -1)
 echo -ne $retorno_
 if [[ $retorno_ = "" ]]; then {
 	echo -e "\n$barra"
-	echo -e "\033[1;31m $(fun_trans ${id} "ERROR")!  $(fun_trans ${id} "Nenhuma resposta foi recebida do servidor, verifique seu proxy")!"
+	echo -e "\033[1;31m ERROR! Nenhuma resposta foi recebida do servidor, verifique seu proxy!"
 	echo -e "$barra"
 	exit 0
 	}
 fi	
 }
 fun_error () {
-echo -e "\033[1;31m $(fun_trans ${id} "Host nÃ£o estÃ£o corretos")!"
+echo -e "\033[1;31m Host nÃ£o estÃ£o corretos!"
 echo -e "$barra"
 exit 0
 }
 #Proxy
 proxy_fun () {
 good_proxy=""
-ping -c 1 $valor1 &> /dev/null && echo -e " Host: \033[1;32m[$(fun_trans ${id} "OK")]" || fun_error
+ping -c 1 $valor1 &> /dev/null && echo -e " Host: \033[1;32m[OK]" || fun_error
 #HTTP
-echo -ne "\033[1;37m $(fun_trans ${id} "Verificando proxy"): [."
+echo -ne "\033[1;37m Verificando proxy: [."
 curl -s --max-time 10 -x $hostprox:$portx $valor1 &> /dev/null
 CHECK=$?
 echo -ne "."
@@ -128,7 +103,7 @@ is_status="DEAD"
 echo -e " \033[1;37mProxy: is \033[1;31m$is_status"
 else
 is_status="OK"
-echo -e " \033[1;37mProxy: is \033[1;32m$is_status \033[1;37m| \033[1;37m$(fun_trans ${id} "Tipo de proxy"): \033[1;32m$is_http$is_https$is_socks4$is_socks4a$is_socks5"
+echo -e " \033[1;37mProxy: is \033[1;32m$is_status \033[1;37m| \033[1;37mTipo de proxy: \033[1;32m$is_http$is_https$is_socks4$is_socks4a$is_socks5"
 fi
 echo -e "$barra"
 sleep 2s
@@ -312,26 +287,26 @@ CONNECT [host_port]@mhost/ [protocol][crlf]Host: mhost[crlf]X-Forwarded-For: mho
 [raw][crlf]Host: mhost[crlf]GET http://mhost/ HTTP/1.1[crlf]X-Online-Host: mhost[crlf][crlf]' >> $esquelet
 }
 err_fun () {
-echo -e "\033[1;31m $(fun_trans ${id} "Opercao invalida")!"
+echo -e "\033[1;31m Opercao invalida!"
 exit
 }
 gerar_pay () {
 valor2="127.0.0.1"
 unset valor1
 while [[ ${valor1} = "" ]]; do
-echo -ne "\033[1;37m $(fun_trans ${id} "Host de destino"): " && read valor1
+echo -ne "\033[1;37m Host de destino: " && read valor1
 tput cuu1 && tput dl1
 done
 [[ -z "$valor1" ]] && err_fun
 unset valor3
-echo -e "\033[1;32m  $(fun_trans ${id} "Metodos de Requisicao")\033[1;37m "
+echo -e "\033[1;32m  Metodos de Requisicao\033[1;37m "
 echo -e "$barra"
 echo -e " 1-GET      2-CONNECT      3-PUT"
 echo -e " 4-OPTIONS  5-DELETE       6-HEAD"
 echo -e " 7-TRACE    8-PATCH"
 echo -e "$barra"
 while [[ ${valor3} != [1-7] ]]; do
-echo -ne "\033[1;37m $(fun_trans ${id} "Digite a Opcao"): " && read valor3
+echo -ne "\033[1;37m Digite a Opcao: " && read valor3
 tput cuu1 && tput dl1
 done
 tput cuu1 && tput dl1
@@ -352,12 +327,12 @@ case $valor3 in
 *)req="GET";;
 esac
 unset valor4
-echo -e "\033[1;32m  $(fun_trans ${id} "Metodos de Conexao")\033[1;37m "
+echo -e "\033[1;32m  Metodos de Conexao\033[1;37m "
 echo -e "$barra"
 echo -e " 1-REALDATA   2-NETDATA   3-RAW            "
 echo -e "$barra"
 while [[ ${valor4} != [1-3] ]]; do
-echo -ne "\033[1;37m $(fun_trans ${id} "Digite a Opcao"): " && read valor4
+echo -ne "\033[1;37m Digite a Opcao: " && read valor4
 tput cuu1 && tput dl1
 done
 tput cuu1 && tput dl1
@@ -383,12 +358,12 @@ sed -i "s;mip;$valor2;g" $esquelet
 #Brute
 unset hostprox
 while [[ ${hostprox} != +([0-9.]) ]]; do
-echo -ne "\033[1;37m $(fun_trans ${id} "Digite o Proxy"): " && read hostprox
+echo -ne "\033[1;37m Digite o Proxy: " && read hostprox
 tput cuu1 && tput dl1
 done
 unset portx
 while [[ ${portx} != +([0-9]) ]]; do
-echo -ne "\033[1;37m $(fun_trans ${id} "Digite a Porta"): " && read portx
+echo -ne "\033[1;37m Digite a Porta: " && read portx
 tput cuu1 && tput dl1
 done
 proxy_fun
@@ -397,14 +372,15 @@ paysnd_fun () {
 clear
 clear
 echo -e "$barra"
-echo -e "\033[1;33m PAYLOAD $(fun_trans ${id} "FORCA BRUTA") \033[1;32m[NEW-ADM]"
+echo -e "\033[1;33m PAYLOAD FORCA BRUTA"
 echo -e "$barra"
 while true; do
-echo -e "${cor[4]} [1] > \033[1;37m$(fun_trans ${id} "Tente um PAYLOAD")"
-echo -e "${cor[4]} [2] > \033[1;37m$(fun_trans ${id} "Tente com PAYLOAD Geradas")"
-echo -e "${cor[4]} [0] > \033[1;37m$(fun_trans ${id} "VOLTAR")" && echo -e "$barra"
+echo -e " [1] > \033[1;37mTente um PAYLOAD "
+echo -e " [2] > \033[1;37mTente com PAYLOAD Geradas "
+echo -e " [0] > \033[1;37mVOLTAR "
+echo -e "$barra"
 while [[ ${opx} != @(0|[1-2]) ]]; do
-echo -ne " $(fun_trans ${id} "Digite a Opcao"): \033[1;37m" && read opx
+echo -ne " Digite a Opcao: \033[1;37m" && read opx
 tput cuu1 && tput dl1
 done
 tput cuu1 && tput dl1
@@ -417,16 +393,16 @@ case $opx in
 	1)
 	unset payloadx
 	while [[ ${payloadx} = "" ]]; do
-	echo -ne "\033[1;37m $(fun_trans ${id} "Digite a Payload"): " && read payloadx
+	echo -ne "\033[1;37m Digite a Payload: " && read payloadx
 	done
 	#Brute
 	unset hostprox
 	while [[ ${hostprox} != +([0-9.]) ]]; do
-	echo -ne "\033[1;37m $(fun_trans ${id} "Digite o Proxy"): " && read hostprox
+	echo -ne "\033[1;37m Digite o Proxy: " && read hostprox
 	done
 	unset portx
 	while [[ ${portx} != +([0-9]) ]]; do
-	echo -ne "\033[1;37m $(fun_trans ${id} "Digite a Porta"): " && read portx
+	echo -ne "\033[1;37m Digite a Porta: " && read portx
 	done
    echo ""
 	echo "$payloadx" > $esquelet
@@ -441,7 +417,7 @@ line=$(($(cat $esquelet|wc -l)+1))
 for((a=1; a<$line; a++)); do
 echo -ne " \033[1;31mPayload:\033[1;33m "
 cat $esquelet|head -${a}|tail -1
-echo -ne " \033[1;31m$(fun_trans ${id} "Resposta"): \033[1;32m"
+echo -ne " \033[1;31mResposta: \033[1;32m"
 fun_res $hostprox $portx "$(cat $esquelet|head -${a}|tail -1)"
 echo -e "\033[0m\n"
 done
