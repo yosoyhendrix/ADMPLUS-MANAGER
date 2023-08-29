@@ -27,8 +27,7 @@ DATA: Las dependencias faltantes se instalarán automáticamente
 
 ## :scroll: Changelog
 **VERSION: PROrV003**
-* websocket añadido
-* correcciones y mejoras
+* [Details](https://raw.githubusercontent.com/AAAAAEXQOSyIpN2JZ0ehUQ/ADMPLUS-MANAGER-PRO/master/Install/versao)
 
 ## :book: How it works
 * SSH conexión
