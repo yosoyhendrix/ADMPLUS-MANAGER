@@ -130,7 +130,7 @@ echo -e "\033[1;31m[\033[1;36m02\033[1;31m] \033[1;37m• \033[1;33mVELOCIDADE D
 echo -e "\033[1;31m[\033[1;36m03\033[1;31m] \033[1;37m• \033[1;33mCOMPARTILHAR ARQUIVO ONLINE "
 echo -e "\033[1;31m[\033[1;36m04\033[1;31m] \033[1;37m• \033[1;33mGERADOR DE PAYLOAD "
 echo -e "\033[1;31m[\033[1;36m05\033[1;31m] \033[1;37m• \033[1;33mFAIL2BAN PROTECAO \033[1;31m[Desactive] " 
-echo -e "\033[1;31m[\033[1;36m06\033[1;31m] \033[1;37m• \033[1;33mPAYLOAD FORCA BRUTA \033[1;31m[Desactive] "
+echo -e "\033[1;31m[\033[1;36m06\033[1;31m] \033[1;37m• \033[1;33mPAYLOAD FORCA BRUTA "
 echo -e "\033[1;31m[\033[1;36m07\033[1;31m] \033[1;37m• \033[1;33mGERENCIAMENTO DE PORTAS \033[1;31m[Desactive] "
 echo -e "\033[1;31m[\033[1;36m08\033[1;31m] \033[1;37m• \033[1;33mSTATUS DE HOST  " 
 echo -e "\033[1;31m[\033[1;36m09\033[1;31m] \033[1;37m• \033[1;33mESCANER DE SUBDOMINIOS "        
@@ -163,8 +163,8 @@ case "$x" in
    ;;
    6 | 06)
    clear
-   menu
-   exit;
+   paysnd.sh
+   echo -ne "\n\033[1;31mENTER \033[1;33mpara retornar ao \033[1;32mMENU!\033[0m"; read
    ;;
    7 | 07)
    clear
