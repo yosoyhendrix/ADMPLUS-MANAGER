@@ -238,7 +238,7 @@ _tuser=$(awk -F: '$3>=1000 {print $1}' /etc/passwd | grep -v nobody | wc -l)
 
 # Funcoes Update
 P_SERVER="https://raw.githubusercontent.com/AAAAAEXQOSyIpN2JZ0ehUQ/ADMPLUS-MANAGER-PRO/master/Install/"
-v1=$(curl -sSL "${P_SERVER}/versaoatt")
+v1=$(curl -sSL "${P_SERVER}/versionact")
 v2=$(cat /bin/versao)
 txt01="FELICIDADES TU VERSION ESTA ACTUALIZADA!"
 txt02="HAY UNA ACTUALIZACIÓN DISPONIBLE"

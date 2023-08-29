@@ -33,7 +33,7 @@ DATA: Las dependencias faltantes se instalarán automáticamente, facilitando tu
 
 ## :scroll: Changelog
 **VERSION: PROrV003**
-* [Details](https://raw.githubusercontent.com/AAAAAEXQOSyIpN2JZ0ehUQ/ADMPLUS-MANAGER-PRO/master/Install/versao)
+* [Details](https://raw.githubusercontent.com/AAAAAEXQOSyIpN2JZ0ehUQ/ADMPLUS-MANAGER-PRO/master/Install/version)
 
 ## :book: How it works
 * Conexiones SSH
