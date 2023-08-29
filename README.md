@@ -26,7 +26,7 @@ wget https://raw.githubusercontent.com/AAAAAEXQOSyIpN2JZ0ehUQ/ADMPLUS-MANAGER-PR
 DATA: Las dependencias faltantes se instalarán automáticamente
 
 ## :scroll: Changelog
-**VERSION: PROrV002**
+**VERSION: PROrV003**
 * Correcciones y mejoras
 
 ## :book: How it works
@@ -44,7 +44,7 @@ DATA: Las dependencias faltantes se instalarán automáticamente
 * Debian 8 Server x86_64 / Debian 9 Server x86_64
 * Recomendamos Debian 9 Server x86_64 / Ubuntu 18.04 Server x86_64
 * Se recomienda usar una distro nueva o formateada
-* Idioma por defecto es el portugués
+* Idioma por defecto es el español
 
 ## :octocat: Credits
 1. [illuminati Dev Team](https://t.me/AAAAAEXQOSyIpN2JZ0ehUQ) - Update Version 
