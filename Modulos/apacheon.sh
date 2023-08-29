@@ -65,6 +65,8 @@ exit
     done
     echo -e "$barra"
     }
+echo -ne "\n\033[1;31mENTER \033[1;33mpara retornar ao \033[1;32mMENU!\033[0m"; read
+apacheon.sh
 ;;
 2)
 i=1
@@ -78,7 +80,7 @@ i=1
     let i++
     done
     echo -e "$barra"
-    echo -e "${cor[5]}$(fun_trans "Selecione o Arquivo a Ser Apagado")"
+    echo -e "${cor[5]}$Selecione o Arquivo a Ser Apagado"
     echo -e "$barra"
     while [[ -z ${select_arc[$slct]} ]]; do
     read -p " [1-$i]: " slct
@@ -87,9 +89,11 @@ i=1
     arquivo_move="${select_arc[$slct]}"
     [[ -d /var/www/html ]] && [[ -e /var/www/html/$arquivo_move ]] && rm -rf /var/www/html/$arquivo_move > /dev/null 2>&1
     [[ -e /var/www/$arquivo_move ]] && rm -rf /var/www/$arquivo_move > /dev/null 2>&1
-    echo -e "${cor[5]}$(fun_trans "Sucesso!")"
+    echo -e "${cor[5]}Sucesso!"
     echo -e "$barra"
     }
+echo -ne "\n\033[1;31mENTER \033[1;33mpara retornar ao \033[1;32mMENU!\033[0m"; read
+apacheon.sh
 ;;    
 1)
 i="1"
@@ -101,7 +105,8 @@ i="1"
     let i++
     done
     i=$(($i - 1))
-    echo -e "${cor[5]}$(fun_trans "selecione o arquivo")"
+    echo -e "$barra"
+    echo -e "${cor[5]}$selecione O arquivo"
     echo -e "$barra"
     while [[ -z ${select_arc[$slct]} ]]; do
     read -p " [1-$i]: " slct
@@ -121,5 +126,7 @@ i="1"
     echo -e "${cor[5]}Sucesso!"
     echo -e "$barra"
     }
+echo -ne "\n\033[1;31mENTER \033[1;33mpara retornar ao \033[1;32mMENU!\033[0m"; read
+apacheon.sh
 ;;
 esac
