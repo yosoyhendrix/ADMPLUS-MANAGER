@@ -159,6 +159,57 @@ echo -e "$barra"
 rm -rf $HOME/speed
 }
 
+fun_glances () {
+echo -e "\033[1;32mPARA SALIR DEL PANEL PRESIONE \033[1;33mCTLR + C"
+echo -e "\033[1;32mO presione la letra \033[1;33mq"
+echo ""
+echo -ne " Deseja Prosseguir?"; read -p " [S/N]: " -e -i n PROS
+[[ $PROS = @(s|S|y|Y) ]] || return 1
+#Inicia Procedimentos
+echo ""
+apt-get install python-pip build-essential python-dev -y
+apt-get install glances -y
+pip install Glances  -y
+pip install PySensors  -y
+glances
+echo -e "\033[1;32m Procedimento concluido"
+echo ""
+}
+
+resetiptables () {
+# REINICIAR IPTABLES
+iptables -F
+iptables -X
+iptables -t nat -F
+iptables -t nat -X
+iptables -t mangle -F
+iptables -t mangle -X
+iptables -t raw -F
+iptables -t raw -X
+iptables -t security -F
+iptables -t security -X
+iptables -P INPUT ACCEPT
+iptables -P FORWARD ACCEPT
+iptables -P OUTPUT ACCEPT
+service ssh restart > /dev/null 2>&1
+service sshd restart > /dev/null 2>&1
+echo -e "\033[1;32m Procedimento concluido"
+echo ""
+}
+
+packobs () {
+# LIMPAR PACOTES OBSOLETOS
+#Buscando Pacotes Obsoletos"
+dpkg -l | grep -i ^rc
+dpkg -l | grep -i ^rc | cut -d " " -f 3 | xargs dpkg --purge
+#Pacotes obsoletos limpos
+service ssh restart > /dev/null 2>&1
+service sshd restart > /dev/null 2>&1
+echo ""
+echo -e "\033[1;32m Procedimento concluido"
+echo ""
+}
+
 verconexionsshentiemporeal () { 
 clear
 echo -e "\E[44;1;37m          Conexiones SSH en tiempo real      \E[0m"
