@@ -27,7 +27,8 @@ DATA: Las dependencias faltantes se instalarán automáticamente
 
 ## :scroll: Changelog
 **VERSION: PROrV003**
-* Correcciones y mejoras
+* websocket añadido
+* correcciones y mejoras
 
 ## :book: How it works
 * SSH conexión
