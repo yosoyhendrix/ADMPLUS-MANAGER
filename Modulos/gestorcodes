@@ -30,7 +30,7 @@ echo -e "\033[1;33m]\033[1;37m -\033[1;32m OK !\033[1;37m"
 tput cnorm
 }
 
-function gestorcodes ()
+fun_gestorcodes ()
 {
 
 inst_components () {
@@ -343,6 +343,15 @@ case "$x" in
    [[ $(dpkg --get-selections|grep -w "htop"|head -1) ]] || apt-get install htop -y &>/dev/null
    htop
    ;;
+   9 | 09)
+   menu
+   exit;
+   10)
+   menu
+   exit;
+   11)
+   menu
+   exit;
    12)
    clear
    verconexionsshentiemporeal
@@ -377,5 +386,5 @@ case "$x" in
 esac
 done
 }
-gestorcodes
+fun_gestorcodes
 #fim

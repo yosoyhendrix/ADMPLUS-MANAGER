@@ -50,7 +50,7 @@ randomize="$RANDOM"
 scan_funtion () {
 clear
 echo -e "$barra"
-echo -e "\033[1;32mSCANNER DE SUBDOMINIO \033[1;32m[NEW-ADM]"
+echo -e "\033[1;32mSCANNER DE SUBDOMINIO "
 echo -e "$barra"
 #INICIA SCRIPT
 unset hostcaptura
