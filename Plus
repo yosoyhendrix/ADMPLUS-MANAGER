@@ -52,7 +52,7 @@ function verif_db () {
     echo -e "\033[0;34m═══════════════════════════════════════════════════════\033[0m"
     echo -e "\033[1;31mATENCIÓN! \033[0m"
     echo -e "\033[1;33mSe ha encontrado una Base de Datos de Usuarios \033[1;32m(usuarios.db) \033[1;33my"
-    echo -e "desea mantenerla para preservar el l�mite de conexiones"
+    echo -e "desea mantenerla para preservar el Li�mite de conexiones"
     echo -e "simultáneas de los usuarios? O desea crear una nueva"
     echo -e "base de datos?\033[0m"
     echo -e "\n\033[1;37m[\033[1;31m1\033[1;37m] \033[1;33mMantener la Base de Datos Actual\033[0m"
