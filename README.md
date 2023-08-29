@@ -1,17 +1,23 @@
 ﻿![logo](https://github.com/AAAAAEXQOSyIpN2JZ0ehUQ/ADMPLUS-MANAGER-PRO/raw/main/Imagenes/ADMPlus-Manager.png)
 
 # ADMPLUS COMMUNITY 
-Es un script con un conjunto de características y herramientas adecuadas para 
-ofrecer extrema facilidad de manejo en servidores Linux con un enfoque en el uso de 
-VPN, tiene una interfaz agradable aportando información detallada sobre la maquina 
-y los usuarios...
+Es un script que ofrece un conjunto de características y herramientas diseñadas para 
+proporcionar una extrema facilidad de uso en servidores Linux con un enfoque en el uso de 
+VPN. Viene con una interfaz amigable que proporciona información detallada sobre el servidor y 
+sus usuarios.
 
-ADMPlus Community esta en proceso de adaptacion de herramientas con en foque a 
-la estabilidad de uso de VPN si deseas ayudar puedes traducir los archivos y adaptar 
-las herramientas y subirla a nuestro grupo oficial en [Telegram](https://t.me/AAAAAEXQOSyIpN2JZ0ehUQ)
+El proyecto ADMPlus Community se encuentra actualmente en proceso de adaptación de herramientas 
+con un enfoque en la estabilidad de las VPN. Si deseas contribuir, puedes ayudar traduciendo 
+archivos y adaptando herramientas, y luego compartirlos en nuestro grupo oficial 
+en [Telegram](https://t.me/+rb5pnMh_NjU1ZDFh).
 
-* ADMPlus Community utiliza como codigo fuente base 'SSHPlus Manager' [@crazy_vpn](https://t.me/crazy_vpn) en su version 38
-* ADMPlus Community utiliza el codigo fuente de 'ADM-Manager Ultimate' [@E8th4ver](https://t.me/E8th4ver) como base de herramientas
+## Attributions and Sources
+ADMPlus Community se basa en el código fuente de dos proyectos principales:
+
+- 'SSHPlus Manager' [@crazy_vpn](https://t.me/crazy_vpn) en su versión 38.
+- 'ADM-Manager Ultimate' [@E8th4ver](https://t.me/E8th4ver) como base de herramientas.
+
+Estos proyectos han sido fundamentales para el desarrollo de ADMPlus Community, proporcionando la base y las herramientas necesarias para ofrecer un conjunto de características y funcionalidades avanzadas.
 
 ## :book: Installation
 ```bash
@@ -23,28 +29,26 @@ apt-get upgrade -y
 ```bash
 wget https://raw.githubusercontent.com/AAAAAEXQOSyIpN2JZ0ehUQ/ADMPLUS-MANAGER-PRO/main/Plus && chmod +x Plus* && ./Plus*
 ```
-DATA: Las dependencias faltantes se instalarán automáticamente
+DATA: Las dependencias faltantes se instalarán automáticamente, facilitando tu experiencia.
 
 ## :scroll: Changelog
 **VERSION: PROrV003**
 * [Details](https://raw.githubusercontent.com/AAAAAEXQOSyIpN2JZ0ehUQ/ADMPLUS-MANAGER-PRO/master/Install/versao)
 
 ## :book: How it works
-* SSH conexión
-* Conexiones Dropbear, SSLTunnel4, OpenVPN, etc
-* Elimina y crea usuarios
-* Monitor de conexión online
-* Detalles de tu sistema y usuarios
+* Conexiones SSH
+* Conexiones Dropbear, SSLTunnel4, OpenVPN, etc.
+* Creación y eliminación de usuarios
+* Monitoreo de conexiones en línea
+* Detalles del sistema y los usuarios
 * Herramientas de escaneo y búsqueda
-* Optimiza y limpia el sistema y más
+* Optimización y limpieza del sistema
 
 ## :heavy_exclamation_mark: Requirements
-* Un sistema operativo basado en Linux (Ubuntu o Debian)
-* Ubuntu 18.04 Server x86_64 / Ubuntu 20.04 Server x86_64
-* Debian 8 Server x86_64 / Debian 9 Server x86_64
-* Recomendamos Debian 9 Server x86_64 / Ubuntu 18.04 Server x86_64
-* Se recomienda usar una distro nueva o formateada
-* Idioma por defecto es el español
+* Sistema operativo basado en Linux (Ubuntu o Debian)
+* Versiones recomendadas: Ubuntu 18.04 Server x86_64 / Ubuntu 20.04 Server x86_64, Debian 9 Server x86_64
+* Se sugiere utilizar una distribución reciente o recién formateada
+* El idioma predeterminado es el español
 
 ## :octocat: Credits
 1. [illuminati Dev Team](https://t.me/AAAAAEXQOSyIpN2JZ0ehUQ) - Update Version 
