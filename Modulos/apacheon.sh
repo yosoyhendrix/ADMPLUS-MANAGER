@@ -63,7 +63,7 @@ exit
     done
     echo -e "$barra"
     }
-echo -ne "\n\033[1;31mENTER \033[1;33mpara retornar al \033[1;32mMENU!\033[0m"; read
+echo -ne "\n\033[1;31mENTER \033[1;33mpara volver al \033[1;32mMENU!\033[0m"; read
 apacheon.sh
 ;;
 2)
@@ -87,10 +87,10 @@ i=1
     arquivo_move="${select_arc[$slct]}"
     [[ -d /var/www/html ]] && [[ -e /var/www/html/$arquivo_move ]] && rm -rf /var/www/html/$arquivo_move > /dev/null 2>&1
     [[ -e /var/www/$arquivo_move ]] && rm -rf /var/www/$arquivo_move > /dev/null 2>&1
-    echo -e "\033[1;32mExito!"
+    echo -e "\033[1;32mARCHIVO ELIMINADO!"
     echo -e "$barra"
     }
-echo -ne "\n\033[1;31mENTER \033[1;33mpara retornar al \033[1;32mMENU!\033[0m"; read
+echo -ne "\n\033[1;31mENTER \033[1;33mpara volver al \033[1;32mMENU!\033[0m"; read
 apacheon.sh
 ;;    
 1)
@@ -121,10 +121,10 @@ i="1"
     cp $HOME/$arquivo_move /var/www/html/$arquivo_move
     echo -e "\033[1;36m http://$IP:81/$arquivo_move\033[0m"
     echo -e "$barra"
-    echo -e "\033[1;32mExito!"
+    echo -e "\033[1;32mARCHIVO ELIMINADO!"
     echo -e "$barra"
     }
-echo -ne "\n\033[1;31mENTER \033[1;33mpara retornar al \033[1;32mMENU!\033[0m"; read
+echo -ne "\n\033[1;31mENTER \033[1;33mpara volver al \033[1;32mMENU!\033[0m"; read
 apacheon.sh
 ;;
 esac
