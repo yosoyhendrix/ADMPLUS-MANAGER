@@ -30,8 +30,6 @@ echo -e "\033[1;33m]\033[1;37m -\033[1;32m OK !\033[1;37m"
 tput cnorm
 }
 
-declare -A cor=( [0]="\033[1;37m" [1]="\033[1;34m" [2]="\033[1;31m" [3]="\033[1;33m" [4]="\033[1;32m" )
-
 fun_ip () {
 MEU_IP=$(ip addr | grep 'inet' | grep -v inet6 | grep -vE '127\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}' | grep -o -E '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}' | head -1)
 MEU_IP2=$(wget -qO- ipv4.icanhazip.com)
@@ -40,12 +38,12 @@ MEU_IP2=$(wget -qO- ipv4.icanhazip.com)
 
 clear
 echo -e "$barra"
-echo -e "\033[1;32mGERENCIAR ARQUIVO ONLINE"
+echo -e "\033[1;32mGESTIONAR ARCHIVO EN LINEA"
 echo -e "$barra"
-echo -e "\033[1;32m [0] > VOLTAR"
-echo -e "\033[1;32m [1] > COLOCAR ARQUIVO ONLINE"
-echo -e "\033[1;32m [2] > REMOVER ARQUIVO ONLINE"
-echo -e "\033[1;32m [3] > VER LINKS DOS ARQUIVOS ONLINE"
+echo -e "\033[1;32m [1] > \033[1;33mCOLOCAR ARCHIVO EN LINEA"
+echo -e "\033[1;32m [2] > \033[1;33mELIMINAR ARCHIVO EN LINEA"
+echo -e "\033[1;32m [3] > \033[1;33mVER ENLACES DE ARCHIVOS EN LINEA"
+echo -e "\033[1;32m [0] > \033[1;33mVOLVER AL MENU"
 echo -e "$barra"
 while [[ ${arquivoonlineadm} != @([0-3]) ]]; do
 read -p "[0-3]: " arquivoonlineadm
@@ -65,7 +63,7 @@ exit
     done
     echo -e "$barra"
     }
-echo -ne "\n\033[1;31mENTER \033[1;33mpara retornar ao \033[1;32mMENU!\033[0m"; read
+echo -ne "\n\033[1;31mENTER \033[1;33mpara retornar al \033[1;32mMENU!\033[0m"; read
 apacheon.sh
 ;;
 2)
@@ -76,11 +74,11 @@ i=1
     [[ "$my_arqs" = "index.php" ]] && continue
     [[ -d "$my_arqs" ]] && continue
     select_arc[$i]="$my_arqs"
-    echo -e "${cor[2]}[$i] > ${cor[3]}$my_arqs - \033[1;36mhttp://$IP:81/$my_arqs\033[0m"
+    echo -e "\033[1;31m[$i] > \033[1;33m$my_arqs - \033[1;36mhttp://$IP:81/$my_arqs\033[0m"
     let i++
     done
     echo -e "$barra"
-    echo -e "${cor[5]}$Selecione o Arquivo a Ser Apagado"
+    echo -e "\033[1;32mSeleccione el archivo a eliminar"
     echo -e "$barra"
     while [[ -z ${select_arc[$slct]} ]]; do
     read -p " [1-$i]: " slct
@@ -89,10 +87,10 @@ i=1
     arquivo_move="${select_arc[$slct]}"
     [[ -d /var/www/html ]] && [[ -e /var/www/html/$arquivo_move ]] && rm -rf /var/www/html/$arquivo_move > /dev/null 2>&1
     [[ -e /var/www/$arquivo_move ]] && rm -rf /var/www/$arquivo_move > /dev/null 2>&1
-    echo -e "${cor[5]}Sucesso!"
+    echo -e "\033[1;32mExito!"
     echo -e "$barra"
     }
-echo -ne "\n\033[1;31mENTER \033[1;33mpara retornar ao \033[1;32mMENU!\033[0m"; read
+echo -ne "\n\033[1;31mENTER \033[1;33mpara retornar al \033[1;32mMENU!\033[0m"; read
 apacheon.sh
 ;;    
 1)
@@ -101,12 +99,12 @@ i="1"
     for my_arqs in `ls $HOME`; do
     [[ -d "$my_arqs" ]] && continue
     select_arc[$i]="$my_arqs"
-    echo -e "${cor[2]} [$i] > ${cor[3]}$my_arqs"
+    echo -e "\033[1;31m [$i] > \033[1;33m$my_arqs"
     let i++
     done
     i=$(($i - 1))
     echo -e "$barra"
-    echo -e "${cor[5]}$selecione O arquivo"
+    echo -e "\033[1;32mSeleccione el archivo"
     echo -e "$barra"
     while [[ -z ${select_arc[$slct]} ]]; do
     read -p " [1-$i]: " slct
@@ -123,10 +121,10 @@ i="1"
     cp $HOME/$arquivo_move /var/www/html/$arquivo_move
     echo -e "\033[1;36m http://$IP:81/$arquivo_move\033[0m"
     echo -e "$barra"
-    echo -e "${cor[5]}Sucesso!"
+    echo -e "\033[1;32mExito!"
     echo -e "$barra"
     }
-echo -ne "\n\033[1;31mENTER \033[1;33mpara retornar ao \033[1;32mMENU!\033[0m"; read
+echo -ne "\n\033[1;31mENTER \033[1;33mpara retornar al \033[1;32mMENU!\033[0m"; read
 apacheon.sh
 ;;
 esac
