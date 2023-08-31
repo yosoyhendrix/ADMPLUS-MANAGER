@@ -3,31 +3,42 @@ barra="\033[0;34m—————————————————————
 IP=$(cat /etc/IP)
 x="ok"
 
-fun_bar () {
-comando[0]="$1"
-comando[1]="$2"
- (
-[[ -e $HOME/fim ]] && rm $HOME/fim
-${comando[0]} -y > /dev/null 2>&1
-${comando[1]} -y > /dev/null 2>&1
-touch $HOME/fim
- ) > /dev/null 2>&1 &
- tput civis
-echo -ne "\033[1;33m["
-while true; do
-   for((i=0; i<18; i++)); do
-   echo -ne "\033[1;31m#"
-   sleep 0.1s
-   done
-   [[ -e $HOME/fim ]] && rm $HOME/fim && break
-   echo -e "\033[1;33m]"
-   sleep 1s
-   tput cuu1
-   tput dl1
-   echo -ne "\033[1;33m["
-done
-echo -e "\033[1;33m]\033[1;37m -\033[1;32m OK !\033[1;37m"
-tput cnorm
+fun_trans () { 
+local texto
+local retorno
+declare -A texto
+SCPidioma="${SCPdir}/idioma"
+[[ ! -e ${SCPidioma} ]] && touch ${SCPidioma}
+local LINGUAGE=$(cat ${SCPidioma})
+[[ -z $LINGUAGE ]] && LINGUAGE=pt
+[[ $LINGUAGE = "pt" ]] && echo "$@" && return
+[[ ! -e /etc/texto-adm ]] && touch /etc/texto-adm
+source /etc/texto-adm
+if [[ -z "$(echo ${texto[$@]})" ]]; then
+if [[ `echo "$@" | grep -o '*'` = "*" ]]; then
+retorno="$(source trans -e bing -b pt:${LINGUAGE} "$@"|sed -e 's/[^a-z0-9 -]//ig'| awk '{print toupper($0)}' 2>/dev/null)"
+else
+retorno="$(source trans -e bing -b pt:${LINGUAGE} "$@"|sed -e 's/[^a-z0-9 -]//ig' 2>/dev/null)"
+fi
+echo "texto[$@]='$retorno'"  >> /etc/texto-adm
+echo "$retorno"
+else
+echo "${texto[$@]}"
+fi
+}
+
+msg () {
+BRAN='\033[1;37m' && VERMELHO='\e[31m' && VERDE='\e[32m' && AMARELO='\e[33m'
+AZUL='\e[34m' && MAGENTA='\e[35m' && MAG='\033[1;36m' &&NEGRITO='\e[1m' && SEMCOR='\e[0m'
+ case $1 in
+  -ne)cor="${VERMELHO}${NEGRITO}" && echo -ne "${cor}${2}${SEMCOR}";;
+  -ama)cor="${AMARELO}${NEGRITO}" && echo -e "${cor}${2}${SEMCOR}";;
+  -verm)cor="${AMARELO}${NEGRITO}[!] ${VERMELHO}" && echo -e "${cor}${2}${SEMCOR}";;
+  -azu)cor="${MAG}${NEGRITO}" && echo -e "${cor}${2}${SEMCOR}";;
+  -verd)cor="${VERDE}${NEGRITO}" && echo -e "${cor}${2}${SEMCOR}";;
+  -bra)cor="${BRAN}${NEGRITO}" && echo -ne "${cor}${2}${SEMCOR}";;
+  "-bar2"|"-bar")cor="${AZUL}${NEGRITO}——————————————————————————————————————————————————————" && echo -e "${SEMCOR}${cor}${SEMCOR}";;
+ esac
 }
 
 mine_port () {
@@ -59,7 +70,7 @@ local PORTENTRY="$2"
 }
 
 edit_squid () {
-echo -e "\033[1;32mREDEFINIR PORTAS SQUID "
+msg -azu "$(fun_trans "REDEFINIR PORTAS SQUID")"
 msg -bar
 if [[ -e /etc/squid/squid.conf ]]; then
 local CONF="/etc/squid/squid.conf"
@@ -67,7 +78,7 @@ elif [[ -e /etc/squid3/squid.conf ]]; then
 local CONF="/etc/squid3/squid.conf"
 fi
 NEWCONF="$(cat ${CONF}|grep -v "http_port")"
-echo -ne "Novas Portas: "
+msg -ne "$(fun_trans "Novas Portas"): "
 read -p "" newports
 for PTS in `echo ${newports}`; do
 verify_port squid "${PTS}" && echo -e "\033[1;33mPort $PTS \033[1;32mOK" || {
@@ -85,21 +96,21 @@ echo -e "${varline}" >> ${CONF}
   done
  fi
 done <<< "${NEWCONF}"
-echo -e "\033[1;32mAGUARDE "
+msg -azu "$(fun_trans "AGUARDE")"
 service squid restart &>/dev/null
 service squid3 restart &>/dev/null
 sleep 1s
 echo -e "$barra"
-echo -e "\033[1;32mPORTAS REDEFINIDAS "
+msg -azu "$(fun_trans "PORTAS REDEFINIDAS")"
 echo -e "$barra"
 }
 
 edit_apache () {
-echo -e "\033[1;32mREDEFINIR PORTAS APACHE "
+msg -azu "$(fun_trans "REDEFINIR PORTAS APACHE")"
 echo -e "$barra"
 local CONF="/etc/apache2/ports.conf"
 local NEWCONF="$(cat ${CONF})"
-echo -ne "Novas Porta: "
+msg -ne "$(fun_trans "Novas Porta"): "
 read -p "" newports
 for PTS in `echo ${newports}`; do
 verify_port apache "${PTS}" && echo -e "\033[1;33mPort $PTS \033[1;32mOK" || {
@@ -121,22 +132,22 @@ else
 echo -e "${varline}" >> ${CONF}
 fi
 done <<< "${NEWCONF}"
-echo -e "\033[1;32mAGUARDE "
+msg -azu "$(fun_trans "AGUARDE")"
 service apache2 restart &>/dev/null
 sleep 1s
 echo -e "$barra"
-echo -e "\033[1;32mPORTAS REDEFINIDAS "
+msg -azu "$(fun_trans "PORTAS REDEFINIDAS")"
 echo -e "$barra"
 }
 
 edit_openvpn () {
-echo -e "\033[1;32mREDEFINIR PORTAS OPENVPN "
+msg -azu "$(fun_trans "REDEFINIR PORTAS OPENVPN")"
 echo -e "$barra"
 local CONF="/etc/openvpn/server.conf"
 local CONF2="/etc/openvpn/client-common.txt"
 local NEWCONF="$(cat ${CONF}|grep -v [Pp]ort)"
 local NEWCONF2="$(cat ${CONF2})"
-echo -ne "Nova Porta: "
+msg -ne "$(fun_trans "Nova Porta"): "
 read -p "" newports
 for PTS in `echo ${newports}`; do
 verify_port openvpn "${PTS}" && echo -e "\033[1;33mPort $PTS \033[1;32mOK" || {
@@ -160,21 +171,21 @@ else
 echo -e "${varline}" >> ${CONF2}
 fi
 done <<< "${NEWCONF2}"
-echo -e "\033[1;32mAGUARDE "
+msg -azu "$(fun_trans "AGUARDE")"
 service openvpn restart &>/dev/null
 /etc/init.d/openvpn restart &>/dev/null
 sleep 1s
 echo -e "$barra"
-echo -e "\033[1;32mPORTAS REDEFINIDAS "
+msg -azu "$(fun_trans "PORTAS REDEFINIDAS")"
 echo -e "$barra"
 }
 
 edit_dropbear () {
-echo -e "\033[1;32mREDEFINIR PORTAS DROPBEAR "
+msg -azu "$(fun_trans "REDEFINIR PORTAS DROPBEAR")"
 echo -e "$barra"
 local CONF="/etc/default/dropbear"
 local NEWCONF="$(cat ${CONF}|grep -v "DROPBEAR_EXTRA_ARGS")"
-echo -ne "Novas Portas: "
+msg -ne "$(fun_trans "Novas Portas"): "
 read -p "" newports
 for PTS in `echo ${newports}`; do
 verify_port dropbear "${PTS}" && echo -e "\033[1;33mPort $PTS \033[1;32mOK" || {
@@ -194,20 +205,20 @@ echo -e "${varline}" >> ${CONF}
  sed -i "s/VAR//g" ${CONF}
  fi
 done <<< "${NEWCONF}"
-echo -e "\033[1;32mAGUARDE "
+msg -azu "$(fun_trans "AGUARDE")"
 service dropbear restart &>/dev/null
 sleep 1s
 echo -e "$barra"
-echo -e "\033[1;32mPORTAS REDEFINIDAS "
+msg -azu "$(fun_trans "PORTAS REDEFINIDAS")"
 echo -e "$barra"
 }
 
 edit_openssh () {
-echo -e "\033[1;32mREDEFINIR PORTAS OPENSSH "
+msg -azu "$(fun_trans "REDEFINIR PORTAS OPENSSH")"
 echo -e "$barra"
 local CONF="/etc/ssh/sshd_config"
 local NEWCONF="$(cat ${CONF}|grep -v [Pp]ort)"
-echo -ne "Novas Portas: "
+msg -ne "$(fun_trans "Novas Portas"): "
 read -p "" newports
 for PTS in `echo ${newports}`; do
 verify_port sshd "${PTS}" && echo -e "\033[1;33mPort $PTS \033[1;32mOK" || {
@@ -223,18 +234,18 @@ done
 while read varline; do
 echo -e "${varline}" >> ${CONF}
 done <<< "${NEWCONF}"
-echo -e "\033[1;32mGUARDE"
+msg -azu "$(fun_trans "AGUARDE")"
 service ssh restart &>/dev/null
 service sshd restart &>/dev/null
 sleep 1s
 echo -e "$barra"
-echo -e "\033[1;32mPORTAS REDEFINIDAS "
+msg -azu "$(fun_trans "PORTAS REDEFINIDAS")"
 echo -e "$barra"
 }
 
 main_fun () {
 echo -e "$barra"
-echo -e "\033[1;32mSERVICOS E PORTAS ATIVAS "
+msg -ama " $(fun_trans "SERVICOS E PORTAS ATIVAS")"
 echo -e "$barra"
 mine_port
 echo -e "$barra"
@@ -260,7 +271,7 @@ for((a=1; a<=$i; a++)); do
 done
 echo -e "$barra"
 while true; do
-echo -ne "\033[1;37mSelecione: " && read selection
+echo -ne "\033[1;37m$(fun_trans "Selecione"): " && read selection
 tput cuu1 && tput dl1
 [[ ! -z $squid ]] && [[ $squid = $selection ]] && edit_squid && break
 [[ ! -z $apache ]] && [[ $apache = $selection ]] && edit_apache && break
