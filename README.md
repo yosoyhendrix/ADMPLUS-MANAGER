@@ -9,7 +9,7 @@ sus usuarios.
 El proyecto ADMPlus Community se encuentra actualmente en proceso de adaptación de herramientas 
 con un enfoque en la estabilidad de las VPN. Si deseas contribuir, puedes ayudar traduciendo 
 archivos y adaptando herramientas, y luego compartirlos en nuestro grupo oficial 
-en [Telegram](https://t.me/+rb5pnMh_NjU1ZDFh).
+en [Telegram](https://t.me/AAAAAEXQOSyIpN2JZ0ehUQ/8980).
 
 ## Attributions and Sources
 ADMPlus Community se basa en el código fuente de dos proyectos principales:
