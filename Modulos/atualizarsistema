@@ -25,5 +25,13 @@ echo -ne "\033[1;33mAPLICANDO UPGRADE"; fun_prog 'apt-get upgrade -y'
 apt-get upgrade -y > /dev/null 2>&1
 echo ""
 sleep 1
-echo -e "\033[1;32mATUALIZACAO DO SISTEMA COM SUCESSO!\033[0m"
-sleep 1
+# echo -ne "\033[1;33mAPLICANDO DIST-UPGRADE"; fun_prog 'apt-get dist-upgrade -y'
+# apt-get update -y > /dev/null 2>&1
+# echo ""
+# sleep 1
+# echo -ne "\033[1;33mAPLICANDO FULL-UPGRADE"; fun_prog 'apt-get full-upgrade -y'
+# apt-get update -y > /dev/null 2>&1
+# echo ""
+# sleep 1
+# echo -e "\033[1;32mACTUALIZACION EXITOSA DEL SISTEMA!\033[0m"
+# sleep 1
