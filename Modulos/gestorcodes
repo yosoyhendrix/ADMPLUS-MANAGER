@@ -160,24 +160,22 @@ rm -rf $HOME/speed
 }
 
 fun_glances () {
-echo -e "\033[1;32mPARA SALIR DEL PANEL PRESIONE \033[1;33mCTLR + C"
-echo -e "\033[1;32mO presione la letra \033[1;33mq"
+echo -e "\033[1;32mPARA SALIR HAGA CLIC EN CTRL + C\033[1;36m"
+# echo -e "\033[1;32mPARA SALIR HAGA CLIC EN LA LETRA \033[1;36mq\033[1;36m"
+sleep 3
 echo ""
 echo -ne " Deseja Prosseguir?"; read -p " [S/N]: " -e -i n PROS
-[[ $PROS = @(s|S|y|Y) ]] || return 1
-#Inicia Procedimentos
+[[ $PROS = @(s|S|y|Y) ]] || fun_gestorcodes
 echo ""
 apt-get install python-pip build-essential python-dev -y
 apt-get install glances -y
-pip install Glances  -y
+pip install Glances -y
 pip install PySensors  -y
 glances
-echo -e "\033[1;32m Procedimento concluido"
-echo ""
 }
 
 resetiptables () {
-# REINICIAR IPTABLES
+echo -e "\033[1;32mREINICIAR... \n\033[0m"
 iptables -F
 iptables -X
 iptables -t nat -F
@@ -193,21 +191,18 @@ iptables -P FORWARD ACCEPT
 iptables -P OUTPUT ACCEPT
 service ssh restart > /dev/null 2>&1
 service sshd restart > /dev/null 2>&1
-echo -e "\033[1;32m Procedimento concluido"
-echo ""
+echo -e "\n\033[1;32mRESET IPTABLES EJECUTADO!\033[0m"
 }
 
 packobs () {
 # LIMPAR PACOTES OBSOLETOS
-#Buscando Pacotes Obsoletos"
+echo -e "\033[1;32mBUSCANDO PAQUETES OBSOLETOS... \n\033[0m"
 dpkg -l | grep -i ^rc
 dpkg -l | grep -i ^rc | cut -d " " -f 3 | xargs dpkg --purge
 #Pacotes obsoletos limpos
 service ssh restart > /dev/null 2>&1
 service sshd restart > /dev/null 2>&1
-echo ""
-echo -e "\033[1;32m Procedimento concluido"
-echo ""
+echo -e "\n\033[1;32mRESET IPTABLES EJECUTADO!\033[0m"
 }
 
 verconexionsshentiemporeal () { 
@@ -291,8 +286,8 @@ echo -e "\033[1;31m[\033[1;36m06\033[1;31m] \033[1;37m• \033[1;33mALTERAR SENH
 echo -e "\033[1;31m[\033[1;36m07\033[1;31m] \033[1;37m• \033[1;33mTRAFEGO DE RED  " 
 echo -e "\033[1;31m[\033[1;36m08\033[1;31m] \033[1;37m• \033[1;33mPROCESOS DE SISTEMA " 
 echo -e "\033[1;31m[\033[1;36m09\033[1;31m] \033[1;37m• \033[1;33mMONITOR DO SISTEMA glances \033[1;31m[Desactive] "
-echo -e "\033[1;31m[\033[1;36m10\033[1;31m] \033[1;37m• \033[1;33mRESET IPTABLES \033[1;31m[Desactive] "
-echo -e "\033[1;31m[\033[1;36m11\033[1;31m] \033[1;37m• \033[1;33mCLEAN PACKAGE OSOLECTS \033[1;31m[Desactive] " 
+echo -e "\033[1;31m[\033[1;36m10\033[1;31m] \033[1;37m• \033[1;33mRESET IPTABLES "
+echo -e "\033[1;31m[\033[1;36m11\033[1;31m] \033[1;37m• \033[1;33mCLEAN PACKAGE OSOLECTS " 
 echo -e "\033[1;31m[\033[1;36m12\033[1;31m] \033[1;37m• \033[1;33mVER CONEXIONES SSH EN TIEMPO REAL "
 echo -e "\033[1;31m[\033[1;36m13\033[1;31m] \033[1;37m• \033[1;33mVER LOG DE CONEXIONES SSH "
 echo -e "\033[1;31m[\033[1;36m14\033[1;31m] \033[1;37m• \033[1;33mVER LOG DE CONEXIONES SSH USUARIOS "
@@ -344,16 +339,19 @@ case "$x" in
    htop
    ;;
    9 | 09)
-   menu
-   exit;
+   clear
+   fun_glances
+   echo -ne "\n\033[1;31mENTER \033[1;33mpara volver al \033[1;32mMENU!\033[0m"; read
    ;;
    10)
-   menu
-   exit;
+   clear
+   resetiptables
+   echo -ne "\n\033[1;31mENTER \033[1;33mpara volver al \033[1;32mMENU!\033[0m"; read
    ;;
    11)
-   menu
-   exit;
+   clear
+   packobs
+   echo -ne "\n\033[1;31mENTER \033[1;33mpara volver al \033[1;32mMENU!\033[0m"; read
    ;;
    12)
    clear
