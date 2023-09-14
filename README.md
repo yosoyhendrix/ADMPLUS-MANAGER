@@ -32,7 +32,7 @@ wget https://raw.githubusercontent.com/AAAAAEXQOSyIpN2JZ0ehUQ/ADMPLUS-MANAGER-PR
 DATA: Las dependencias faltantes se instalarán automáticamente, facilitando tu experiencia.
 
 ## :scroll: Changelog
-**VERSION: PROrV004**
+**VERSION: PROrV005**
 * [Details](https://raw.githubusercontent.com/AAAAAEXQOSyIpN2JZ0ehUQ/ADMPLUS-MANAGER-PRO/master/Install/version)
 
 ## :book: How it works
