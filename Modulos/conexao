@@ -2175,14 +2175,29 @@ exit 0' >$RCLOCAL
 				stsu="\033[1;31m○ "
 			}
 
-			mine_port () {
-			PT=$(lsof -V -i tcp -P -n | grep -v "ESTABLISHED" |grep -v "COMMAND" | grep "LISTEN")
-			for porta in `echo -e "$PT" | cut -d: -f2 | cut -d' ' -f1 | uniq`; do
- 			   svcs=$(echo -e "$PT" | grep -w "$porta" | awk '{print $1}' | uniq)
- 			   echo -e "\033[1;32mService: \033[1;31m$svcs \033[1;32mPort: \033[1;37m$porta"
-			done
-			}
-			mine_port
+mine_port () {
+    PT=$(lsof -V -i tcp -P -n | grep -v "ESTABLISHED" | grep -v "COMMAND" | grep "LISTEN")
+    
+    # Crear un arreglo asociativo para almacenar los puertos por servicio
+    declare -A port_service
+    
+    while read -r line; do
+        porta=$(echo "$line" | cut -d: -f2 | cut -d' ' -f1)
+        svcs=$(echo "$line" | awk '{print $1}')
+        
+        # Verificar si el puerto ya est� en la lista de puertos del servicio
+        if [[ " ${port_service[$svcs]} " != *" $porta "* ]]; then
+            port_service[$svcs]+=" $porta"  # Agregar el puerto al servicio existente
+        fi
+    done <<< "$PT"
+    
+    # Mostrar la salida agrupada
+    for service in "${!port_service[@]}"; do
+        ports=${port_service[$service]}
+        echo -e "\033[1;32mService: \033[1;31m$service \033[1;32mPort: \033[1;37m$ports\033[0m"
+    done
+}
+mine_port
 
 			echo -e "$barra"
 			echo -e "\033[1;31m[\033[1;36m01\033[1;31m] \033[1;37m• \033[1;33mAPACHE2 $apache2\033[1;31m          [\033[1;36m10\033[1;31m] \033[1;37m• \033[1;33mSLOWDNS $sts9 "
@@ -2196,7 +2211,7 @@ exit 0' >$RCLOCAL
 			echo -e "\033[1;31m[\033[1;36m09\033[1;31m] \033[1;37m• \033[1;33mCHISEL $sts8\033[0m           [\033[1;36m-s\033[1;31m] \033[1;37m• \033[1;33mSAIR DO MENU \033[1;32m<\033[1;33m<\033[1;31m< "
 			echo -e "$barra"
 			tput civis
-			echo -ne "\033[1;32mOQUE DESEJA FAZER \033[1;33m?\033[1;31m?\033[1;37m : "
+			echo -ne "\033[1;32mQUE ES LO QUE QUIERES HACER \033[1;33m?\033[1;31m?\033[1;37m : "
 			read x
 			tput cnorm
 			clear

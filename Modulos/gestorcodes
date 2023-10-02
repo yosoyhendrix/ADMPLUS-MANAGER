@@ -159,76 +159,67 @@ echo -e "$barra"
 rm -rf $HOME/speed
 }
 
-fun_glances () {
-echo -e "\033[1;32mPARA SALIR HAGA CLIC EN CTRL + C\033[1;36m"
-# echo -e "\033[1;32mPARA SALIR HAGA CLIC EN LA LETRA \033[1;36mq\033[1;36m"
-sleep 3
-echo ""
-echo -ne " Deseja Prosseguir?"; read -p " [S/N]: " -e -i n PROS
-[[ $PROS = @(s|S|y|Y) ]] || fun_gestorcodes
-echo ""
-apt-get install python-pip build-essential python-dev -y
-apt-get install glances -y
-pip install Glances -y
-pip install PySensors  -y
-glances
+#!/bin/bash
+
+# Funci�n para reiniciar las reglas de iptables
+reset_iptables() {
+    echo -e "\e[1;32mREINICIANDO IPTABLES...\n\e[0m"
+    iptables -F
+    iptables -X
+    iptables -t nat -F
+    iptables -t nat -X
+    iptables -t mangle -F
+    iptables -t mangle -X
+    iptables -t raw -F
+    iptables -t raw -X
+    iptables -t security -F
+    iptables -t security -X
+    iptables -P INPUT ACCEPT
+    iptables -P FORWARD ACCEPT
+    iptables -P OUTPUT ACCEPT
+    service ssh restart
+    service sshd restart
+    echo -e "\n\e[1;32mRESET IPTABLES COMPLETADO!\e[0m"
 }
 
-resetiptables () {
-echo -e "\033[1;32mREINICIAR... \n\033[0m"
-iptables -F
-iptables -X
-iptables -t nat -F
-iptables -t nat -X
-iptables -t mangle -F
-iptables -t mangle -X
-iptables -t raw -F
-iptables -t raw -X
-iptables -t security -F
-iptables -t security -X
-iptables -P INPUT ACCEPT
-iptables -P FORWARD ACCEPT
-iptables -P OUTPUT ACCEPT
-service ssh restart
-service sshd restart
-echo -e "\n\033[1;32mRESET IPTABLES EJECUTADO!\033[0m"
-}
-
-packobs () {
-# LIMPAR PACOTES OBSOLETOS
-echo -e "\033[1;32mBUSCANDO PAQUETES OBSOLETOS... \n\033[0m"
-dpkg -l | grep -i ^rc
-dpkg -l | grep -i ^rc | cut -d " " -f 3 | xargs dpkg --purge
-#Pacotes obsoletos limpos
-service ssh restart > /dev/null 2>&1
-service sshd restart > /dev/null 2>&1
-echo -e "\n\033[1;32mRESET IPTABLES EJECUTADO!\033[0m"
+# Funci�n para limpiar paquetes obsoletos
+clean_obsolete_packages() {
+    echo -e "\e[1;32mBUSCANDO PAQUETES OBSOLETOS...\n\e[0m"
+    obsolete_packages=$(dpkg -l | grep -i ^rc | awk '{print $2}')
+    if [ -n "$obsolete_packages" ]; then
+        echo -e "Paquetes obsoletos encontrados:\n$obsolete_packages"
+        echo -e "\nEliminando paquetes obsoletos..."
+        sudo apt-get purge $obsolete_packages
+        echo -e "\nPaquetes obsoletos eliminados."
+        service ssh restart > /dev/null 2>&1
+        service sshd restart > /dev/null 2>&1
+        echo -e "\n\e[1;32mRESET IPTABLES COMPLETADO!\e[0m"
+    else
+        echo -e "\n\e[1;32mNo se encontraron paquetes obsoletos.\e[0m"
+    fi
 }
 
 verconexionsshentiemporeal () { 
 clear
 echo -e "\E[44;1;37m          Conexiones SSH en tiempo real      \E[0m"
 echo ""
-echo -e "\033[1;32m"
-journalctl -fu ssh
+echo -e "\033[1;32m" && journalctl -fu ssh
 echo ""
 }
 
 verlogconexionsshentiemporeal () {
 clear
-echo -e "\E[44;1;37m         Log de conexiones SSH               \E[0m"
+echo -e "\E[44;1;37m         Log de conexiones SSH recientes      \E[0m"
 echo ""
-echo -e "\033[1;32m"
-tail -100 /var/log/auth.log | grep 'sshd'
+echo -e "\033[1;32m" && tail -100 /var/log/auth.log | grep 'sshd'
 echo ""
 }
 
 verdelogconexionssh () {
 clear
-echo -e "\E[44;1;37m         Log de conexiones SSH usuarios      \E[0m"
+echo -e "\E[44;1;37m     Log de conexiones SSH usuarios exitosas  \E[0m"
 echo ""
-echo -e "\033[1;32m"
-cat /var/log/auth* | grep Accepted | awk '{print $1 " " $2 "\t" $3 "\t" $11 "\t" $9 }'
+echo -e "\033[1;32m" && cat /var/log/auth* | grep Accepted | awk '{print $1 " " $2 "\t" $3 "\t" $11 "\t" $9 }'
 echo ""
 }
 
@@ -283,14 +274,14 @@ echo -e "\033[1;31m[\033[1;36m03\033[1;31m] \033[1;37m• \033[1;33mREINSTALL PA
 echo -e "\033[1;31m[\033[1;36m04\033[1;31m] \033[1;37m• \033[1;33mREINICIAR SISTEMA "
 echo -e "\033[1;31m[\033[1;36m05\033[1;31m] \033[1;37m• \033[1;33mALTERAR NOME DO SISTEMA "
 echo -e "\033[1;31m[\033[1;36m06\033[1;31m] \033[1;37m• \033[1;33mALTERAR SENHA ROOT "
-echo -e "\033[1;31m[\033[1;36m07\033[1;31m] \033[1;37m• \033[1;33mTRAFEGO DE RED  " 
-echo -e "\033[1;31m[\033[1;36m08\033[1;31m] \033[1;37m• \033[1;33mPROCESOS DE SISTEMA " 
-echo -e "\033[1;31m[\033[1;36m09\033[1;31m] \033[1;37m• \033[1;33mMONITOR DO SISTEMA glances \033[1;31m[Inestable] "
+echo -e "\033[1;31m[\033[1;36m07\033[1;31m] \033[1;37m• \033[1;33mTRAFEGO DE RED \033[1;31m(nlod)" 
+echo -e "\033[1;31m[\033[1;36m08\033[1;31m] \033[1;37m• \033[1;33mPROCESOS DE SISTEMA \033[1;31m(htop)" 
+echo -e "\033[1;31m[\033[1;36m09\033[1;31m] \033[1;37m• \033[1;33mMONITOR DO SISTEMA \033[1;31m(glances) "
 echo -e "\033[1;31m[\033[1;36m10\033[1;31m] \033[1;37m• \033[1;33mRESET IPTABLES "
 echo -e "\033[1;31m[\033[1;36m11\033[1;31m] \033[1;37m• \033[1;33mCLEAN PACKAGE OSOLECTS " 
 echo -e "\033[1;31m[\033[1;36m12\033[1;31m] \033[1;37m• \033[1;33mVER CONEXIONES SSH EN TIEMPO REAL "
-echo -e "\033[1;31m[\033[1;36m13\033[1;31m] \033[1;37m• \033[1;33mVER LOG DE CONEXIONES SSH "
-echo -e "\033[1;31m[\033[1;36m14\033[1;31m] \033[1;37m• \033[1;33mVER LOG DE CONEXIONES SSH USUARIOS "
+echo -e "\033[1;31m[\033[1;36m13\033[1;31m] \033[1;37m• \033[1;33mVER LOG DE CONEXIONES SSH RECIENTES"
+echo -e "\033[1;31m[\033[1;36m14\033[1;31m] \033[1;37m• \033[1;33mVER LOG DE CONEXIONES SSH USUARIOS EXITOSAS "
 echo -e "\033[1;31m[\033[1;36m15\033[1;31m] \033[1;37m• \033[1;33mDETALHES DO SISTEMA "
 echo -e "\033[1;31m[\033[1;36m16\033[1;31m] \033[1;37m• \033[1;33mOTIMIZAR Y LIMPAR CACHE SISTEMA "
 echo -e "\033[1;31m[\033[1;36m00\033[1;31m] \033[1;37m• \033[1;33mRETORNAR AO MENU \033[1;32m<\033[1;33m<\033[1;31m< "
@@ -340,8 +331,13 @@ case "$x" in
    ;;
    9 | 09)
    clear
-   fun_glances
-   echo -ne "\n\033[1;31mENTER \033[1;33mpara volver al \033[1;32mMENU!\033[0m"; read
+   echo -e "\033[1;32mPARA SALIR HAGA CLIC EN CTRL + C\033[1;36m"
+   # echo -e "\033[1;32mPARA SALIR HAGA CLIC EN LA LETRA \033[1;36mq\033[1;36m"
+   sleep 3
+   [[ $(dpkg --get-selections|grep -w "glances"|head -1) ]] || apt-get install glances -y &>/dev/null
+   #apt-get install python-pip build-essential python-dev glances -y
+   #pip install Glances PySensors -y
+   glances
    ;;
    10)
    clear
