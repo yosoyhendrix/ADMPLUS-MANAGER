@@ -159,8 +159,6 @@ echo -e "$barra"
 rm -rf $HOME/speed
 }
 
-#!/bin/bash
-
 # Función para reiniciar las reglas de iptables
 reset_iptables() {
     echo -e "\e[1;32mREINICIANDO IPTABLES...\n\e[0m"
@@ -292,14 +290,17 @@ case "$x" in
    1 | 01)
    clear
    atualizarsistema
+   echo -ne "\n\033[1;31mENTER \033[1;33mpara volver al \033[1;32mMENU!\033[0m"; read
    ;;
    2 | 02)
    clear
    reiniciarservicos
+   echo -ne "\n\033[1;31mENTER \033[1;33mpara volver al \033[1;32mMENU!\033[0m"; read
    ;;
    3 | 03)
    clear
    atualizarsistema #reinstallpacotes
+   echo -ne "\n\033[1;31mENTER \033[1;33mpara volver al \033[1;32mMENU!\033[0m"; read
    ;;
    4 | 04)
    clear
@@ -341,12 +342,12 @@ case "$x" in
    ;;
    10)
    clear
-   resetiptables
+   reset_iptables
    echo -ne "\n\033[1;31mENTER \033[1;33mpara volver al \033[1;32mMENU!\033[0m"; read
    ;;
    11)
    clear
-   packobs
+   clean_obsolete_packages
    echo -ne "\n\033[1;31mENTER \033[1;33mpara volver al \033[1;32mMENU!\033[0m"; read
    ;;
    12)

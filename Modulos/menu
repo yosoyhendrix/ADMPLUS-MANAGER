@@ -306,7 +306,7 @@ case "$x" in
    exit
    ;;
    0 | 00)
-   echo -e "\033[1;31mSalindo...\033[0m"
+   echo -e "\033[1;31mSaliendo...\033[0m"
    sleep 1
    clear
    exit;
