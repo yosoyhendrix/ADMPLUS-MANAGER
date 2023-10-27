@@ -109,6 +109,7 @@ echo -e "    Command     Description"
 echo -e "    -------     -----------"
 echo -e "    command     Option menu"
 echo -e "    nload       nload"
+echo -e "    trafeco     trafico total"
 echo -e "    htop        htop"
 echo -e "    system      System info"
 echo -e "    clean       Clean system"
@@ -323,6 +324,15 @@ case "$x" in
    sleep 3
    [[ $(dpkg --get-selections|grep -w "nload"|head -1) ]] || apt-get install nload -y &>/dev/null
    nload
+   ;;
+   trafeco)
+   clear
+   echo -e "\E[44;1;37m          TRAFICO TOTAL           \E[0m\n"
+   echo -e "\033[1;36m TRÁFEGO TOTAL DE BANDA"
+   echo -e "\033[1;37m INTERNET\033[1;32m --> \033[1;34m" $(ifconfig | grep 'TX packets'| sed 's/\s\+/,/g' | cut -d , -f7-8)
+   echo -e "\n\033[1;36m TRÁFEGO TOTAL DE SUBIDA"
+   echo -e "\033[1;37m Local Loopback\033[1;32m --> \033[1;34m" $(ifconfig | grep 'RX packets'| sed 's/\s\+/,/g' | cut -d , -f7-8)
+   echo -ne "\n\033[1;31mENTER \033[1;33mpara volver al \033[1;32mMENU!\033[0m"; read
    ;;
    htop)
    clear
