@@ -6,8 +6,6 @@ proporcionar una extrema facilidad de uso en servidores Linux con un enfoque en 
 VPN. Viene con una interfaz amigable que proporciona información detallada sobre el servidor y 
 sus usuarios.
 
-* Donaciones por [PayPal](https://paypal.me/jonyriverasepulveda)
-
 El proyecto ADMPlus Community se encuentra actualmente en proceso de traduccion y adaptación de herramientas 
 con un enfoque en la estabilidad de las VPN. Si deseas contribuir, puedes ayudar instalando el script en tu sistema o vps 
 y traducir archivos, adaptar herramientas y paneles, y luego compartirlos en nuestro grupo oficial 
