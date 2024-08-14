@@ -17,9 +17,9 @@ en [Telegram](https://t.me/Jony_Rivera).
 ADMPlus Community se basa en el código fuente de dos proyectos principales:
 
 - 'SSHPlus Manager' [@crazy_vpn](https://t.me/crazy_vpn) en su versión 38.
-- 'ADM-Manager Ultimate' [@E8th4ver](https://t.me/E8th4ver) como base de herramientas.
+- 'ADM-Ultimate New' [@E8th4ver](https://t.me/E8th4ver) como base de herramientas.
 
-Estos proyectos han sido fundamentales para el desarrollo de ADMPlus Community, proporcionando la base y las herramientas necesarias para ofrecer un conjunto de características y funcionalidades avanzadas.
+Estos proyectos han sido fundamentales para el desarrollo de ADMPlus Manager Pro, proporcionando la base y las herramientas necesarias para ofrecer un conjunto de características y funcionalidades avanzadas.
 
 ## :computer: Instalación
 ```bash
