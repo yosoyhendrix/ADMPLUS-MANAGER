@@ -85,6 +85,7 @@ ADMPlus-Manager Pro ofrece las siguientes características:
 
 ## :email: Contacto 
 * :busts_in_silhouette: **@crazy_vpn**: [Telegram](https://t.me/crazy_vpn) - Desarrollador SSHPlus Manager
+* :busts_in_silhouette: **@E8th4ver**: [Telegram](https://t.me/E8th4ver) - Desarrollador  ADM-Ultimate New
 * :busts_in_silhouette: **illuminati Dev Team**: [Grupo Oficial en Telegram](https://t.me/AAAAAEXQOSyIpN2JZ0ehUQ) - Actualización de versión
 * :busts_in_silhouette: **Jony Rivera**: [Telegram](https://t.me/Jony_Rivera) - Colaborador
 
