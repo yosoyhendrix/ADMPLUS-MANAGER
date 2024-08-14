@@ -13,7 +13,7 @@ con un enfoque en la estabilidad de las VPN. Si deseas contribuir, puedes ayudar
 y traducir archivos, adaptar herramientas y paneles, y luego compartirlos en nuestro grupo oficial 
 en [Telegram](https://t.me/Jony_Rivera).
 
-## Attributions and Sources
+## Atribuciones y fuentes
 ADMPlus Community se basa en el código fuente de dos proyectos principales:
 
 - 'SSHPlus Manager' [@crazy_vpn](https://t.me/crazy_vpn) en su versión 38.
