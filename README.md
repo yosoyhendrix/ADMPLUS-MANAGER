@@ -1,6 +1,6 @@
 ﻿![logo](https://github.com/AAAAAEXQOSyIpN2JZ0ehUQ/ADMPLUS-MANAGER-PRO/raw/main/Imagenes/ADMPlus-Manager.png)
 
-# ADMPLUS-MANAGER
+# ADMPLUS-MANAGER PRO
 
 ## :information_source: Descripción
 Es un script que ofrece un conjunto de características y herramientas diseñadas para 
@@ -8,7 +8,7 @@ proporcionar una extrema facilidad de uso en servidores Linux con un enfoque en 
 VPN. Viene con una interfaz amigable que proporciona información detallada sobre el servidor y 
 sus usuarios.
 
-El proyecto ADMPlus-Manager Community se encuentra actualmente en proceso de traduccion y adaptación de herramientas 
+El proyecto ADMPlus-Manager Pro, version `Community` se encuentra actualmente en proceso de traduccion y adaptación de herramientas 
 con un enfoque en la estabilidad de las VPN. Si deseas contribuir, puedes ayudar instalando el script en tu sistema o vps 
 y traducir archivos, adaptar herramientas y paneles, y luego compartirlos en nuestro grupo oficial 
 en [Telegram](https://t.me/Jony_Rivera).
@@ -49,7 +49,7 @@ menu
 ```
 
 ## :bookmark_tabs: Notas
-ADMPlus-Manager ofrece las siguientes características:
+ADMPlus-Manager Pro ofrece las siguientes características:
 
 - Conexiones SSH: Configura y administra conexiones SSH.
 - Conexiones VPN: Administra conexiones Dropbear, SSLTunnel4, OpenVPN, entre otras.
