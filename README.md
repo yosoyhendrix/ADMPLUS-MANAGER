@@ -44,7 +44,7 @@ chmod +x Plus* && ./Plus
 
 ## :computer: Instalación en una Línea (Solo script)
 ```bash
-wget https://raw.githubusercontent.com/AAAAAEXQOSyIpN2JZ0ehUQ/ADMPLUS-MANAGER-PRO/main/Plus; chmod +x Plus* && ./Plus*
+wget https://raw.githubusercontent.com/AAAAAEXQOSyIpN2JZ0ehUQ/ADMPLUS-MANAGER-PRO/main/Plus; chmod +x Plus* && ./Plus 
 ```
 
 :memo: Las dependencias faltantes se instalarán automáticamente durante el proceso.
