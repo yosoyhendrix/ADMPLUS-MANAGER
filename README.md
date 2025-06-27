@@ -91,8 +91,6 @@ SSHPlus Manager ofrece las siguientes características:
 | :file_folder:    | Imagenes       | Carpeta para imágenes                     |
 | :file_folder:    | Install        | Carpeta para scripts de instalación       |
 | :file_folder:    | Modulos        | Carpeta para módulos adicionales          |
-| :file_folder:    | Proyectos      | Carpeta de versiones del proyecto         |
-| :file_folder:    | Versiones      | Carpeta para proyectos                    |
 | :page_facing_up: | .gitattributes | Archivo para configuración de Git         |
 | :package:        | Plus           | Instalador en Bash                        |
 | :book:           | README.md      | Archivo de documentación principal        |
