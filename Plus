@@ -78,7 +78,7 @@ pip install speedtest-cli
 }
 
 echo -e "$barra"
-echo -e "\E[44;1;37m          ∆ ADMINISTRADOR ADMPLUS COMUNIDAD ∆           \E[0m"
+echo -e "\E[44;1;37m          ∆ ADMINISTRADOR ADMPLUS COMMUNITY ∆           \E[0m"
 echo -e "$barra"
 echo -e "\033[1;31mATENCION! \033[1;33mESTE SCRIPT INSTALAR!\033[0m"
 echo -e "\033[1;31m• \033[1;33mUN CONJUNTO DE SCRIPTS COMO HERRAMIENTAS\033[0m"
